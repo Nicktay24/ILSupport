@@ -5,23 +5,23 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 
 ## **IMPORTANT NOTICE**
 ### **MANDATORY** Format For Floating-Point Literal
-All **FLOATING-POINT LITERALS** will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: _Float32_ and _Float64_.
+All **floating-point literals** will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: _Float32_ and _Float64_.
 ### **ADDED**
--Loading constant field values: _ConstantFieldValue_.
--Extra format for directives: **.custom**, **.permission**, **.permissionset**
+- Loading constant field values: _ConstantFieldValue_.
+- Extra format for directives: **.custom**, **.permission**, **.permissionset**
 ### **EXCLUDED**
--**.permission** _SecAction_ _TypeReference_ ‘ **(** ’ _NameValPairs_ ‘ **)** ’
+- **.permission** _SecAction_ _TypeReference_ ‘ **(** ’ _NameValPairs_ ‘ **)** ’
 
 ### README Syntax
--::= declares a Custom Format whose name precedes ::= and whose format is defined after.
--_Italic_ represents a reference to a Custom Format whose name matches. If this precedes ::= then this is a Custom Format declaration instead of a Custom Format reference.
--**Bold** specifies a literal.
--‘’ contains a literal character.
--\| is OR operator.
--\[\] marks its contents as optional.
--\* specifies zero or more of the preceding item.
--_QSTRING_ is double-quoted string.
--_SQSTRING_ is single-quoted string.
+- ::= declares a Custom Format whose name precedes ::= and whose format is defined after.
+- _Italic_ represents a reference to a Custom Format whose name matches. If this precedes ::= then this is a Custom Format declaration instead of a Custom Format reference.
+- **Bold** specifies a literal.
+- ‘’ contains a literal character.
+- \| is OR operator.
+- \[\] marks its contents as optional.
+- \* specifies zero or more of the preceding item.
+- _QSTRING_ is double-quoted string.
+- _SQSTRING_ is single-quoted string.
 
 ## Added Syntactic Formats
 | _CppFloatLiteral_ ::= |
