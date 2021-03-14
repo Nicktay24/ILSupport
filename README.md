@@ -3,10 +3,15 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 
 ## **IMPORTANT NOTICE**
 **CLI syntax** is officially fully-documented [here](https://www.ecma-international.org/publications-and-standards/standards/ecma-335/).
+
 **MANDATORY** Format For Floating-Point Literal
+
 All **FLOATING-POINT LITERALS** will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: _Float32_ and _Float64_.
+
 **ADDED** loading constant field values: _ConstantFieldValue_.
+
 **ADDED** extra format for directives: **.custom**, **.permission**, and **.permissionset**.
+
 **EXCLUDED**: **.permission** _SecAction_ _TypeReference_ ‘(’ _NameValPairs_ ‘)’
 
 ### README Syntax
@@ -20,10 +25,12 @@ _Italic_ represents a reference to a Custom Format whose name matches. If this p
 _QSTRING_ is double-quoted string.
 _SQSTRING_ is single-quoted string.
 
-First Header 
------------- 
-Content from cell 1
-Content in the first column
+###### _CppFloatLiteral_ ::=|
+> _RealNumber_ may be the [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal).
+------------|
+ 	_RealNumber_|
+\|	\[ ‘**+**’ | ‘**-**’ \] **inf**|
+\|	\[ ‘**+**’ | ‘**-**’ \] **NaN**|
 
 ## Added Syntactic Formats
 ###### _CppFloatLiteral_ ::=
