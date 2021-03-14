@@ -11,6 +11,7 @@ All **floating-point literals** will be parsed as followed. Many decompilers exp
 - Extra format for directives: **.custom**, **.permission**, **.permissionset**
 ### **EXCLUDED**
 - **.permission** _SecAction_ _TypeReference_ ‘ **(** ’ _NameValPairs_ ‘ **)** ’
+	> Could not figure out how to implement with dnlib but an alternatives are specified in custom format, _SecurityDecl_.
 
 ### README Syntax
 - ::= declares a Custom Format whose name precedes ::= and whose format is defined after.
