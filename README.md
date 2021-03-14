@@ -58,11 +58,10 @@ _SQSTRING_ is single-quoted string.
 |	**const** ‘**(**’ _FieldReference_ ‘**)**’|
 > _FieldReference_ must be reference to a constant field. The constant will be loaded on compile. Valid for operand of opcodes, ldfld and ldsfld; field constant initialization; and custom attribute argument.
 
-###### _Custom_ ::=
-```
- 	**.custom** _Ctor_ ‘**=**’ ‘**(**’ [ _Bytes_ ] ‘**)**’
-|	**.custom** _Ctor_ ‘**=**’ ‘**{**’ [ _CAArgument_ ]\* [ _CANamedArgument_ ]\* ‘**}**’
-```
+| _Custom_ ::=|
+|--- |
+|	**.custom** _Ctor_ ‘**=**’ ‘**(**’ \[ _Bytes_ \] ‘**)**’|
+|\|	**.custom** _Ctor_ ‘**=**’ ‘**{**’ \[ _CAArgument_ \]\* \[ _CANamedArgument_ \]\* ‘**}**’|
 
 ###### _SecurityDecl_ ::=
 ```
