@@ -26,11 +26,11 @@ _QSTRING_ is double-quoted string.
 _SQSTRING_ is single-quoted string.
 
 ###### _CppFloatLiteral_ ::=|
-> _RealNumber_ may be the [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal).
 ------------|
  	_RealNumber_|
 \|	\[ ‘**+**’ | ‘**-**’ \] **inf**|
 \|	\[ ‘**+**’ | ‘**-**’ \] **NaN**|
+> _RealNumber_ may be the [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal).
 
 ## Added Syntactic Formats
 ###### _CppFloatLiteral_ ::=
