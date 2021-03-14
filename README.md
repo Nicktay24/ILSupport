@@ -15,7 +15,8 @@ All **FLOATING-POINT LITERALS** will be parsed as followed. Many decompilers exp
 **EXCLUDED**: **.permission** _SecAction_ _TypeReference_ ‘(’ _NameValPairs_ ‘)’
 
 ### README Syntax
-**::=** declares a Custom Format whose name precedes **::=** and whose format is defined after.
+``
+::= declares a Custom Format whose name precedes ::= and whose format is defined after.
 _Italic_ represents a reference to a Custom Format whose name matches. If this precedes ::= then this is a Custom Format declaration instead of a Custom Format reference.
 **Bold** specifies a literal.
 ‘’ contains a literal character.
@@ -24,13 +25,7 @@ _Italic_ represents a reference to a Custom Format whose name matches. If this p
 \* specifies zero or more of the preceding item.
 _QSTRING_ is double-quoted string.
 _SQSTRING_ is single-quoted string.
-
-###### _CppFloatLiteral_ ::=|
-------------|
- 	_RealNumber_|
-\|	\[ ‘**+**’ | ‘**-**’ \] **inf**|
-\|	\[ ‘**+**’ | ‘**-**’ \] **NaN**|
-> _RealNumber_ may be the [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal).
+``
 
 ## Added Syntactic Formats
 ###### _CppFloatLiteral_ ::=
