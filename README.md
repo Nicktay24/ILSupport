@@ -1,37 +1,27 @@
 # IL Support
 Parses CLI code and merges with your DLL using dnlib. C\# does not provide coding in CLI but this way you can code CLI alongside C\#. I knew there are other implementations but they don't all provide full CLI coding. Using ildasm and ilasm would be too slow to merge with DLL.
 
-## **IMPORTANT NOTICE**
 **CLI syntax** is officially fully-documented [here](https://www.ecma-international.org/publications-and-standards/standards/ecma-335/).
 
-**MANDATORY** Format For Floating-Point Literal
-
+## **IMPORTANT NOTICE**
+### **MANDATORY** Format For Floating-Point Literal
 All **FLOATING-POINT LITERALS** will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: _Float32_ and _Float64_.
-
-**ADDED** loading constant field values: _ConstantFieldValue_.
-
-**ADDED** extra format for directives: **.custom**, **.permission**, **.permissionset**
-
-**EXCLUDED**: **.permission** _SecAction_ _TypeReference_ ‘(’ _NameValPairs_ ‘)’
+### **ADDED**
+-Loading constant field values: _ConstantFieldValue_.
+-Extra format for directives: **.custom**, **.permission**, **.permissionset**
+### **EXCLUDED**
+-**.permission** _SecAction_ _TypeReference_ ‘ **(** ’ _NameValPairs_ ‘ **)** ’
 
 ### README Syntax
-::= declares a Custom Format whose name precedes ::= and whose format is defined after.
-
-_Italic_ represents a reference to a Custom Format whose name matches. If this precedes ::= then this is a Custom Format declaration instead of a Custom Format reference.
-
-**Bold** specifies a literal.
-
-‘’ contains a literal character.
-
-| is OR operator.
-
-\[\] marks its contents as optional.
-
-\* specifies zero or more of the preceding item.
-
-_QSTRING_ is double-quoted string.
-
-_SQSTRING_ is single-quoted string.
+-::= declares a Custom Format whose name precedes ::= and whose format is defined after.
+-_Italic_ represents a reference to a Custom Format whose name matches. If this precedes ::= then this is a Custom Format declaration instead of a Custom Format reference.
+-**Bold** specifies a literal.
+-‘’ contains a literal character.
+-\| is OR operator.
+-\[\] marks its contents as optional.
+-\* specifies zero or more of the preceding item.
+-_QSTRING_ is double-quoted string.
+-_SQSTRING_ is single-quoted string.
 
 ## Added Syntactic Formats
 | _CppFloatLiteral_ ::= |
@@ -127,39 +117,39 @@ _SQSTRING_ is single-quoted string.
 |	**object** ‘ **(** ’ _CAArgument_ ‘ **)** ’ |
 |\|	**bytearray** ‘ **(** ’ \[ _Bytes_ \] ‘ **)** ’ |
 |\|	_ConstantFieldValue_ |
-|\|	**enum** \[ _TypeReferenceOrReflection_ \] _SzArrayInit_ \[ ‘ **{** ’ \[ _EnumVal_ \[ ‘ **,** ’ _EnumVal_ \]\* \] ‘ **}** ’ \] |
+|\|	**enum** \[ _TypeReferenceOrReflection_ \] _SzArrayInit_ \[ ‘ **{** ’ \[ _EnumVal_ \]\* ‘ **}** ’ \] |
 |\|	_TypeVal_ |
-|\|	**type** _SzArrayInit_ \[ ‘ **{** ’ \[ _TypeVal_ \[ ‘ **,** ’ _TypeVal_ \]\* \] ‘ **}** ’ \] |
+|\|	**type** _SzArrayInit_ \[ ‘ **{** ’ \[ _TypeVal_ \]\* ‘ **}** ’ \] |
 |\|	_Char_ |
-|\|	**char** _SzArrayInit_ \[ ‘ **{** ’ \[ _Char_ \[ ‘ **,** ’ _Char_ \]\* \] ‘ **}** ’ \] |
+|\|	**char** _SzArrayInit_ \[ ‘ **{** ’ \[ _Char_ \]\* ‘ **}** ’ \] |
 |\|	_String_ |
-|\|	**string** _SzArrayInit_ \[ ‘ **{** ’ \[ _String_ \[ ‘ **,** ’ _String_ \]\* \] ‘ **}** ’ \] |
+|\|	**string** _SzArrayInit_ \[ ‘ **{** ’ \[ _String_ \]\* ‘ **}** ’ \] |
 |\|	_Bool_ |
-|\|	**bool** _SzArrayInit_ \[ ‘ **{** ’ \[ _Bool \[ ‘ **,** ’ _Bool \]\* \] ‘ **}** ’ \] |
+|\|	**bool** _SzArrayInit_ \[ ‘ **{** ’ \[ _Bool \]\* ‘ **}** ’ \] |
 |\|	**float32** ‘ **(** ’ _Float32_ ‘ **)** ’ |
-|\|	**float32** _SzArrayInit_ \[ ‘ **{** ’ \[ **float32** ‘ **(** ’ _Float32_ ‘ **)** ’ \[ ‘ **,** ’ **float32** ‘ **(** ’ _Float32_ ‘ **)** ’ \]\* \] ‘ **}** ’ \] |
+|\|	**float32** _SzArrayInit_ \[ ‘ **{** ’ \[ **float32** ‘ **(** ’ _Float32_ ‘ **)** ’ \]\* ‘ **}** ’ \] |
 |\|	**float64** ‘ **(** ’ _Float64_ ‘ **)** ’ |
-|\|	**float64** _SzArrayInit_ \[ ‘ **{** ’ \[ **float64** ‘ **(** ’ _Float64_ ‘ **)** ’ \[ ‘ **,** ’ **float64** ‘ **(** ’ _Float64_ ‘ **)** ’ \]\* \] ‘ **}** ’ \] |
+|\|	**float64** _SzArrayInit_ \[ ‘ **{** ’ \[ **float64** ‘ **(** ’ _Float64_ ‘ **)** ’ \]\* ‘ **}** ’ \] |
 |\|	_UInt8_ |
-|\|	**unsigned int8** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt8_ \[ ‘ **,** ’ _UInt8_ \]\* \] ‘ **}** ’ \] |
-|\|	**uint8** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt8_ \[ ‘ **,** ’ _UInt8_ \]\* \] ‘ **}** ’ \] |
+|\|	**unsigned int8** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt8_ \]\* ‘ **}** ’ \] |
+|\|	**uint8** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt8_ \]\* ‘ **}** ’ \] |
 |\|	_Int8_ |
-|\|	**int8** _SzArrayInit_ \[  ‘ **{** ’ \[ _Int8_ \[ ‘ **,** ’ _Int8_ \]\* \] ‘ **}** ’ \] |
+|\|	**int8** _SzArrayInit_ \[  ‘ **{** ’ \[ _Int8_ \]\* ‘ **}** ’ \] |
 |\|	_UInt16_ |
-|\|	**unsigned int16** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt16_ \[ ‘ **,** ’ _UInt16_ \]\* \] ‘ **}** ’ \] |
-|\|	**uint16** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt16_ \[ ‘ **,** ’ _UInt16_ \]\* \] ‘ **}** ’ \] |
+|\|	**unsigned int16** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt16_ \]\* ‘ **}** ’ \] |
+|\|	**uint16** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt16_ \]\* ‘ **}** ’ \] |
 |\|	_Int16_ |
-|\|	**int16** _SzArrayInit_ \[  ‘ **{** ’ \[ _Int16_ \[ ‘ **,** ’ _Int16_ \]\* \] ‘ **}** ’ \] |
+|\|	**int16** _SzArrayInit_ \[  ‘ **{** ’ \[ _Int16_ \]\* ‘ **}** ’ \] |
 |\|	_UInt32_ |
-|\|	**unsigned int32** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt32_ \[ ‘ **,** ’ _UInt32_ \]\* \] ‘ **}** ’ \] |
-|\|	**uint32** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt32_ \[ ‘ **,** ’ _UInt32_ \]\* \] ‘ **}** ’ \] |
+|\|	**unsigned int32** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt32_ \]\* ‘ **}** ’ \] |
+|\|	**uint32** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt32_ \]\* ‘ **}** ’ \] |
 |\|	_Int32_ |
-|\|	**int32** _SzArrayInit_ \[  ‘ **{** ’ \[ _Int32_ \[ ‘ **,** ’ _Int32_ \]\* \] ‘ **}** ’ \] |
+|\|	**int32** _SzArrayInit_ \[  ‘ **{** ’ \[ _Int32_ \]\* ‘ **}** ’ \] |
 |\|	_UInt64_ |
-|\|	**unsigned int64** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt64_ \[ ‘ **,** ’ _UInt64_ \]\* \] ‘ **}** ’ \] |
-|\|	**uint64** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt64_ \[ ‘ **,** ’ _UInt64_ \]\* \] ‘ **}** ’ \] |
+|\|	**unsigned int64** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt64_ \]\* ‘ **}** ’ \] |
+|\|	**uint64** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt64_ \]\* ‘ **}** ’ \] |
 |\|	_Int64_ |
-|\|	**int64** _SzArrayInit_ \[  ‘ **{** ’ \[ _Int64_ \[ ‘ **,** ’ _Int64_ \]\* \] ‘ **}** ’ \] |
+|\|	**int64** _SzArrayInit_ \[  ‘ **{** ’ \[ _Int64_ \]\* ‘ **}** ’ \] |
 
 | _SzArrayInit_ ::= |
 |--- |
