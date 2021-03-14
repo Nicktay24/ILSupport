@@ -36,17 +36,16 @@ _SQSTRING_ is single-quoted string.
 ## Added Syntactic Formats
 | _CppFloatLiteral_ ::=|
 |--- |
-|	_RealNumber_|
-|\|	\[ ‘**+**’ | ‘**-**’ \] **inf**|
-|\|	\[ ‘**+**’ | ‘**-**’ \] **NaN**|
 > _RealNumber_ may be the [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal).
+|	_RealNumber_|
+|\|	\[ ‘**+**’ \| ‘**-**’ \] **inf**|
+|\|	\[ ‘**+**’ \| ‘**-**’ \] **NaN**|
 
-###### _Float32_ ::=
-```
- 	_CppFloatLiteral_
-|	float32 ‘**(**’ _Int32Literal_ ‘**)**’
-|	float32 ‘**(**’ _UInt32Literal_ ‘**)**’
-```
+| _Float32_ ::=|
+|--- |
+|	_CppFloatLiteral_|
+|\|	float32 ‘**(**’ _Int32Literal_ ‘**)**’|
+|\|	float32 ‘**(**’ _UInt32Literal_ ‘**)**’|
 
 ###### _Float64_ ::=
 ```
