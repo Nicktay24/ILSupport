@@ -52,8 +52,8 @@ All **floating-point literals** will be parsed as followed. Many decompilers exp
 
 | _Custom_ ::= |
 |--- |
-|	**.custom** _Ctor_ ‘ **=** ’ ‘ **(** ’ \[ _Bytes_ \] ‘ **)** ’ |
-|\|	**.custom** _Ctor_ ‘ **=** ’ ‘ **\{** ’ \[ _CAArgument_ \]\* \[ _CANamedArgument_ \]\* ‘ **\}** ’ |
+|	**.custom** _Ctor_ ‘ **\=** ’ ‘ **(** ’ \[ _Bytes_ \] ‘ **)** ’ |
+|\|	**.custom** _Ctor_ ‘ **** __ \= __ **** ’ ‘ **\{** ’ \[ _CAArgument_ \]\* \[ _CANamedArgument_ \]\* ‘ **\}** ’ |
 
 | _SecurityDecl_ ::= |
 |--- |
