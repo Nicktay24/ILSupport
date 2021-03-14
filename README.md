@@ -34,10 +34,10 @@ _QSTRING_ is double-quoted string.
 _SQSTRING_ is single-quoted string.
 
 ## Added Syntactic Formats
-|###### _CppFloatLiteral_ ::=|
+###### | _CppFloatLiteral_ ::=|
 |--- |
-| 	_RealNumber_|
-\|	\[ ‘**+**’ | ‘**-**’ \] **inf**|
+|	_RealNumber_|
+|\|	\[ ‘**+**’ | ‘**-**’ \] **inf**|
 |\|	\[ ‘**+**’ | ‘**-**’ \] **NaN**|
 > _RealNumber_ may be the [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal).
 
