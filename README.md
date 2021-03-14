@@ -11,14 +11,14 @@ All **floating-point literals** will be parsed as followed. Many decompilers exp
 - Loading constant field values: _ConstantFieldValue_.
 - Extra format for directives: **.custom**, **.permission**, **.permissionset**
 ### **EXCLUDED**
-- **.permission** _SecAction_ _TypeReference_ ‘ **(** ’ _NameValPairs_ ‘ **)** ’
+- **.permission** _SecAction_ _TypeReference_ ʼ**(**ʼ _NameValPairs_ ʼ**)**ʼ
 	> Could not figure out how to implement with dnlib but an alternatives are specified in custom format, _SecurityDecl_.
 
 ### README Syntax
 - ::\= declares a Custom Format whose name precedes ::\= and whose format is defined after.
 - _Italic_ represents a reference to a Custom Format whose name matches. If this precedes ::\= then this is a Custom Format declaration instead of a Custom Format reference.
 - **Bold** specifies a literal.
-- ‘’ contains a literal character.
+- ʻʼ contains a literal character.
 - \| is OR operator.
 - \[\] marks its contents as optional.
 - \* specifies zero or more of the preceding item.
@@ -29,37 +29,37 @@ All **floating-point literals** will be parsed as followed. Many decompilers exp
 | _CppFloatLiteral_ ::\= |
 |--- |
 |	_RealNumber_ |
-|\|	\[ ‘ **+** ’ \| ‘ **-** ’ \] **inf** |
-|\|	\[ ‘ **+** ’ \| ‘ **-** ’ \] **NaN** |
+|\|	\[ ʼ**+**ʼ \| ʼ**-**ʼ \] **inf** |
+|\|	\[ ʼ**+**ʼ \| ʼ**-**ʼ \] **NaN** |
 > _RealNumber_ may be the [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal).
 
 | _Float32_ ::\= |
 |--- |
 |	_CppFloatLiteral_ |
-|\|	**float32** ‘ **(** ’ _Int32Literal_ ‘ **)** ’ |
-|\|	**float32** ‘ **(** ’ _UInt32Literal_ ‘ **)** ’ |
+|\|	**float32** ʼ**(**ʼ _Int32Literal_ ʼ**)**ʼ |
+|\|	**float32** ʼ**(**ʼ _UInt32Literal_ ʼ**)**ʼ |
 
 | _Float64_ ::\= |
 |--- |
 |	_CppFloatLiteral_ |
-|\|	**float64** ‘ **(** ’ _Int64Literal_ ‘ **)** ’ |
-|\|	**float64** ‘ **(** ’ _UInt64Literal_ ‘ **)** ’ |
+|\|	**float64** ʼ**(**ʼ _Int64Literal_ ʼ**)**ʼ |
+|\|	**float64** ʼ**(**ʼ _UInt64Literal_ ʼ**)**ʼ |
 
 | _ConstantFieldValue_ ::\= |
 |--- |
-|	**const** ‘ **(** ’ _FieldReference_ ‘ **)** ’ |
+|	**const** ʼ**(**ʼ _FieldReference_ ʼ**)**ʼ |
 > _FieldReference_ must be reference to a constant field. The constant will be loaded on compile. Valid for operand of opcodes, ldfld and ldsfld; field constant initialization; and custom attribute argument. Also in the CIL instructions, you may have the operand of **ldsfld** be a field reference to a constant field to load the value of the constant field. E.g. **Ldsfld** and `uint8 uint8::MinValue` will be replaced with **ldc.i4.0**. **Ldsfld** and `uint16 uint16::MaxValue` will be replaced with **ldc.i4** and `65535`.
 
 | _Custom_ ::\= |
 |--- |
-|	**.custom** _Ctor_ ‘ **\=** ’ ‘ **(** ’ \[ _Bytes_ \] ‘ **)** ’ |
-|\|	**.custom** _Ctor_ ‘ **\=** ’ ‘ **\{** ’ \[ _CAArgument_ \]\* \[ _CANamedArgument_ \]\* ‘ **\}** ’ |
+|	**.custom** _Ctor_ ʼ**\=**ʼ ʼ**(**ʼ \[ _Bytes_ \] ʼ**)**ʼ |
+|\|	**.custom** _Ctor_ ʼ**\=**ʼ ʼ**\{**ʼ \[ _CAArgument_ \]\* \[ _CANamedArgument_ \]\* ʼ**\}**ʼ |
 
 | _SecurityDecl_ ::\= |
 |--- |
-|	**.permissionset** _SecAction_ ‘ **\=** ’ ‘ **(** ’ \[ _Bytes_ \] ‘ **)** ’ |
-|\|	**.permissionset** _SecAction_ ‘ **\=** ’ ‘ **\{** ’ \[ _SecDecl_ \]\* ‘ **\}** ’ |
-|\|	**.permission** _SecAction_ ‘ **\=** ’ ‘ **(** ’ \[ _Bytes_ \] ‘ **)** ’ |
+|	**.permissionset** _SecAction_ ʼ**\=**ʼ ʼ**(**ʼ \[ _Bytes_ \] ʼ**)**ʼ |
+|\|	**.permissionset** _SecAction_ ʼ**\=**ʼ ʼ**\{**ʼ \[ _SecDecl_ \]\* ʼ**\}**ʼ |
+|\|	**.permission** _SecAction_ ʼ**\=**ʼ ʼ**(**ʼ \[ _Bytes_ \] ʼ**)**ʼ |
 |\|	**.permission** _SecAction_ _SecDecl_ |
 
 | _SecAction_ ::\= |
@@ -83,16 +83,16 @@ All **floating-point literals** will be parsed as followed. Many decompilers exp
 
 | _SecDecl_ ::\= |
 |--- |
-| 	_TypeReferenceOrReflection_ ‘ **\=** ’ ‘ **\{** ’ \[ _CANamedArgument_ \]\* ‘ **\}** ’ |
+| 	_TypeReferenceOrReflection_ ʼ**\=**ʼ ʼ**\{**ʼ \[ _CANamedArgument_ \]\* ʼ**\}**ʼ |
 
 | _CANamedArgument_ ::\= |
 |--- |
-|	**field** _CATypeSig_ _DottedName_ ‘ **\=** ’ _CAArgument_ |
-|\|	**property** _CATypeSig_ _DottedName_ ‘ **\=** ’ _CAArgument_ |
+|	**field** _CATypeSig_ _DottedName_ ʼ**\=**ʼ _CAArgument_ |
+|\|	**property** _CATypeSig_ _DottedName_ ʼ**\=**ʼ _CAArgument_ |
 
 | _CATypeSig_ ::\= |
 |--- |
-|	_CATypeRef_ \[ ‘ **\[** ’ ‘ **\]** ’ \] |
+|	_CATypeRef_ \[ ʼ**\[**ʼ ʼ**\]**ʼ \] |
 
 | _CATypeRef_ ::\= |
 |--- |
@@ -116,51 +116,51 @@ All **floating-point literals** will be parsed as followed. Many decompilers exp
 
 | _CAArgument_ ::\= |
 |--- |
-|	**object** ‘ **(** ’ _CAArgument_ ‘ **)** ’ |
-|\|	**bytearray** ‘ **(** ’ \[ _Bytes_ \] ‘ **)** ’ |
+|	**object** ʼ**(**ʼ _CAArgument_ ʼ**)**ʼ |
+|\|	**bytearray** ʼ**(**ʼ \[ _Bytes_ \] ʼ**)**ʼ |
 |\|	_ConstantFieldValue_ |
-|\|	**enum** \[ _TypeReferenceOrReflection_ \] _SzArrayInit_ \[ ‘ **{** ’ \[ _EnumVal_ \]\* ‘ **}** ’ \] |
+|\|	**enum** \[ _TypeReferenceOrReflection_ \] _SzArrayInit_ \[ ʼ**{**ʼ \[ _EnumVal_ \]\* ʼ**}**ʼ \] |
 |\|	_TypeVal_ |
-|\|	**type** _SzArrayInit_ \[ ‘ **{** ’ \[ _TypeVal_ \]\* ‘ **}** ’ \] |
+|\|	**type** _SzArrayInit_ \[ ʼ**{**ʼ \[ _TypeVal_ \]\* ʼ**}**ʼ \] |
 |\|	_Char_ |
-|\|	**char** _SzArrayInit_ \[ ‘ **{** ’ \[ _Char_ \]\* ‘ **}** ’ \] |
+|\|	**char** _SzArrayInit_ \[ ʼ**{**ʼ \[ _Char_ \]\* ʼ**}**ʼ \] |
 |\|	_String_ |
-|\|	**string** _SzArrayInit_ \[ ‘ **{** ’ \[ _String_ \]\* ‘ **}** ’ \] |
+|\|	**string** _SzArrayInit_ \[ ʼ**{**ʼ \[ _String_ \]\* ʼ**}**ʼ \] |
 |\|	_Bool_ |
-|\|	**bool** _SzArrayInit_ \[ ‘ **{** ’ \[ _Bool \]\* ‘ **}** ’ \] |
-|\|	**float32** ‘ **(** ’ _Float32_ ‘ **)** ’ |
-|\|	**float32** _SzArrayInit_ \[ ‘ **{** ’ \[ **float32** ‘ **(** ’ _Float32_ ‘ **)** ’ \]\* ‘ **}** ’ \] |
-|\|	**float64** ‘ **(** ’ _Float64_ ‘ **)** ’ |
-|\|	**float64** _SzArrayInit_ \[ ‘ **{** ’ \[ **float64** ‘ **(** ’ _Float64_ ‘ **)** ’ \]\* ‘ **}** ’ \] |
+|\|	**bool** _SzArrayInit_ \[ ʼ**{**ʼ \[ _Bool \]\* ʼ**}**ʼ \] |
+|\|	**float32** ʼ**(**ʼ _Float32_ ʼ**)**ʼ |
+|\|	**float32** _SzArrayInit_ \[ ʼ**{**ʼ \[ **float32** ʼ**(**ʼ _Float32_ ʼ**)**ʼ \]\* ʼ**}**ʼ \] |
+|\|	**float64** ʼ**(**ʼ _Float64_ ʼ**)**ʼ |
+|\|	**float64** _SzArrayInit_ \[ ʼ**{**ʼ \[ **float64** ʼ**(**ʼ _Float64_ ʼ**)**ʼ \]\* ʼ**}**ʼ \] |
 |\|	_UInt8_ |
-|\|	**unsigned int8** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt8_ \]\* ‘ **}** ’ \] |
-|\|	**uint8** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt8_ \]\* ‘ **}** ’ \] |
+|\|	**unsigned int8** _SzArrayInit_ \[ ʼ**{**ʼ \[ _UInt8_ \]\* ʼ**}**ʼ \] |
+|\|	**uint8** _SzArrayInit_ \[ ʼ**{**ʼ \[ _UInt8_ \]\* ʼ**}**ʼ \] |
 |\|	_Int8_ |
-|\|	**int8** _SzArrayInit_ \[  ‘ **{** ’ \[ _Int8_ \]\* ‘ **}** ’ \] |
+|\|	**int8** _SzArrayInit_ \[  ʼ**{**ʼ \[ _Int8_ \]\* ʼ**}**ʼ \] |
 |\|	_UInt16_ |
-|\|	**unsigned int16** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt16_ \]\* ‘ **}** ’ \] |
-|\|	**uint16** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt16_ \]\* ‘ **}** ’ \] |
+|\|	**unsigned int16** _SzArrayInit_ \[ ʼ**{**ʼ \[ _UInt16_ \]\* ʼ**}**ʼ \] |
+|\|	**uint16** _SzArrayInit_ \[ ʼ**{**ʼ \[ _UInt16_ \]\* ʼ**}**ʼ \] |
 |\|	_Int16_ |
-|\|	**int16** _SzArrayInit_ \[  ‘ **{** ’ \[ _Int16_ \]\* ‘ **}** ’ \] |
+|\|	**int16** _SzArrayInit_ \[  ʼ**{**ʼ \[ _Int16_ \]\* ʼ**}**ʼ \] |
 |\|	_UInt32_ |
-|\|	**unsigned int32** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt32_ \]\* ‘ **}** ’ \] |
-|\|	**uint32** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt32_ \]\* ‘ **}** ’ \] |
+|\|	**unsigned int32** _SzArrayInit_ \[ ʼ**{**ʼ \[ _UInt32_ \]\* ʼ**}**ʼ \] |
+|\|	**uint32** _SzArrayInit_ \[ ʼ**{**ʼ \[ _UInt32_ \]\* ʼ**}**ʼ \] |
 |\|	_Int32_ |
-|\|	**int32** _SzArrayInit_ \[  ‘ **{** ’ \[ _Int32_ \]\* ‘ **}** ’ \] |
+|\|	**int32** _SzArrayInit_ \[  ʼ**{**ʼ \[ _Int32_ \]\* ʼ**}**ʼ \] |
 |\|	_UInt64_ |
-|\|	**unsigned int64** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt64_ \]\* ‘ **}** ’ \] |
-|\|	**uint64** _SzArrayInit_ \[ ‘ **{** ’ \[ _UInt64_ \]\* ‘ **}** ’ \] |
+|\|	**unsigned int64** _SzArrayInit_ \[ ʼ**{**ʼ \[ _UInt64_ \]\* ʼ**}**ʼ \] |
+|\|	**uint64** _SzArrayInit_ \[ ʼ**{**ʼ \[ _UInt64_ \]\* ʼ**}**ʼ \] |
 |\|	_Int64_ |
-|\|	**int64** _SzArrayInit_ \[  ‘ **{** ’ \[ _Int64_ \]\* ‘ **}** ’ \] |
+|\|	**int64** _SzArrayInit_ \[  ʼ**{**ʼ \[ _Int64_ \]\* ʼ**}**ʼ \] |
 
 | _SzArrayInit_ ::\= |
 |--- |
-|	‘ **\[** ’ \[ _Int32Literal_ \] ‘ **\]** ’ |
+|	ʼ**\[**ʼ \[ _Int32Literal_ \] ʼ**\]**ʼ |
 
 | _TypeVal_ ::\= |
 |--- |
-|	**type** ‘ **(** ’ _Type_ ‘ **)** ’ |
-|	**type** ‘ **(** ’ _TypeReferenceOrReflection_ ‘ **)** ’ |
+|	**type** ʼ**(**ʼ _Type_ ʼ**)**ʼ |
+|	**type** ʼ**(**ʼ _TypeReferenceOrReflection_ ʼ**)**ʼ |
 
 | _EnumVal_ ::\= |
 |--- |
@@ -177,20 +177,20 @@ All **floating-point literals** will be parsed as followed. Many decompilers exp
 
 | _Bool_ ::\= |
 |--- |
-|	**bool** ‘ **(** ’ **true** \| **false** ‘ **)** ’ |
+|	**bool** ʼ**(**ʼ **true** \| **false** ʼ**)**ʼ |
 |\|	_ConstantFieldValue_ |
 
 | _Char_ ::\= |
 |--- |
-|	‘ **'** ’ _CharLiteral_ ‘ **'** ’ |
-|\|	**char** ‘ **(** ’ ‘ **'** ’ _CharLiteral_ ‘ **'** ’ ‘ **)** ’ |
-|\|	**char** ‘ **(** ’ _Int32Literal_ ‘ **)** ’ |
+|	ʼ**'**ʼ _CharLiteral_ ʼ**'**ʼ |
+|\|	**char** ʼ**(**ʼ ʼ**'**ʼ _CharLiteral_ ʼ**'**ʼ ʼ**)**ʼ |
+|\|	**char** ʼ**(**ʼ _Int32Literal_ ʼ**)**ʼ |
 |\|	_ConstantFieldValue_ |
 
 | _String_ ::\= |
 |--- |
 |	_QSTRING_ |
-|\|	**string** ‘ **(** ’ _SQSTRING_ ‘ **)** ’ |
+|\|	**string** ʼ**(**ʼ _SQSTRING_ ʼ**)**ʼ |
 |\|	_ConstantFieldValue_ |
 
 | _TypeReferenceOrReflection_ ::\= |
@@ -218,44 +218,44 @@ All **floating-point literals** will be parsed as followed. Many decompilers exp
 
 | _Int8_ ::\= |
 |--- |
-|	**int8** ‘ **(** ’ _Int8Literal_ ‘ **)** ’ |
+|	**int8** ʼ**(**ʼ _Int8Literal_ ʼ**)**ʼ |
 |\|	_ConstantFieldValue_ |
 
 | _Int16_ ::\= |
 |--- |
-|	**int16** ‘ **(** ’ _Int16Literal_ ‘ **)** ’ |
+|	**int16** ʼ**(**ʼ _Int16Literal_ ʼ**)**ʼ |
 |\|	_ConstantFieldValue_ |
 
 | _Int32_ ::\= |
 |--- |
-|	**int32** ‘ **(** ’ _Int32Literal_ ‘ **)** ’ |
+|	**int32** ʼ**(**ʼ _Int32Literal_ ʼ**)**ʼ |
 |\|	_ConstantFieldValue_ |
 
 | _Int64_ ::\= |
 |--- |
-|	**int64** ‘ **(** ’ _Int64Literal_ ‘ **)** ’ |
+|	**int64** ʼ**(**ʼ _Int64Literal_ ʼ**)**ʼ |
 |\|	_ConstantFieldValue_ |
 
 | _UInt8_ ::\= |
 |--- |
-|	**unsigned int8** ‘ **(** ’ _UInt8Literal_ ‘ **)** ’ |
-|\|	**uint8** ‘ **(** ’ _UInt8Literal_ ‘ **)** ’ |
+|	**unsigned int8** ʼ**(**ʼ _UInt8Literal_ ʼ**)**ʼ |
+|\|	**uint8** ʼ**(**ʼ _UInt8Literal_ ʼ**)**ʼ |
 |\|	_ConstantFieldValue_ |
 
 | _UInt16_ ::\= |
 |--- |
-|	**unsigned int16** ‘ **(** ’ _UInt16Literal_ ‘ **)** ’ |
-|\|	**uint16** ‘ **(** ’ _UInt16Literal_ ‘ **)** ’ |
+|	**unsigned int16** ʼ**(**ʼ _UInt16Literal_ ʼ**)**ʼ |
+|\|	**uint16** ʼ**(**ʼ _UInt16Literal_ ʼ**)**ʼ |
 |\|	_ConstantFieldValue_ |
 
 | _UInt32_ ::\= |
 |--- |
-|	**unsigned int32** ‘ **(** ’ _UInt32Literal_ ‘ **)** ’ |
-|\|	**uint32** ‘ **(** ’ _UInt32Literal_ ‘ **)** ’ |
+|	**unsigned int32** ʼ**(**ʼ _UInt32Literal_ ʼ**)**ʼ |
+|\|	**uint32** ʼ**(**ʼ _UInt32Literal_ ʼ**)**ʼ |
 |\|	_ConstantFieldValue_ |
 
 | _UInt64_ ::\= |
 |--- |
-|	**unsigned int64** ‘ **(** ’ _UInt64Literal_ ‘ **)** ’ |
-|\|	**uint64** ‘ **(** ’ _UInt64Literal_ ‘ **)** ’ |
+|	**unsigned int64** ʼ**(**ʼ _UInt64Literal_ ʼ**)**ʼ |
+|\|	**uint64** ʼ**(**ʼ _UInt64Literal_ ʼ**)**ʼ |
 |\|	_ConstantFieldValue_ |
