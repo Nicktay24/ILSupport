@@ -7,6 +7,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 ### **MANDATORY** Format For Floating-Point Literal
 All **floating-point literals** will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: _Float32_ and _Float64_.
 ### **ADDED**
+- [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal)
 - Loading constant field values: _ConstantFieldValue_.
 - Extra format for directives: **.custom**, **.permission**, **.permissionset**
 ### **EXCLUDED**
@@ -172,7 +173,7 @@ All **floating-point literals** will be parsed as followed. Many decompilers exp
 |\|	_UInt64_ |
 |\|	_Int64_ |
 |\|	_ConstantFieldValue_ |
-> Must be the enum underlying type.
+> _EnumVal_ must be the enum underlying type.
 
 | _Bool_ ::= |
 |--- |
