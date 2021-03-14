@@ -1,33 +1,38 @@
 # IL Support
 Parses CLI code and merges with your DLL using dnlib. C\# does not provide coding in CLI but this way you can code CLI alongside C\#. I knew there are other implementations but they don't all provide full CLI coding. Using ildasm and ilasm would be too slow to merge with DLL.
 
-## **NOTICE**
-### **CLI syntax** is officially fully-documented [here](https://www.ecma-international.org/publications-and-standards/standards/ecma-335/).
-### **MANDATORY** Format For Floating-Point Literal
-All floating-point literals will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: _Float32_ and _Float64_.
-### **ADDED** loading constant field values: _ConstantFieldValue_.
-### **ADDED** extra format for directives: **.custom**, **.permission**, and **.permissionset**.
-### **EXCLUDED**: **.permission** _SecAction_ _TypeReference_ ‘(’ _NameValPairs_ ‘)’
+## **IMPORTANT NOTICE**
+**CLI syntax** is officially fully-documented [here](https://www.ecma-international.org/publications-and-standards/standards/ecma-335/).
+**MANDATORY** Format For Floating-Point Literal
+All **FLOATING-POINT LITERALS** will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: _Float32_ and _Float64_.
+**ADDED** loading constant field values: _ConstantFieldValue_.
+**ADDED** extra format for directives: **.custom**, **.permission**, and **.permissionset**.
+**EXCLUDED**: **.permission** _SecAction_ _TypeReference_ ‘(’ _NameValPairs_ ‘)’
 
 ### README Syntax
-::= declares a Custom Format whose name precedes ::= and whose format is defined after.
+**::=** declares a Custom Format whose name precedes **::=** and whose format is defined after.
 _Italic_ represents a reference to a Custom Format whose name matches. If this precedes ::= then this is a Custom Format declaration instead of a Custom Format reference.
 **Bold** specifies a literal.
 ‘’ contains a literal character.
 | is OR operator.
-[] marks its contents as optional.
+\[\] marks its contents as optional.
 \* specifies zero or more of the preceding item.
 _QSTRING_ is double-quoted string.
 _SQSTRING_ is single-quoted string.
 
+First Header 
+------------ 
+Content from cell 1
+Content in the first column
+
 ## Added Syntactic Formats
 ###### _CppFloatLiteral_ ::=
+> _RealNumber_ may be the [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal).
 ```
  	_RealNumber_
 |	\[ ‘**+**’ | ‘**-**’ \] **inf**
 |	\[ ‘**+**’ | ‘**-**’ \] **NaN**
 ```
-> _RealNumber_ may be the [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal).
 
 ###### _Float32_ ::=
 ```
@@ -44,10 +49,10 @@ _SQSTRING_ is single-quoted string.
 ```
 
 ###### _ConstantFieldValue_ ::=
+> _FieldReference_ must be reference to a constant field. The constant will be loaded on compile. Valid for operand of opcodes, ldfld and ldsfld; field constant initialization; and custom attribute argument.
 ```
  	**const** ‘**(**’ _FieldReference_ ‘**)**’
 ```
-> _FieldReference_ must be reference to a constant field. The constant will be loaded on compile. Valid for operand of opcodes, ldfld and ldsfld; field constant initialization; and custom attribute argument.
 
 ###### _Custom_ ::=
 ```
