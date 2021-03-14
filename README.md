@@ -10,7 +10,7 @@ All **FLOATING-POINT LITERALS** will be parsed as followed. Many decompilers exp
 
 **ADDED** loading constant field values: _ConstantFieldValue_.
 
-**ADDED** extra format for directives: **.custom**, **.permission**, and **.permissionset**.
+**ADDED** extra format for directives: **.custom**, **.permission**, **.permissionset**
 
 **EXCLUDED**: **.permission** _SecAction_ _TypeReference_ ‘(’ _NameValPairs_ ‘)’
 
@@ -42,16 +42,19 @@ _SQSTRING_ is single-quoted string.
 > _RealNumber_ may be the [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal).
 
 | _Float32_ ::=|
+|--- |
 |	_CppFloatLiteral_|
 |\|	**float32** \‘**\(**\’ _Int32Literal_ \‘**\)**\’|
 |\|	**float32** \‘**\(**\’ _UInt32Literal_ \‘**\)**\’|
 
 | _Float64_ ::=|
+|--- |
 |	_CppFloatLiteral_|
 |\|	**float64** ‘**(**’ _Int64Literal_ ‘**)**’|
 |\|	**float64** ‘**(**’ _UInt64Literal_ ‘**)**’|
 
 | _ConstantFieldValue_ ::=|
+|--- |
 |	**const** ‘**(**’ _FieldReference_ ‘**)**’|
 > _FieldReference_ must be reference to a constant field. The constant will be loaded on compile. Valid for operand of opcodes, ldfld and ldsfld; field constant initialization; and custom attribute argument.
 
