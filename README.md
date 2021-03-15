@@ -53,7 +53,7 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 | _VTFixup_ ::\= |
 |--- |
 |	**​.vtfixup​** \[ _Int32Literal_ \] _VTFixupAttr_\* **​at​** _DataLabel_ |
-|\|	**​.vtfixup​** \[ _Int32Literal_ \] _VTFixupAttr_\* ‘​**​\=​**​’ ‘​**​\{​**​’ \[ _MethodSpec_ \]\* ‘​**​\}​**​’ |
+|\|	**​.vtfixup​** \[ _Int32Literal_ \] _VTFixupAttr_\* ‘​**​\=​**​’ ‘​**​\{​**​’ _MethodSpec_\* ‘​**​\}​**​’ |
 > _Int32Literal_ is the number of metadata tokens.
 > _DataLabel_ is a label referencing a **​.data​** directive specifying the metadata tokens.
 
@@ -63,8 +63,7 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 |\|	**​int32​** |
 |\|	**​int64​** |
 > _VTFixupAttr_ must be either **int32** or **int64**; not both.
-> **int32** specifies that each slot contains a 32-bit metadata token.
-> **int64** specifies that each slot contains a 64-bit metadata token.
+> **int32** specifies that each slot contains a 32-bit metadata token. **int64** specifies that each slot contains a 64-bit metadata token.
 
 | _MethodSpec_ ::\= |
 |--- |
@@ -78,7 +77,7 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 | _SecurityDecl_ ::\= |
 |--- |
 |	**​.permissionset​** _SecAction_ ‘​**​\=​**​’ ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
-|\|	**​.permissionset​** _SecAction_ ‘​**​\=​**​’ ‘​**​\{​**​’ \[ _SecDecl_ \]\* ‘​**​\}​**​’ |
+|\|	**​.permissionset​** _SecAction_ ‘​**​\=​**​’ ‘​**​\{​**​’ _SecDecl_\* ‘​**​\}​**​’ |
 |\|	**​.permission​** _SecAction_ ‘​**​\=​**​’ ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
 |\|	**​.permission​** _SecAction_ _SecDecl_ |
 
@@ -103,7 +102,7 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 
 | _SecDecl_ ::\= |
 |--- |
-| 	_TypeReferenceOrReflection_ ‘​**​\=​**​’ ‘​**​\{​**​’ \[ _CANamedArgument_ \]\* ‘​**​\}​**​’ |
+| 	_TypeReferenceOrReflection_ ‘​**​\=​**​’ ‘​**​\{​**​’ _CANamedArgument_\* ‘​**​\}​**​’ |
 
 | _CANamedArgument_ ::\= |
 |--- |
@@ -139,39 +138,39 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 |	**​object​** ‘​**​(​**​’ _CAArgument_ ‘​**​)​**​’ |
 |\|	**​bytearray​** ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
 |\|	_ConstantFieldValue_ |
-|\|	**​enum​** \[ _TypeReferenceOrReflection_ \] _SzArrayInit_ \[ ‘​**​{​**​’ \[ _EnumVal_ \]\* ‘​**​}​**​’ \] |
+|\|	**​enum​** \[ _TypeReferenceOrReflection_ \] _SzArrayInit_ \[ ‘​**​{​**​’ _EnumVal_\* ‘​**​}​**​’ \] |
 |\|	_TypeVal_ |
-|\|	**​type​** _SzArrayInit_ \[ ‘​**​{​**​’ \[ _TypeVal_ \]\* ‘​**​}​**​’ \] |
+|\|	**​type​** _SzArrayInit_ \[ ‘​**​{​**​’ _TypeVal_\* ‘​**​}​**​’ \] |
 |\|	_Char_ |
-|\|	**​char​** _SzArrayInit_ \[ ‘​**​{​**​’ \[ _Char_ \]\* ‘​**​}​**​’ \] |
+|\|	**​char​** _SzArrayInit_ \[ ‘​**​{​**​’ _Char_\* ‘​**​}​**​’ \] |
 |\|	_String_ |
-|\|	**​string​** _SzArrayInit_ \[ ‘​**​{​**​’ \[ _String_ \]\* ‘​**​}​**​’ \] |
+|\|	**​string​** _SzArrayInit_ \[ ‘​**​{​**​’ _String_\* ‘​**​}​**​’ \] |
 |\|	_Bool_ |
-|\|	**​bool​** _SzArrayInit_ \[ ‘​**​{​**​’ \[ _Bool \]\* ‘​**​}​**​’ \] |
+|\|	**​bool​** _SzArrayInit_ \[ ‘​**​{​**​’ _Bool_\* ‘​**​}​**​’ \] |
 |\|	**​float32​** ‘​**​(​**​’ _Float32_ ‘​**​)​**​’ |
 |\|	**​float32​** _SzArrayInit_ \[ ‘​**​{​**​’ \[ **​float32​** ‘​**​(​**​’ _Float32_ ‘​**​)​**​’ \]\* ‘​**​}​**​’ \] |
 |\|	**​float64​** ‘​**​(​**​’ _Float64_ ‘​**​)​**​’ |
 |\|	**​float64​** _SzArrayInit_ \[ ‘​**​{​**​’ \[ **​float64​** ‘​**​(​**​’ _Float64_ ‘​**​)​**​’ \]\* ‘​**​}​**​’ \] |
 |\|	_UInt8_ |
-|\|	**​unsigned int8​** _SzArrayInit_ \[ ‘​**​{​**​’ \[ _UInt8_ \]\* ‘​**​}​**​’ \] |
-|\|	**​uint8​** _SzArrayInit_ \[ ‘​**​{​**​’ \[ _UInt8_ \]\* ‘​**​}​**​’ \] |
+|\|	**​unsigned int8​** _SzArrayInit_ \[ ‘​**​{​**​’ _UInt8_\* ‘​**​}​**​’ \] |
+|\|	**​uint8​** _SzArrayInit_ \[ ‘​**​{​**​’ _UInt8_\* ‘​**​}​**​’ \] |
 |\|	_Int8_ |
-|\|	**​int8​** _SzArrayInit_ \[  ‘​**​{​**​’ \[ _Int8_ \]\* ‘​**​}​**​’ \] |
+|\|	**​int8​** _SzArrayInit_ \[  ‘​**​{​**​’ _Int8_\* ‘​**​}​**​’ \] |
 |\|	_UInt16_ |
-|\|	**​unsigned int16​** _SzArrayInit_ \[ ‘​**​{​**​’ \[ _UInt16_ \]\* ‘​**​}​**​’ \] |
-|\|	**​uint16​** _SzArrayInit_ \[ ‘​**​{​**​’ \[ _UInt16_ \]\* ‘​**​}​**​’ \] |
+|\|	**​unsigned int16​** _SzArrayInit_ \[ ‘​**​{​**​’ _UInt16_\* ‘​**​}​**​’ \] |
+|\|	**​uint16​** _SzArrayInit_ \[ ‘​**​{​**​’ _UInt16_\* ‘​**​}​**​’ \] |
 |\|	_Int16_ |
-|\|	**​int16​** _SzArrayInit_ \[  ‘​**​{​**​’ \[ _Int16_ \]\* ‘​**​}​**​’ \] |
+|\|	**​int16​** _SzArrayInit_ \[  ‘​**​{​**​’ _Int16_\* ‘​**​}​**​’ \] |
 |\|	_UInt32_ |
-|\|	**​unsigned int32​** _SzArrayInit_ \[ ‘​**​{​**​’ \[ _UInt32_ \]\* ‘​**​}​**​’ \] |
-|\|	**​uint32​** _SzArrayInit_ \[ ‘​**​{​**​’ \[ _UInt32_ \]\* ‘​**​}​**​’ \] |
+|\|	**​unsigned int32​** _SzArrayInit_ \[ ‘​**​{​**​’ _UInt32_\* ‘​**​}​**​’ \] |
+|\|	**​uint32​** _SzArrayInit_ \[ ‘​**​{​**​’ _UInt32_\* ‘​**​}​**​’ \] |
 |\|	_Int32_ |
-|\|	**​int32​** _SzArrayInit_ \[  ‘​**​{​**​’ \[ _Int32_ \]\* ‘​**​}​**​’ \] |
+|\|	**​int32​** _SzArrayInit_ \[  ‘​**​{​**​’ _Int32_\* ‘​**​}​**​’ \] |
 |\|	_UInt64_ |
-|\|	**​unsigned int64​** _SzArrayInit_ \[ ‘​**​{​**​’ \[ _UInt64_ \]\* ‘​**​}​**​’ \] |
-|\|	**​uint64​** _SzArrayInit_ \[ ‘​**​{​**​’ \[ _UInt64_ \]\* ‘​**​}​**​’ \] |
+|\|	**​unsigned int64​** _SzArrayInit_ \[ ‘​**​{​**​’ _UInt64_\* ‘​**​}​**​’ \] |
+|\|	**​uint64​** _SzArrayInit_ \[ ‘​**​{​**​’ _UInt64_\* ‘​**​}​**​’ \] |
 |\|	_Int64_ |
-|\|	**​int64​** _SzArrayInit_ \[  ‘​**​{​**​’ \[ _Int64_ \]\* ‘​**​}​**​’ \] |
+|\|	**​int64​** _SzArrayInit_ \[  ‘​**​{​**​’ _Int64_\* ‘​**​}​**​’ \] |
 
 | _SzArrayInit_ ::\= |
 |--- |
