@@ -9,7 +9,7 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 ### **​ADDED​**
 - [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal)
 - Loading constant field values: _ConstantFieldValue_.
-- Extra format for directives: **​.custom​**​, **​.permission​**​, **​.permissionset​**
+- Extra format for directives: **​.custom​**​, **​.permission​**​, **​.permissionset​**​, **​.vtfixup​**
 ### **​EXCLUDED​**
 - **​.permission​** _SecAction_ _TypeReference_ ‘​**​(​**​’ _NameValPairs_ ‘​**​)​**​’
 	> Could not figure out how to implement with dnlib but an alternatives are specified in custom format, _SecurityDecl_.
@@ -50,10 +50,30 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 |	**​const​** ‘​**​(​**​’ _FieldReference_ ‘​**​)​**​’ |
 > _FieldReference_ must be reference to a constant field. The constant will be loaded on compile. Valid for operand of opcodes, ldfld and ldsfld; field constant initialization; and custom attribute argument. Also in the CIL instructions, you may have the operand of **​ldsfld​** be a field reference to a constant field to load the value of the constant field. E.g. **​Ldsfld​** and `uint8 uint8::MinValue` will be replaced with **​ldc.i4.0​**​. **​Ldsfld​** and `uint16 uint16::MaxValue` will be replaced with **​ldc.i4​** and `65535`.
 
+| _VTFixup_ ::\= |
+|--- |
+|	**​.vtfixup​** \[ _Int32Literal_ \] _VTFixupAttr_\* **​at​** _DataLabel_ |
+|\|	**​.vtfixup​** \[ _Int32Literal_ \] _VTFixupAttr_\* ‘​**​\=​**​’ ‘​**​\{​**​’ \[ _MethodSpec_ \]\* ‘​**​\}​**​’ |
+> _Int32Literal_ is the number of metadata tokens.
+> _DataLabel_ is a label referencing a **​.data​** directive specifying the metadata tokens.
+
+| _VTFixupAttr_ ::\= |
+|--- |
+|	**​fromunmanaged​** |
+|\|	**​int32​** |
+|\|	**​int64​** |
+> _VTFixupAttr_ must be either **int32** or **int64**; not both.
+> **int32** specifies that each slot contains a 32-bit metadata token.
+> **int64** specifies that each slot contains a 64-bit metadata token.
+
+| _MethodSpec_ ::\= |
+|--- |
+|	_CallConv_ _Type_ \[ _TypeSpec_ ‘​**​::​**​’ \] _MethodName_ \[ ‘​**​<​**​’ _Type_ \[ ‘​**​,​**​’ _Type_ \]\* ‘​**​>​**​’ \] ‘​**​(​**​’ _Parameters_ ‘​**​)​**​’ |
+
 | _Custom_ ::\= |
 |--- |
 |	**​.custom​** _Ctor_ ‘​**​\=​**​’ ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
-|\|	**​.custom​** _Ctor_ ‘​**​\=​**​’ ‘​**​\{​**​’ \[ _CAArgument_ \]\* \[ _CANamedArgument_ \]\* ‘​**​\}​**​’ |
+|\|	**​.custom​** _Ctor_ ‘​**​\=​**​’ ‘​**​\{​**​’ _CAArgument_\* _CANamedArgument_\* ‘​**​\}​**​’ |
 
 | _SecurityDecl_ ::\= |
 |--- |
