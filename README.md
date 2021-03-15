@@ -31,7 +31,7 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 |	_RealNumber_ |
 |\|	\[ ‘​**​+​**​’ \| ‘​**​-​**​’ \] **​inf​** |
 |\|	\[ ‘​**​+​**​’ \| ‘​**​-​**​’ \] **​NaN​** |
-> _RealNumber_ may be the [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal).
+> _RealNumber_ is [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal).
 
 | _Float32_ ::\= |
 |--- |
