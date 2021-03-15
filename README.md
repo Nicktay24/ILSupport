@@ -29,14 +29,14 @@ All **floating-point literals** will be parsed as followed. Many decompilers exp
 | _CppFloatLiteral_ ::\= |
 |--- |
 |	_RealNumber_ |
-|\|	\[ ‘​**+**​’ \| ‘​**-**​’ \] **inf** |
-|\|	\[ ‘​**+**​’ \| ‘​**-**​’ \] **NaN** |
+|\|	\[ ‘​__\+__​’ \| ‘​**\-**​’ \] **inf** |
+|\|	\[ ‘​**\+**​’ \| ‘​**\-**​’ \] **NaN** |
 > _RealNumber_ may be the [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal).
 
 | _Float32_ ::\= |
 |--- |
 |	_CppFloatLiteral_ |
-|\|	**float32** ‘​**(**​’ _Int32Literal_ ‘​**)**​’ |
+|\|	**float32** ‘​__(__​’ _Int32Literal_ ‘​**)**​’ |
 |\|	**float32** ‘​**(**​’ _UInt32Literal_ ‘​**)**​’ |
 
 | _Float64_ ::\= |
