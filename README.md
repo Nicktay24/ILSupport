@@ -8,11 +8,11 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 All **​floating-point literals​** will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: _Float32_ and _Float64_.
 ### **​ADDED​**
 - [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal)
-- Loading constant field values: _ConstantFieldValue_.
+- Loading constant field values: _ConstantFieldValue_
 - Extra format for directives: **​.custom​**​, **​.permission​**​, **​.permissionset​**​, **​.vtfixup​**
 ### **​EXCLUDED​**
 - **​.permission​** _SecAction_ _TypeReference_ ‘​**​(​**​’ _NameValPairs_ ‘​**​)​**​’
-	> Could not figure out how to implement with dnlib but an alternatives are specified in custom format, _SecurityDecl_.
+	> Could not figure out how to implement with dnlib but an alternatives are specified below in custom format, _SecurityDecl_.
 
 ### README Syntax
 - ::\= declares a Custom Format whose name precedes ::\= and whose format is defined after.
