@@ -4,13 +4,13 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 **​CLI syntax​** is officially fully-documented [here](https://www.ecma-international.org/publications-and-standards/standards/ecma-335/).
 
 ## **​IMPORTANT NOTICE​**
-### **​MANDATORY​** Format For Floating-Point Literal
+#### **​MANDATORY​** Format For Floating-Point Literal
 All **​floating-point literals​** will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: _Float32_ and _Float64_.
-### **​ADDED​**
+#### **​ADDED​**
 - [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal)
 - Loading constant field values: _ConstantFieldValue_
 - Extra format for directives: **​.custom​**​, **​.permission​**​, **​.permissionset​**​, **​.vtfixup​**
-### **​EXCLUDED​**
+#### **​EXCLUDED​**
 - **​.permission​** _SecAction_ _TypeReference_ ‘​**​(​**​’ _NameValPairs_ ‘​**​)​**​’
 	> Could not figure out how to implement with dnlib but an alternatives are specified below in custom format, _SecurityDecl_.
 
