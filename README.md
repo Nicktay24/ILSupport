@@ -14,7 +14,7 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 - **​.permission​** _SecAction_ _TypeReference_ ‘​**​(​**​’ _NameValPairs_ ‘​**​)​**​’
 	> Could not figure out how to implement with dnlib but an alternatives are specified below in custom format, _SecurityDecl_.
 
-### README Syntax
+## README Syntax
 - ::\= declares a Custom Format whose name precedes ::\= and whose format is defined after.
 - _Italic_ represents a reference to a Custom Format whose name matches. If this precedes ::\= then this is a Custom Format declaration instead of a Custom Format reference.
 - **​Bold​** specifies a literal.
