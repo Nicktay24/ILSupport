@@ -70,14 +70,14 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 |\|	**​fromunmanaged​** |
 |\|	**​fromunmanaged​retainappdomain** |
 |\|	**​callmostderived​** |
-> _VTFixupAttr_ must be either **int32** or **int64**; not both.
+> _VTFixupAttr_ must be either **int32** or **int64**, and must be either **fromunmanaged** or **fromunmanagedretainappdomain**.
 > **int32** is the default and specifies that each slot contains a 32-bit metadata token. **int64** specifies that each slot contains a 64-bit metadata token.
 
 | _MethodSpec_ ::\= |
 |--- |
 |	_CallConv_ _Type_ \[ _TypeSpec_ ‘​**​::​**​’ \] _MethodName_ \[ ‘​**​<​**​’ _Type_ \[ ‘​**​,​**​’ _Type_ \]\* ‘​**​>​**​’ \] ‘​**​(​**​’ _Parameters_ ‘​**​)​**​’ |
 
-| _Custom_ ::\= |
+| _CustomDecl_ ::\= |
 |--- |
 |	**​.custom​** _Ctor_ ‘​**​\=​**​’ ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
 |\|	**​.custom​** _Ctor_ ‘​**​\=​**​’ ‘​**​\{​**​’ _CAArgument_\* _CANamedArgument_\* ‘​**​\}​**​’ |
@@ -114,14 +114,10 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 
 | _CANamedArgument_ ::\= |
 |--- |
-|	**​field​** _CATypeSig_ _DottedName_ ‘​**​\=​**​’ _CAArgument_ |
-|\|	**​property​** _CATypeSig_ _DottedName_ ‘​**​\=​**​’ _CAArgument_ |
+|	**​field​** _CAType_ _DottedName_ ‘​**​\=​**​’ _CAArgument_ |
+|\|	**​property​** _CAType_ _DottedName_ ‘​**​\=​**​’ _CAArgument_ |
 
-| _CATypeSig_ ::\= |
-|--- |
-|	_CATypeRef_ \[ ‘​**​\[​**​’ ‘​**​\]​**​’ \] |
-
-| _CATypeRef_ ::\= |
+| _CAType_ ::\= |
 |--- |
 |	**​bytearray​** |
 |\|	**​bool​** |
@@ -140,6 +136,7 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 |\|	**​uint32​** |
 |\|	\[ **​unsigned​** \] **​int64​** |
 |\|	**​uint64​** |
+|\|	_CAType_ ‘​**​\[​**​’ ‘​**​\]​**​’ |
 
 | _CAArgument_ ::\= |
 |--- |
