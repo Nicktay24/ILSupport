@@ -8,7 +8,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 All **​floating-point literals​** will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: _Float32_ and _Float64_.
 ### **​ADDED​**
 - [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal)
-- Loading constant field values: _ConstantFieldValue_
+- Loading constant field values: _ConstantFieldReference_
 - Extra format for directives: **​.custom​**​, **​.permission​**​, **​.permissionset​**​, **​.vtfixup​**
 ### **​EXCLUDED​**
 - **​.permission​** _SecAction_ _TypeReference_ ‘​**​(​**​’ _NameValPairs_ ‘​**​)​**​’
@@ -45,25 +45,33 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 |\|	**​float64​** ‘​**​(​**​’ _Int64Literal_ ‘​**​)​**​’ |
 |\|	**​float64​** ‘​**​(​**​’ _UInt64Literal_ ‘​**​)​**​’ |
 
-| _ConstantFieldValue_ ::\= |
+| _ConstantFieldReference_ ::\= |
 |--- |
 |	**​const​** ‘​**​(​**​’ _FieldReference_ ‘​**​)​**​’ |
 > _FieldReference_ must be reference to a constant field. The constant will be loaded on compile. Valid for operand of opcodes, ldfld and ldsfld; field constant initialization; and custom attribute argument. Also in the CIL instructions, you may have the operand of **​ldsfld​** be a field reference to a constant field to load the value of the constant field. E.g. **​Ldsfld​** and `uint8 uint8::MinValue` will be replaced with **​ldc.i4.0​**​. **​Ldsfld​** and `uint16 uint16::MaxValue` will be replaced with **​ldc.i4​** and `65535`.
 
-| _VTFixup_ ::\= |
+| _DataInit_ ::\= |
 |--- |
-|	**​.vtfixup​** \[ _Int32Literal_ \] _VTFixupAttr_\* **​at​** _DataLabel_ |
-|\|	**​.vtfixup​** \[ _Int32Literal_ \] _VTFixupAttr_\* ‘​**​\=​**​’ ‘​**​\{​**​’ _MethodSpec_\* ‘​**​\}​**​’ |
-> _Int32Literal_ is the number of metadata tokens.
+|	‘​**​\=​**​’ ‘​**​(​**​’ _Bytes_ ‘​**​)​**​’ |
+|\|	**​at​** _DataLabel_ |
 > _DataLabel_ is a label referencing a **​.data​** directive specifying the metadata tokens.
+
+| _VTFixupDecl_ ::\= |
+|--- |‘’ ‘​**​\{​**​’ _MethodSpec_\* ‘​**​\}​**​’
+|	**​.vtfixup​** \[ _Int32Literal_ \] _VTFixupAttr_\* ‘​**​\=​**​’ ‘​**​\{​**​’ _MethodSpec_\* ‘​**​\}​**​’ |
+|\|	**​.vtfixup​** \[ _Int32Literal_ \] _VTFixupAttr_\* _DataInit_ |
+- > _Int32Literal_ is the number of metadata tokens.
+- > It is **RECOMMENDED** to not use **.data** since metadata tokens can change per compile. This is mainly to support ildasm exports.
 
 | _VTFixupAttr_ ::\= |
 |--- |
-|	**​fromunmanaged​** |
-|\|	**​int32​** |
+|	**​int32​** |
 |\|	**​int64​** |
+|\|	**​fromunmanaged​** |
+|\|	**​fromunmanaged​retainappdomain** |
+|\|	**​callmostderived​** |
 > _VTFixupAttr_ must be either **int32** or **int64**; not both.
-> **int32** specifies that each slot contains a 32-bit metadata token. **int64** specifies that each slot contains a 64-bit metadata token.
+> **int32** is the default and specifies that each slot contains a 32-bit metadata token. **int64** specifies that each slot contains a 64-bit metadata token.
 
 | _MethodSpec_ ::\= |
 |--- |
@@ -138,7 +146,7 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 |	**​nullref​** |
 |	**​object​** ‘​**​(​**​’ _CAArgument_ ‘​**​)​**​’ |
 |\|	**​bytearray​** ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
-|\|	_ConstantFieldValue_ |
+|\|	_ConstantFieldReference_ |
 |\|	**​enum​** \[ _TypeReferenceOrReflection_ \] _SzArrayInit_ \[ ‘​**​{​**​’ _EnumVal_\* ‘​**​}​**​’ \] |
 |\|	_TypeVal_ |
 |\|	**​type​** _SzArrayInit_ \[ ‘​**​{​**​’ _TypeVal_\* ‘​**​}​**​’ \] |
@@ -192,26 +200,26 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 |\|	_Int32_ |
 |\|	_UInt64_ |
 |\|	_Int64_ |
-|\|	_ConstantFieldValue_ |
+|\|	_ConstantFieldReference_ |
 > _EnumVal_ must be the enum underlying type.
 
 | _Bool_ ::\= |
 |--- |
 |	**​bool​** ‘​**​(​**​’ **​true​** \| **​false​** ‘​**​)​**​’ |
-|\|	_ConstantFieldValue_ |
+|\|	_ConstantFieldReference_ |
 
 | _Char_ ::\= |
 |--- |
 |	‘​**​'​**​’ _CharLiteral_ ‘​**​'​**​’ |
 |\|	**​char​** ‘​**​(​**​’ ‘​**​'​**​’ _CharLiteral_ ‘​**​'​**​’ ‘​**​)​**​’ |
 |\|	**​char​** ‘​**​(​**​’ _Int32Literal_ ‘​**​)​**​’ |
-|\|	_ConstantFieldValue_ |
+|\|	_ConstantFieldReference_ |
 
 | _String_ ::\= |
 |--- |
 |	_QSTRING_ |
 |\|	**​string​** ‘​**​(​**​’ _SQSTRING_ ‘​**​)​**​’ |
-|\|	_ConstantFieldValue_ |
+|\|	_ConstantFieldReference_ |
 
 | _TypeReferenceOrReflection_ ::\= |
 |--- |
@@ -239,43 +247,43 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 | _Int8_ ::\= |
 |--- |
 |	**​int8​** ‘​**​(​**​’ _Int8Literal_ ‘​**​)​**​’ |
-|\|	_ConstantFieldValue_ |
+|\|	_ConstantFieldReference_ |
 
 | _Int16_ ::\= |
 |--- |
 |	**​int16​** ‘​**​(​**​’ _Int16Literal_ ‘​**​)​**​’ |
-|\|	_ConstantFieldValue_ |
+|\|	_ConstantFieldReference_ |
 
 | _Int32_ ::\= |
 |--- |
 |	**​int32​** ‘​**​(​**​’ _Int32Literal_ ‘​**​)​**​’ |
-|\|	_ConstantFieldValue_ |
+|\|	_ConstantFieldReference_ |
 
 | _Int64_ ::\= |
 |--- |
 |	**​int64​** ‘​**​(​**​’ _Int64Literal_ ‘​**​)​**​’ |
-|\|	_ConstantFieldValue_ |
+|\|	_ConstantFieldReference_ |
 
 | _UInt8_ ::\= |
 |--- |
 |	**​unsigned int8​** ‘​**​(​**​’ _UInt8Literal_ ‘​**​)​**​’ |
 |\|	**​uint8​** ‘​**​(​**​’ _UInt8Literal_ ‘​**​)​**​’ |
-|\|	_ConstantFieldValue_ |
+|\|	_ConstantFieldReference_ |
 
 | _UInt16_ ::\= |
 |--- |
 |	**​unsigned int16​** ‘​**​(​**​’ _UInt16Literal_ ‘​**​)​**​’ |
 |\|	**​uint16​** ‘​**​(​**​’ _UInt16Literal_ ‘​**​)​**​’ |
-|\|	_ConstantFieldValue_ |
+|\|	_ConstantFieldReference_ |
 
 | _UInt32_ ::\= |
 |--- |
 |	**​unsigned int32​** ‘​**​(​**​’ _UInt32Literal_ ‘​**​)​**​’ |
 |\|	**​uint32​** ‘​**​(​**​’ _UInt32Literal_ ‘​**​)​**​’ |
-|\|	_ConstantFieldValue_ |
+|\|	_ConstantFieldReference_ |
 
 | _UInt64_ ::\= |
 |--- |
 |	**​unsigned int64​** ‘​**​(​**​’ _UInt64Literal_ ‘​**​)​**​’ |
 |\|	**​uint64​** ‘​**​(​**​’ _UInt64Literal_ ‘​**​)​**​’ |
-|\|	_ConstantFieldValue_ |
+|\|	_ConstantFieldReference_ |
