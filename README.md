@@ -57,11 +57,11 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 > _DataLabel_ is a label referencing a **​.data​** directive specifying the metadata tokens.
 
 | _VTFixupDecl_ ::\= |
-|--- |‘’ ‘​**​\{​**​’ _MethodSpec_\* ‘​**​\}​**​’
+|--- |
 |	**​.vtfixup​** \[ _Int32Literal_ \] _VTFixupAttr_\* ‘​**​\=​**​’ ‘​**​\{​**​’ _MethodSpec_\* ‘​**​\}​**​’ |
 |\|	**​.vtfixup​** \[ _Int32Literal_ \] _VTFixupAttr_\* _DataInit_ |
-- > _Int32Literal_ is the number of metadata tokens.
-- > It is **RECOMMENDED** to not use **.data** since metadata tokens can change per compile. This is mainly to support ildasm exports.
+> _Int32Literal_ is the number of metadata tokens.
+> It is **RECOMMENDED** to not use **.data** since metadata tokens can change per compile. This is mainly to support ildasm exports.
 
 | _VTFixupAttr_ ::\= |
 |--- |
