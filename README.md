@@ -85,9 +85,9 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 | _SecurityDecl_ ::\= |
 |--- |
 |	**​.permissionset​** _SecAction_ ‘​**​\=​**​’ ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
-|\|	**​.permissionset​** _SecAction_ ‘​**​\=​**​’ ‘​**​\{​**​’ _SecDecl_\* ‘​**​\}​**​’ |
+|\|	**​.permissionset​** _SecAction_ ‘​**​\=​**​’ ‘​**​\{​**​’ _DeclSecurity_\* ‘​**​\}​**​’ |
 |\|	**​.permission​** _SecAction_ ‘​**​\=​**​’ ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
-|\|	**​.permission​** _SecAction_ _SecDecl_ |
+|\|	**​.permission​** _SecAction_ _DeclSecurity_ |
 
 | _SecAction_ ::\= |
 |--- |
@@ -108,7 +108,7 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 |\|	**​reqopt​** |
 |\|	**​reqrefuse​** |
 
-| _SecDecl_ ::\= |
+| _DeclSecurity_ ::\= |
 |--- |
 | 	_TypeReferenceOrReflection_ ‘​**​\=​**​’ ‘​**​\{​**​’ _CANamedArgument_\* ‘​**​\}​**​’ |
 
