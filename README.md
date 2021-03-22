@@ -6,13 +6,15 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 ## **​IMPORTANT NOTICE​**
 ### **​MANDATORY​** Format For Floating-Point Literal
 All **​floating-point literals​** will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: _Float32_ and _Float64_.
+### **​NOTICE​**
+- Strings containing the Reflection type name does not support function pointers.
+### **​EXCLUDED​**
+- **​.permission​** _SecAction_ _TypeReference_ ‘​**​(​**​’ _NameValPairs_ ‘​**​)​**​’
+	> Could not figure out how to implement with dnlib but an alternatives are specified below in custom format, _SecurityDecl_.
 ### **​ADDED​**
 - [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal)
 - Loading constant field values: _ConstantFieldReference_
 - Extra format for directives: **​.custom​**​, **​.permission​**​, **​.permissionset​**​, **​.vtfixup​**
-### **​EXCLUDED​**
-- **​.permission​** _SecAction_ _TypeReference_ ‘​**​(​**​’ _NameValPairs_ ‘​**​)​**​’
-	> Could not figure out how to implement with dnlib but an alternatives are specified below in custom format, _SecurityDecl_.
 
 ## README Syntax
 - ::\= declares a Custom Format whose name precedes ::\= and whose format is defined after.
@@ -49,6 +51,13 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 |--- |
 |	**​const​** ‘​**​(​**​’ _FieldReference_ ‘​**​)​**​’ |
 > _FieldReference_ must be reference to a constant field. The constant will be loaded on compile. Valid for operand of opcodes, ldfld and ldsfld; field constant initialization; and custom attribute argument. Also in the CIL instructions, you may have the operand of **​ldsfld​** be a field reference to a constant field to load the value of the constant field. E.g. **​Ldsfld​** and `uint8 uint8::MinValue` will be replaced with **​ldc.i4.0​**​. **​Ldsfld​** and `uint16 uint16::MaxValue` will be replaced with **​ldc.i4​** and `65535`.
+
+| _SafeArrayMarshalType_ ::\= |
+|--- |
+|	**​safearray​** \[ _VariantType_ \] \[ ‘​**​,​**​’ _Type_ \] |
+|\|	**​safearray​** \[ _VariantType_ \] \[ ‘​**​,​**​’ _QSTRING_ \] |
+> Use _Type_ instead for function pointer signatures.
+> _QSTRING_ is a double-quoted string containing the assembly-qualified name of the type in Reflection format. Reflection does not support function pointer signatures.
 
 | _DataInit_ ::\= |
 |--- |
@@ -110,7 +119,7 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 
 | _DeclSecurity_ ::\= |
 |--- |
-| 	_TypeReferenceOrReflection_ ‘​**​\=​**​’ ‘​**​\{​**​’ _CANamedArgument_\* ‘​**​\}​**​’ |
+| 	_TypeReferenceOrReflectionSQ_ ‘​**​\=​**​’ ‘​**​\{​**​’ _CANamedArgument_\* ‘​**​\}​**​’ |
 
 | _CANamedArgument_ ::\= |
 |--- |
@@ -127,7 +136,7 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 |\|	**​string​** |
 |\|	**​object​** |
 |\|	**​type​** |
-|\|	**​enum​** \[ _TypeReferenceOrReflection_ \] |
+|\|	**​enum​** \[ _TypeReferenceOrReflectionSQ_ \] |
 |\|	\[ **​unsigned​** \] **​int8​** |
 |\|	**​uint8​** |
 |\|	\[ **​unsigned​** \] **​int16​** |
@@ -144,7 +153,7 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 |	**​object​** ‘​**​(​**​’ _CAArgument_ ‘​**​)​**​’ |
 |\|	**​bytearray​** ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
 |\|	_ConstantFieldReference_ |
-|\|	**​enum​** \[ _TypeReferenceOrReflection_ \] _SzArrayInit_ \[ ‘​**​{​**​’ _EnumVal_\* ‘​**​}​**​’ \] |
+|\|	**​enum​** \[ _TypeReferenceOrReflectionSQ_ \] _SzArrayInit_ \[ ‘​**​{​**​’ _EnumVal_\* ‘​**​}​**​’ \] |
 |\|	_TypeVal_ |
 |\|	**​type​** _SzArrayInit_ \[ ‘​**​{​**​’ _TypeVal_\* ‘​**​}​**​’ \] |
 |\|	_Char_ |
@@ -185,7 +194,8 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 | _TypeVal_ ::\= |
 |--- |
 |	**​type​** ‘​**​(​**​’ _Type_ ‘​**​)​**​’ |
-|	**​type​** ‘​**​(​**​’ _TypeReferenceOrReflection_ ‘​**​)​**​’ |
+|	**​type​** ‘​**​(​**​’ _TypeReferenceOrReflectionSQ_ ‘​**​)​**​’ |
+> Use _Type_ instead for function pointer signatures.
 
 | _EnumVal_ ::\= |
 |--- |
@@ -218,7 +228,14 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 |\|	**​string​** ‘​**​(​**​’ _SQSTRING_ ‘​**​)​**​’ |
 |\|	_ConstantFieldReference_ |
 
-| _TypeReferenceOrReflection_ ::\= |
+| _TypeReferenceOrReflectionSQ_ ::\= |
+|--- |
+|	_TypeReference2_ |
+|\|	**​class​** _SQSTRING_ |
+|\|	**​valuetype​** _SQSTRING_ |
+> _SQSTRING_ is a single-quoted string containing the assembly-qualified name of the type in Reflection format. Reflection does support function pointer signatures.
+
+| _TypeReference2_ ::\= |
 |--- |
 |	_TypeReference_ |
 |\|	**​bool​** |
@@ -229,17 +246,16 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 |\|	**​object​** |
 |\|	**​void​** |
 |\|	**​typedref​** |
-|\|	\[ **​native​** \] \[ **​unsigned​** \] **​int8​** |
-|\|	\[ **​native​** \] **​uint8​** |
-|\|	\[ **​native​** \] \[ **​unsigned​** \] **​int16​** |
-|\|	\[ **​native​** \] **​uint16​** |
-|\|	\[ **​native​** \] \[ **​unsigned​** \] **​int32​** |
-|\|	\[ **​native​** \] **​uint32​** |
-|\|	\[ **​native​** \] \[ **​unsigned​** \] **​int64​** |
-|\|	\[ **​native​** \] **​uint64​** |
-|\|	**​class​** _SQSTRING_ |
-|\|	**​valuetype​** _SQSTRING_ |
-> _SQSTRING_ is a single-quoted string containing the assembly-qualified name of the type.
+|\|	\[ **​native​** \] \[ **​unsigned​** \] **​int​** |
+|\|	\[ **​native​** \] **​uint​** |
+|\|	\[ **​unsigned​** \] **​int8​** |
+|\|	**​uint8​** |
+|\|	\[ **​unsigned​** \] **​int16​** |
+|\|	**​uint16​** |
+|\|	\[ **​unsigned​** \] **​int32​** |
+|\|	**​uint32​** |
+|\|	\[ **​unsigned​** \] **​int64​** |
+|\|	**​uint64​** |
 
 | _Int8_ ::\= |
 |--- |
