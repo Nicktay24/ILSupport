@@ -3,9 +3,9 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 
 **​CLI syntax​** is officially fully-documented [here](https://www.ecma-international.org/publications-and-standards/standards/ecma-335/).
 
-## **​IMPORTANT NOTICE​**
+## **​IMPORTANT​**
 ### **​MANDATORY​** Format For Floating-Point Literal
-All **​floating-point literals​** will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: _Float32_ and _Float64_.
+- All **​floating-point literals​** will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: _Float32_ and _Float64_.
 ### **​NOTICE​**
 - Strings containing the Reflection type name does not support function pointers.
 ### **​EXCLUDED​**
@@ -17,8 +17,7 @@ All **​floating-point literals​** will be parsed as followed. Many decompile
 - Extra format for directives: **​.custom​**​, **​.permission​**​, **​.permissionset​**​, **​.vtfixup​**
 
 ## README Syntax
-- ::\= declares a Custom Format whose name precedes ::\= and whose format is defined after.
-- _Italic_ represents a reference to a Custom Format whose name matches. If this precedes ::\= then this is a Custom Format declaration instead of a Custom Format reference.
+- _Italic_ represents a Custom Format whose name matches. If this precedes ::\= then this is a Custom Format declaration instead of a Custom Format reference.
 - **​Bold​** specifies a literal.
 - ‘​​’ contains a literal character.
 - \| is OR operator.
