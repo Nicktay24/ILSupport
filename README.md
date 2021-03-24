@@ -8,7 +8,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 - All **​floating-point literals​** will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: _Float32_ and _Float64_.
 ### **​NOTICE​**
 - Strings containing the Reflection type name does not support function pointers.
-- **​.custom​** applies custom attributes to the last declaration or module. Make sure to have each custom attribute below its respective owner.
+- **​.custom​** applies custom attributes to the last declaration. Make sure to have each custom attribute below its respective owner.
 ```
 .class
 {
