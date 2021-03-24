@@ -29,7 +29,8 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 	.field C
 		.custom // applies to .field C
 		.custom // applies to .field C
-}```
+}
+```
 ### **​EXCLUDED​**
 - **​.permission​** _SecAction_ _TypeReference_ ‘​**​(​**​’ _NameValPairs_ ‘​**​)​**​’
 	> Could not figure out how to implement with dnlib but an alternatives are specified below in custom format, _SecurityDecl_.
