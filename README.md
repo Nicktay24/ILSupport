@@ -8,6 +8,28 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 - All **​floating-point literals​** will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: _Float32_ and _Float64_.
 ### **​NOTICE​**
 - Strings containing the Reflection type name does not support function pointers.
+- **​.custom​** applies custom attributes to the last declaration or module. Make sure to have each custom attribute below its respective owner.
+```
+.class
+{
+	.custom // applies to .class
+	.field A
+		.custom // applies to .field A
+	.field B
+		.custom // applies to .field B
+		.custom // applies to .field B
+	.method
+	{
+		.custom // applies to .method
+		.param [0]
+			.custom // applies to .param [0]
+			.custom // applies to .param [0]
+	}
+	.custom // applies to .class
+	.field C
+		.custom // applies to .field C
+		.custom // applies to .field C
+}```
 ### **​EXCLUDED​**
 - **​.permission​** _SecAction_ _TypeReference_ ‘​**​(​**​’ _NameValPairs_ ‘​**​)​**​’
 	> Could not figure out how to implement with dnlib but an alternatives are specified below in custom format, _SecurityDecl_.
@@ -66,8 +88,8 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 
 | _VTFixupDecl_ ::\= |
 |--- |
-|	**​.vtfixup​** \[ _Int32Literal_ \] _VTFixupAttr_\* ‘​**​\=​**​’ ‘​**​\{​**​’ _MethodSpec_\* ‘​**​\}​**​’ |
-|\|	**​.vtfixup​** \[ _Int32Literal_ \] _VTFixupAttr_\* _DataInit_ |
+|	**​.vtfixup​** \[ ‘​**​\[​**​’ _Int32Literal_ ‘​**​\]​**​’ \] _VTFixupAttr_\* ‘​**​\=​**​’ ‘​**​\{​**​’ _MethodSpec_\* ‘​**​\}​**​’ |
+|\|	**​.vtfixup​** \[ ‘​**​\[​**​’ _Int32Literal_ ‘​**​\]​**​’ \] _VTFixupAttr_\* _DataInit_ |
 > _Int32Literal_ is the number of metadata tokens.
 > It is **RECOMMENDED** to not use **.data** since metadata tokens can change per compile. This is mainly to support ildasm exports.
 
