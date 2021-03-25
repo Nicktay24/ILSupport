@@ -5,13 +5,13 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 
 ## **​Compatibility​**
 - C\# \- .NET Core, .NET Framework, Mono, Unity
+- MSBuild
 - For unity projects, set Unity property to true in .csproj file.
 ```xml
 <PropertyGroup>
 	<Unity>true</Unity>
 </PropertyGroup>
 ```
-- MSBuild
 
 ## **​How To Use​**
 - Download [.ILSupport](.ILSupport\) folder.
@@ -20,8 +20,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 <Import Project="RedSkies.ILSupport.targets" />
 ```
 - Create .il file in project. In .csproj file, verify the .il file is included under IL property in ItemGroup as followed:
-```xml
-<ItemGroup>
+```xml<ItemGroup>
 	<IL Include="-.il" />
 </ItemGroup>
 ```
