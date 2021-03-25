@@ -28,7 +28,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 - Write code in .il file, build project, and done!
 
 ## **​IMPORTANT​**
-### **​MANDATORY​** Format For Floating-Point Literal
+### **​MANDATORY Format For Floating-Point Literal​**
 - All **​floating-point literals​** will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: _Float32_ and _Float64_.
 ### **​NOTICE​**
 - Strings containing the Reflection type name does not support function pointers.
