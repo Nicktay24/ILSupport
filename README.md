@@ -45,9 +45,9 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 	.method
 	{
 		.custom // applies to .method
-		.param [0]
-			.custom // applies to .param [0]
-			.custom // applies to .param [0]
+		.param
+			.custom // applies to .param
+			.custom // applies to .param
 	}
 	.custom // applies to .class
 	.field C
