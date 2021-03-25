@@ -3,6 +3,30 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 
 **​CLI syntax​** is officially fully-documented [here](https://www.ecma-international.org/publications-and-standards/standards/ecma-335/).
 
+## **​Compatibility​**
+- C\# \- .NET Core, .NET Framework, Mono, Unity
+- For unity projects, set Unity property to true in .csproj file.
+```xml
+<PropertyGroup>
+	<Unity>true</Unity>
+</PropertyGroup>
+```
+- MSBuild
+
+## **​How To Use​**
+- Download [.ILSupport](.ILSupport\) folder.
+- Import MSBuild project at the end of .csproj file. Verify that the file name is the location of [RedSkies.ILSupport.targets](.ILSupport/RedSkies.ILSupport.targets).
+```xml
+<Import Project="RedSkies.ILSupport.targets" />
+```
+- Create .il file in project. In .csproj file, verify the .il file is included under IL property in ItemGroup as followed:
+```xml
+<ItemGroup>
+	<IL Include="-.il" />
+</ItemGroup>
+```
+-Write code in .il file and done!
+
 ## **​IMPORTANT​**
 ### **​MANDATORY​** Format For Floating-Point Literal
 - All **​floating-point literals​** will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: _Float32_ and _Float64_.
