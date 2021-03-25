@@ -25,7 +25,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 	<IL Include="*.il" />
 </ItemGroup>
 ```
-- Write code in .il file and done!
+- Write code in .il file, build project, and done!
 
 ## **​IMPORTANT​**
 ### **​MANDATORY​** Format For Floating-Point Literal
