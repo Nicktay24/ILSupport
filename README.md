@@ -22,7 +22,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 - Create .il file in project. In .csproj file, verify the .il file is included under IL property in ItemGroup as followed:
 ```xml
 <ItemGroup>
-	<IL Include="-.il" />
+	<IL Include="*.il" />
 </ItemGroup>
 ```
 - Write code in .il file and done!
