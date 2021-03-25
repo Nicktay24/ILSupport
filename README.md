@@ -15,23 +15,23 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 
 ## **​How To Use​**
 - Download [.ILSupport](.ILSupport) folder.
-- Import MSBuild project at the end of .csproj file. Verify that the file name is the location of [RedSkies.ILSupport.targets](.ILSupport/RedSkies.ILSupport.targets).
+- Import MSBuild project at the end of .csproj file. Ensure file name of MSBuild project is [RedSkies.ILSupport.targets](.ILSupport/RedSkies.ILSupport.targets).
 ```xml
 <Import Project="RedSkies.ILSupport.targets" />
 ```
-- Create .il file in project. In .csproj file, verify the .il file is included under IL property in ItemGroup as followed:
+- Create .il file in project. In .csproj file, ensure the .il file is included under IL property in ItemGroup as followed:
 ```xml
 <ItemGroup>
 	<IL Include="*.il" />
 </ItemGroup>
 ```
-- Write code in .il file, build project, and done!
+- Write CLI code in .il file, build project, and done!
 
 ## **​IMPORTANT​**
 ### **​MANDATORY Format For Floating-Point Literal​**
 - All **​floating-point literals​** will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: _Float32_ and _Float64_.
 ### **​NOTICE​**
-- Strings containing the Reflection type name does not support function pointers.
+- Reflection type name does not support function pointers.
 - **​.custom​** applies custom attributes to the last declaration. Make sure to have each custom attribute below its respective owner.
 ```
 .class
@@ -55,15 +55,15 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 		.custom // applies to .field C
 }
 ```
-### **​EXCLUDED​**
-- **​.permission​** _SecAction_ _TypeReference_ ‘​**​(​**​’ _NameValPairs_ ‘​**​)​**​’
-	> Could not figure out how to implement with dnlib but an alternatives are specified below in custom format, _SecurityDecl_.
 ### **​ADDED​**
 - [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal)
 - Loading constant field values: _ConstantFieldReference_
 - Extra format for directives: **​.custom​**​, **​.permission​**​, **​.permissionset​**​, **​.vtfixup​**
+### **​EXCLUDED​**
+- **​.permission​** _SecAction_ _TypeReference_ ‘​**​(​**​’ _NameValPairs_ ‘​**​)​**​’
+	> Could not figure out how to implement with dnlib but an alternatives are specified below in custom format, _SecurityDecl_.
 
-## README Syntax
+## Syntax For Syntactic Formats Below
 - _Italic_ represents a Custom Format whose name matches. If this precedes ::\= then this is a Custom Format declaration instead of a Custom Format reference.
 - **​Bold​** specifies a literal.
 - ‘​​’ contains a literal character.
@@ -103,7 +103,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 |	**​safearray​** \[ _VariantType_ \] \[ ‘​**​,​**​’ _Type_ \] |
 |\|	**​safearray​** \[ _VariantType_ \] \[ ‘​**​,​**​’ _QSTRING_ \] |
 > Use _Type_ instead for function pointer signatures.
-> _QSTRING_ is a double-quoted string containing the assembly-qualified name of the type in Reflection format. Reflection does not support function pointer signatures.
+> _QSTRING_ is a double-quoted string containing the fully-qualified name of the type in Reflection format. Reflection does not support function pointer signatures.
 
 | _DataInit_ ::\= |
 |--- |
@@ -279,7 +279,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 |	_TypeReference2_ |
 |\|	**​class​** _SQSTRING_ |
 |\|	**​valuetype​** _SQSTRING_ |
-> _SQSTRING_ is a single-quoted string containing the assembly-qualified name of the type in Reflection format. Reflection does support function pointer signatures.
+> _SQSTRING_ is a single-quoted string containing the fully-qualified name of the type in Reflection format. Reflection does support function pointer signatures.
 
 | _TypeReference2_ ::\= |
 |--- |
