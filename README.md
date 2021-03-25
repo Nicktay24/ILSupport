@@ -20,11 +20,12 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 <Import Project="RedSkies.ILSupport.targets" />
 ```
 - Create .il file in project. In .csproj file, verify the .il file is included under IL property in ItemGroup as followed:
-```xml<ItemGroup>
+```xml
+<ItemGroup>
 	<IL Include="-.il" />
 </ItemGroup>
 ```
--Write code in .il file and done!
+- Write code in .il file and done!
 
 ## **​IMPORTANT​**
 ### **​MANDATORY​** Format For Floating-Point Literal
