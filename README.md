@@ -4,8 +4,8 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 **​CLI syntax​** is officially fully-documented [here](https://www.ecma-international.org/publications-and-standards/standards/ecma-335/).
 
 ## **​Compatibility​**
-- C\# \- .NET Core, .NET Framework, Mono, Unity
-- MSBuild
+- MSBuild support with [RedSkies.ILSupport.targets](.ILSupport/RedSkies.ILSupport.targets).
+- C\# \- .NET 5, .NET Core, .NET Framework, Mono, Unity
 - For unity projects, set Unity property to true in .csproj file.
 ```xml
 <PropertyGroup>
