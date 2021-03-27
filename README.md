@@ -1,11 +1,11 @@
 # IL Support
-Parses CLI code and merges with your DLL using dnlib. C\# does not provide coding in CLI but this way you can code CLI alongside C\#. I knew there are other implementations but they don't all provide full CLI coding. Using ildasm and ilasm would be too slow to merge with DLL.
+Parses CLI code and merges with your DLL using dnlib. C\# does not provide coding in CLI but this way you can code CLI alongside C\#. I knew there are other implementations but they don't all provide full CLI coding. Using ildasm and ilasm would be too slow to merge with DLL. Edited [dnlib.dll](.ILSupport/dnlib.dll) so any other versions of the assembly won't work with [RedSkies.ILSupport.dll](.ILSupport/RedSkies.ILSupport.dll).
 
 **​CLI syntax​** is officially fully-documented [here](https://www.ecma-international.org/publications-and-standards/standards/ecma-335/).
 
 ## **​Compatibility​**
-- MSBuild support with [RedSkies.ILSupport.targets](.ILSupport/RedSkies.ILSupport.targets).
-- C\# \- .NET 5, .NET Core, .NET Framework, Mono, Unity
+- MSBuild support using [RedSkies.ILSupport.targets](.ILSupport/RedSkies.ILSupport.targets).
+- C\# \- .NET 5, .NET Core, .NET Framework, Unity, Mono
 - For unity projects, set Unity property to true in .csproj file.
 ```xml
 <PropertyGroup>
@@ -61,7 +61,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 - Extra format for directives: **​.custom​**​, **​.permission​**​, **​.permissionset​**​, **​.vtfixup​**
 ### **​EXCLUDED​**
 - **​.permission​** _SecAction_ _TypeReference_ ‘​**​(​**​’ _NameValPairs_ ‘​**​)​**​’
-	> Could not figure out how to implement with dnlib but an alternatives are specified below in custom format, _SecurityDecl_.
+	> Use the custom formats specified below: _SecurityDecl_.
 
 ## Syntax For Syntactic Formats Below
 - _Italic_ represents a Custom Format whose name matches. If this precedes ::\= then this is a Custom Format declaration instead of a Custom Format reference.
