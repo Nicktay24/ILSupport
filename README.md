@@ -81,7 +81,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 
 ## Added Syntactic Formats
 #### Float Literals
-| _CppFloatLiteral_ ::\= |
+#### | _CppFloatLiteral_ ::\= |
 |--- |
 |	_RealNumber_ |
 |\|	\[ ‘​**​+​**​’ \| ‘​**​-​**​’ \] **​inf​** |
