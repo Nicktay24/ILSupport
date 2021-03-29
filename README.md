@@ -1,4 +1,4 @@
-# **​IL Support​** [Patreon](https://www.patreon.com/nicktay)
+# **​IL Support​** - [My Patreon](https://www.patreon.com/nicktay)
 Parses CLI code and merges with your DLL using dnlib. C\# does not provide coding in CLI but this way you can code CLI alongside C\#. I knew there are other implementations but they don't all provide full CLI coding. Using ildasm and ilasm would be too slow to merge with DLL. Edited [dnlib.dll](.ILSupport/dnlib.dll) so any other versions of the assembly won't work with [RedSkies.ILSupport.dll](.ILSupport/RedSkies.ILSupport.dll).
 
 **​CLI syntax​** is officially documented [here](https://www.ecma-international.org/publications-and-standards/standards/ecma-335/).
