@@ -59,7 +59,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 ### **​ADDED​**
 - [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal)
 - Loading constant field values: [_ConstantFieldReference_](#constant-field-reference)
-- Extra format for directives: **​.custom​**​, [​**​.permission​**​](#permission-declaration), [​**​.permissionset​**​](#permission-declaration), [​**​.vtfixup​**​](#vtfixup-declaration)
+- Extra format for directives: ​**​.permission​**​](#permission-declaration), [​**​.permissionset​**​](#permission-declaration), [​**​.vtfixup​**​](#vtfixup-declaration)
 ### **​EXCLUDED​**
 - **​.permission​** _SecAction_ _TypeReference_ ‘​**​(​**​’ _NameValPairs_ ‘​**​)​**​’
 	> Use the custom formats specified below: [_SecurityDecl_](#permission-declaration).
