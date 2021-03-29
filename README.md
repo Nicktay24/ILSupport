@@ -30,7 +30,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 
 ## **​IMPORTANT​**
 ### **​MANDATORY Format For Floating-Point Literal​**
-- All **​floating-point literals​** will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: [_Float32_ and _Float64_](#added-syntactic-formats).
+- All **​floating-point literals​** will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: [_Float32_](#float-literals) and [_Float64_](#float-literals).
 ### **​NOTICE​**
 - Reflection type name does not support function pointers.
 - **​.custom​** applies custom attributes to the last declaration. Make sure to have each custom attribute below its respective owner.
@@ -58,19 +58,19 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 ```
 ### **​ADDED​**
 - [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal)
-- Loading constant field values: _ConstantFieldReference_
-- Extra format for directives: **​.custom​**​, **​.permission​**​, **​.permissionset​**​, **​.vtfixup​**
+- Loading constant field values: [_ConstantFieldReference_](#field-reference)
+- Extra format for directives: **​.custom​**​, [​**​.permission​**​](#permission-declaration), [​**​.permissionset​**​](#permission-declaration), [​**​.vtfixup​**​](#vtfixup-declaration)
 ### **​EXCLUDED​**
 - **​.permission​** _SecAction_ _TypeReference_ ‘​**​(​**​’ _NameValPairs_ ‘​**​)​**​’
-	> Use the custom formats specified below: _SecurityDecl_.
+	> Use the custom formats specified below: [_SecurityDecl_](#permission-declaration).
 - **​.language​**
 - **​.namespace​**
 - **​.vtable​**
-	> Use the custom formats specified below: _VTFixupDecl_.
+	> Use the custom formats specified below: [_VTFixupDecl_](#vtfixup-declaration).
 - **​\#LINE​**
 
 ## Syntax For Syntactic Formats Below
-- _Italic_ represents a Custom Format whose name matches. If this precedes ::\= then this is a Custom Format declaration instead of a Custom Format reference.
+- _Italic_ represents a Custom Format whose name matches.
 - **​Bold​** specifies a literal.
 - ‘​​’ contains a literal character.
 - \| is OR operator.
@@ -80,6 +80,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 - _SQSTRING_ is single-quoted string.
 
 ## Added Syntactic Formats
+#### Float Literals
 | _CppFloatLiteral_ ::\= |
 |--- |
 |	_RealNumber_ |
@@ -99,6 +100,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 |\|	**​float64​** ‘​**​(​**​’ _Int64Literal_ ‘​**​)​**​’ |
 |\|	**​float64​** ‘​**​(​**​’ _UInt64Literal_ ‘​**​)​**​’ |
 
+#### Field Reference
 | _ConstantFieldReference_ ::\= |
 |--- |
 |	**​const​** ‘​**​(​**​’ _FieldReference_ ‘​**​)​**​’ |
@@ -117,6 +119,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 |\|	**​at​** _DataLabel_ |
 > _DataLabel_ is a label referencing a **​.data​** directive specifying the metadata tokens.
 
+#### VTFixup Declaration
 | _VTFixupDecl_ ::\= |
 |--- |
 |	**​.vtfixup​** \[ ‘​**​\[​**​’ _Int32Literal_ ‘​**​\]​**​’ \] _VTFixupAttr_\* ‘​**​\=​**​’ ‘​**​\{​**​’ _MethodSpec_\* ‘​**​\}​**​’ |
@@ -143,6 +146,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 |	**​.custom​** _Ctor_ ‘​**​\=​**​’ ‘​**​\{​**​’ _CAArgument_\* _CANamedArgument_\* ‘​**​\}​**​’ |
 |\|	**​.custom​** _Ctor_ ‘​**​\=​**​’ ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
 
+#### Permission Declaration
 | _SecurityDecl_ ::\= |
 |--- |
 |	**​.permissionset​** _SecAction_ ‘​**​\=​**​’ ‘​**​\{​**​’ _DeclSecurity_\* ‘​**​\}​**​’ |
