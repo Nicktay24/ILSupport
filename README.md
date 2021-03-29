@@ -58,7 +58,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 ```
 ### **​ADDED​**
 - [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal)
-- Loading constant field values: [_ConstantFieldReference_](#field-reference)
+- Loading constant field values: [_ConstantFieldReference_](#constant-field-reference)
 - Extra format for directives: **​.custom​**​, [​**​.permission​**​](#permission-declaration), [​**​.permissionset​**​](#permission-declaration), [​**​.vtfixup​**​](#vtfixup-declaration)
 ### **​EXCLUDED​**
 - **​.permission​** _SecAction_ _TypeReference_ ‘​**​(​**​’ _NameValPairs_ ‘​**​)​**​’
@@ -80,8 +80,8 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 - _SQSTRING_ is single-quoted string.
 
 ## Added Syntactic Formats
-#### Float Literals
-#### | _CppFloatLiteral_ ::\= |
+### Float Literals
+| _CppFloatLiteral_ ::\= |
 |--- |
 |	_RealNumber_ |
 |\|	\[ ‘​**​+​**​’ \| ‘​**​-​**​’ \] **​inf​** |
@@ -100,7 +100,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 |\|	**​float64​** ‘​**​(​**​’ _Int64Literal_ ‘​**​)​**​’ |
 |\|	**​float64​** ‘​**​(​**​’ _UInt64Literal_ ‘​**​)​**​’ |
 
-#### Field Reference
+### Constant Field Reference
 | _ConstantFieldReference_ ::\= |
 |--- |
 |	**​const​** ‘​**​(​**​’ _FieldReference_ ‘​**​)​**​’ |
@@ -119,7 +119,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 |\|	**​at​** _DataLabel_ |
 > _DataLabel_ is a label referencing a **​.data​** directive specifying the metadata tokens.
 
-#### VTFixup Declaration
+### VTFixup Declaration
 | _VTFixupDecl_ ::\= |
 |--- |
 |	**​.vtfixup​** \[ ‘​**​\[​**​’ _Int32Literal_ ‘​**​\]​**​’ \] _VTFixupAttr_\* ‘​**​\=​**​’ ‘​**​\{​**​’ _MethodSpec_\* ‘​**​\}​**​’ |
@@ -146,7 +146,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 |	**​.custom​** _Ctor_ ‘​**​\=​**​’ ‘​**​\{​**​’ _CAArgument_\* _CANamedArgument_\* ‘​**​\}​**​’ |
 |\|	**​.custom​** _Ctor_ ‘​**​\=​**​’ ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
 
-#### Permission Declaration
+### Permission Declaration
 | _SecurityDecl_ ::\= |
 |--- |
 |	**​.permissionset​** _SecAction_ ‘​**​\=​**​’ ‘​**​\{​**​’ _DeclSecurity_\* ‘​**​\}​**​’ |
