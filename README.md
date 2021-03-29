@@ -1,4 +1,4 @@
-# IL Support
+# **​IL Support​** [Patreon](https://www.patreon.com/nicktay)
 Parses CLI code and merges with your DLL using dnlib. C\# does not provide coding in CLI but this way you can code CLI alongside C\#. I knew there are other implementations but they don't all provide full CLI coding. Using ildasm and ilasm would be too slow to merge with DLL. Edited [dnlib.dll](.ILSupport/dnlib.dll) so any other versions of the assembly won't work with [RedSkies.ILSupport.dll](.ILSupport/RedSkies.ILSupport.dll).
 
 **​CLI syntax​** is officially documented [here](https://www.ecma-international.org/publications-and-standards/standards/ecma-335/).
@@ -62,6 +62,11 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 ### **​EXCLUDED​**
 - **​.permission​** _SecAction_ _TypeReference_ ‘​**​(​**​’ _NameValPairs_ ‘​**​)​**​’
 	> Use the custom formats specified below: _SecurityDecl_.
+- **​.language​**
+- **​.namespace​**
+- **​.vtable​**
+	> Use the custom formats specified below: _VTFixupDecl_.
+- **​\#LINE​**
 
 ## Syntax For Syntactic Formats Below
 - _Italic_ represents a Custom Format whose name matches. If this precedes ::\= then this is a Custom Format declaration instead of a Custom Format reference.
@@ -134,15 +139,15 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 
 | _CustomDecl_ ::\= |
 |--- |
-|	**​.custom​** _Ctor_ ‘​**​\=​**​’ ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
-|\|	**​.custom​** _Ctor_ ‘​**​\=​**​’ ‘​**​\{​**​’ _CAArgument_\* _CANamedArgument_\* ‘​**​\}​**​’ |
+|	**​.custom​** _Ctor_ ‘​**​\=​**​’ ‘​**​\{​**​’ _CAArgument_\* _CANamedArgument_\* ‘​**​\}​**​’ |
+|\|	**​.custom​** _Ctor_ ‘​**​\=​**​’ ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
 
 | _SecurityDecl_ ::\= |
 |--- |
-|	**​.permissionset​** _SecAction_ ‘​**​\=​**​’ ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
-|\|	**​.permissionset​** _SecAction_ ‘​**​\=​**​’ ‘​**​\{​**​’ _DeclSecurity_\* ‘​**​\}​**​’ |
-|\|	**​.permission​** _SecAction_ ‘​**​\=​**​’ ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
+|	**​.permissionset​** _SecAction_ ‘​**​\=​**​’ ‘​**​\{​**​’ _DeclSecurity_\* ‘​**​\}​**​’ |
+|\|	**​.permissionset​** _SecAction_ ‘​**​\=​**​’ ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
 |\|	**​.permission​** _SecAction_ _DeclSecurity_ |
+|\|	**​.permission​** _SecAction_ ‘​**​\=​**​’ ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
 
 | _SecAction_ ::\= |
 |--- |
