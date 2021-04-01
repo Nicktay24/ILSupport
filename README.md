@@ -59,9 +59,9 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 ### **​ADDED​**
 - [C++ floating-point literal](https://en.cppreference.com/w/cpp/language/floating_literal)
 - Loading constant field values: [_ConstantFieldReference_](#constant-field-reference)
-- Extra format for directives: ​**​.permission​**​](#permission-declaration), [​**​.permissionset​**​](#permission-declaration), [​**​.vtfixup​**​](#vtfixup-declaration)
+- Extra format for directives: [​**​.permission​**​](#permission-declaration), [​**​.permissionset​**​](#permission-declaration), [​**​.vtfixup​**​](#vtfixup-declaration)
 ### **​EXCLUDED​**
-- **​.permission​** _SecAction_ _TypeReference_ ‘​**​(​**​’ _NameValPairs_ ‘​**​)​**​’
+- **​.permission​** _SecAction_ _TypeReference_ ‘​**​\(​**​’ _NameValPairs_ ‘​**​\)​**​’
 	> Use the custom formats specified below: [_SecurityDecl_](#permission-declaration).
 - **​.language​**
 - **​.namespace​**
@@ -72,7 +72,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 ## Syntax For Syntactic Formats Below
 - _Italic_ represents a Custom Format whose name matches.
 - **​Bold​** specifies a literal.
-- ‘​​’ contains a literal character.
+- ‘​’ contains a literal character.
 - \| is OR operator.
 - \[\] marks its contents as optional.
 - \* specifies zero or more of the preceding item.
@@ -91,19 +91,19 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 | _Float32_ ::\= |
 |--- |
 |	_CppFloatLiteral_ |
-|\|	**​float32​** ‘​**​(​**​’ _Int32Literal_ ‘​**​)​**​’ |
-|\|	**​float32​** ‘​**​(​**​’ _UInt32Literal_ ‘​**​)​**​’ |
+|\|	**​float32​** ‘​**​\(​**​’ _Int32Literal_ ‘​**​\)​**​’ |
+|\|	**​float32​** ‘​**​\(​**​’ _UInt32Literal_ ‘​**​\)​**​’ |
 
 | _Float64_ ::\= |
 |--- |
 |	_CppFloatLiteral_ |
-|\|	**​float64​** ‘​**​(​**​’ _Int64Literal_ ‘​**​)​**​’ |
-|\|	**​float64​** ‘​**​(​**​’ _UInt64Literal_ ‘​**​)​**​’ |
+|\|	**​float64​** ‘​**​\(​**​’ _Int64Literal_ ‘​**​\)​**​’ |
+|\|	**​float64​** ‘​**​\(​**​’ _UInt64Literal_ ‘​**​\)​**​’ |
 
 ### Constant Field Reference
 | _ConstantFieldReference_ ::\= |
 |--- |
-|	**​const​** ‘​**​(​**​’ _FieldReference_ ‘​**​)​**​’ |
+|	**​const​** ‘​**​\(​**​’ _FieldReference_ ‘​**​\)​**​’ |
 > _FieldReference_ must be reference to a constant field. The constant will be loaded on compile. Valid for operand of opcodes, ldfld and ldsfld; field constant initialization; and custom attribute argument. Also in the CIL instructions, you may have the operand of **​ldsfld​** be a field reference to a constant field to load the value of the constant field. E.g. **​Ldsfld​** and `uint8 uint8::MinValue` will be replaced with **​ldc.i4.0​**​. **​Ldsfld​** and `uint16 uint16::MaxValue` will be replaced with **​ldc.i4​** and `65535`.
 
 | _SafeArrayMarshalType_ ::\= |
@@ -115,44 +115,44 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 
 | _DataInit_ ::\= |
 |--- |
-|	‘​**​\=​**​’ ‘​**​(​**​’ _Bytes_ ‘​**​)​**​’ |
+|	‘​**​\=​**​’ ‘​**​\(​**​’ _Bytes_ ‘​**​\)​**​’ |
 |\|	**​at​** _DataLabel_ |
 > _DataLabel_ is a label referencing a **​.data​** directive specifying the metadata tokens.
 
 ### VTFixup Declaration
 | _VTFixupDecl_ ::\= |
 |--- |
-|	**​.vtfixup​** \[ ‘​**​\[​**​’ _Int32Literal_ ‘​**​\]​**​’ \] _VTFixupAttr_\* ‘​**​\=​**​’ ‘​**​\{​**​’ _MethodSpec_\* ‘​**​\}​**​’ |
+|	**​.vtfixup​** \[ ‘​**​\[​**​’ _Int32Literal_ ‘​**​\]​**​’ \] _VTFixupAttr_\* ‘​**​\=​**​’ ‘​**​\{​**​’ _MethodReference_\* ‘​**​\}​**​’ |
 |\|	**​.vtfixup​** \[ ‘​**​\[​**​’ _Int32Literal_ ‘​**​\]​**​’ \] _VTFixupAttr_\* _DataInit_ |
 > _Int32Literal_ is the number of metadata tokens.
-> It is **RECOMMENDED** to not use **.data** since metadata tokens can change per compile. This is mainly to support ildasm exports.
+> It is **​RECOMMENDED​** to not use **​.data​** since metadata tokens can change per compile. This is mainly to support ildasm exports.
 
 | _VTFixupAttr_ ::\= |
 |--- |
 |	**​int32​** |
 |\|	**​int64​** |
-|\|	**​fromunmanaged​** |
-|\|	**​fromunmanaged​retainappdomain** |
 |\|	**​callmostderived​** |
-> _VTFixupAttr_ must be either **int32** or **int64**, and must be either **fromunmanaged** or **fromunmanagedretainappdomain**.
-> **int32** is the default and specifies that each slot contains a 32-bit metadata token. **int64** specifies that each slot contains a 64-bit metadata token.
+|\|	**​fromunmanaged​** |
+|\|	**​fromunmanaged​retainappdomain​** |
+> _VTFixupAttr_ must be either **​int32​** or **​int64​**​, and must be either **​fromunmanaged​** or **​fromunmanagedretainappdomain​**​.
+> **​int32​** is the default and specifies that each slot contains a 32-bit metadata token. **​int64​** specifies that each slot contains a 64-bit metadata token.
 
-| _MethodSpec_ ::\= |
+| _MethodReference_ ::\= |
 |--- |
-|	_CallConv_ _Type_ \[ _TypeSpec_ ‘​**​::​**​’ \] _MethodName_ \[ ‘​**​<​**​’ _Type_ \[ ‘​**​,​**​’ _Type_ \]\* ‘​**​>​**​’ \] ‘​**​(​**​’ _Parameters_ ‘​**​)​**​’ |
+|	_CallConv_ _Type_ \[ _TypeSpec_ ‘​**​::​**​’ \] _MethodName_ \[ ‘​**​<​**​’ _Type_ \[ ‘​**​,​**​’ _Type_ \]\* ‘​**​>​**​’ \] ‘​**​\(​**​’ _Parameters_ ‘​**​\)​**​’ |
 
 | _CustomDecl_ ::\= |
 |--- |
 |	**​.custom​** _Ctor_ ‘​**​\=​**​’ ‘​**​\{​**​’ _CAArgument_\* _CANamedArgument_\* ‘​**​\}​**​’ |
-|\|	**​.custom​** _Ctor_ ‘​**​\=​**​’ ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
+|\|	**​.custom​** _Ctor_ ‘​**​\=​**​’ ‘​**​\(​**​’ \[ _Bytes_ \] ‘​**​\)​**​’ |
 
 ### Permission Declaration
 | _SecurityDecl_ ::\= |
 |--- |
-|	**​.permissionset​** _SecAction_ ‘​**​\=​**​’ ‘​**​\{​**​’ _DeclSecurity_\* ‘​**​\}​**​’ |
-|\|	**​.permissionset​** _SecAction_ ‘​**​\=​**​’ ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
+|	**​.permissionset​** _SecAction_ ‘​**​\=​**​’ ‘​**​\{​**​’ _DeclSecurity_ \[ ‘​**​,​**​’ _DeclSecurity_ \]\* ‘​**​\}​**​’ |
+|\|	**​.permissionset​** _SecAction_ ‘​**​\=​**​’ ‘​**​\(​**​’ \[ _Bytes_ \] ‘​**​\)​**​’ |
 |\|	**​.permission​** _SecAction_ _DeclSecurity_ |
-|\|	**​.permission​** _SecAction_ ‘​**​\=​**​’ ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
+|\|	**​.permission​** _SecAction_ ‘​**​\=​**​’ ‘​**​\(​**​’ \[ _Bytes_ \] ‘​**​\)​**​’ |
 
 | _SecAction_ ::\= |
 |--- |
@@ -206,8 +206,8 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 | _CAArgument_ ::\= |
 |--- |
 |	**​nullref​** |
-|	**​object​** ‘​**​(​**​’ _CAArgument_ ‘​**​)​**​’ |
-|\|	**​bytearray​** ‘​**​(​**​’ \[ _Bytes_ \] ‘​**​)​**​’ |
+|	**​object​** ‘​**​\(​**​’ _CAArgument_ ‘​**​\)​**​’ |
+|\|	**​bytearray​** ‘​**​\(​**​’ \[ _Bytes_ \] ‘​**​\)​**​’ |
 |\|	_ConstantFieldReference_ |
 |\|	**​enum​** \[ _TypeReferenceOrReflectionSQ_ \] _SzArrayInit_ \[ ‘​**​{​**​’ _EnumVal_\* ‘​**​}​**​’ \] |
 |\|	_TypeVal_ |
@@ -218,10 +218,10 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 |\|	**​string​** _SzArrayInit_ \[ ‘​**​{​**​’ _String_\* ‘​**​}​**​’ \] |
 |\|	_Bool_ |
 |\|	**​bool​** _SzArrayInit_ \[ ‘​**​{​**​’ _Bool_\* ‘​**​}​**​’ \] |
-|\|	**​float32​** ‘​**​(​**​’ _Float32_ ‘​**​)​**​’ |
-|\|	**​float32​** _SzArrayInit_ \[ ‘​**​{​**​’ \[ **​float32​** ‘​**​(​**​’ _Float32_ ‘​**​)​**​’ \]\* ‘​**​}​**​’ \] |
-|\|	**​float64​** ‘​**​(​**​’ _Float64_ ‘​**​)​**​’ |
-|\|	**​float64​** _SzArrayInit_ \[ ‘​**​{​**​’ \[ **​float64​** ‘​**​(​**​’ _Float64_ ‘​**​)​**​’ \]\* ‘​**​}​**​’ \] |
+|\|	**​float32​** ‘​**​\(​**​’ _Float32_ ‘​**​\)​**​’ |
+|\|	**​float32​** _SzArrayInit_ \[ ‘​**​{​**​’ \[ **​float32​** ‘​**​\(​**​’ _Float32_ ‘​**​\)​**​’ \]\* ‘​**​}​**​’ \] |
+|\|	**​float64​** ‘​**​\(​**​’ _Float64_ ‘​**​\)​**​’ |
+|\|	**​float64​** _SzArrayInit_ \[ ‘​**​{​**​’ \[ **​float64​** ‘​**​\(​**​’ _Float64_ ‘​**​\)​**​’ \]\* ‘​**​}​**​’ \] |
 |\|	_UInt8_ |
 |\|	**​unsigned int8​** _SzArrayInit_ \[ ‘​**​{​**​’ _UInt8_\* ‘​**​}​**​’ \] |
 |\|	**​uint8​** _SzArrayInit_ \[ ‘​**​{​**​’ _UInt8_\* ‘​**​}​**​’ \] |
@@ -249,8 +249,8 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 
 | _TypeVal_ ::\= |
 |--- |
-|	**​type​** ‘​**​(​**​’ _Type_ ‘​**​)​**​’ |
-|	**​type​** ‘​**​(​**​’ _TypeReferenceOrReflectionSQ_ ‘​**​)​**​’ |
+|	**​type​** ‘​**​\(​**​’ _Type_ ‘​**​\)​**​’ |
+|	**​type​** ‘​**​\(​**​’ _TypeReferenceOrReflectionSQ_ ‘​**​\)​**​’ |
 > Use _Type_ instead for function pointer signatures.
 
 | _EnumVal_ ::\= |
@@ -268,20 +268,20 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 
 | _Bool_ ::\= |
 |--- |
-|	**​bool​** ‘​**​(​**​’ **​true​** \| **​false​** ‘​**​)​**​’ |
+|	**​bool​** ‘​**​\(​**​’ **​true​** \| **​false​** ‘​**​\)​**​’ |
 |\|	_ConstantFieldReference_ |
 
 | _Char_ ::\= |
 |--- |
 |	‘​**​'​**​’ _CharLiteral_ ‘​**​'​**​’ |
-|\|	**​char​** ‘​**​(​**​’ ‘​**​'​**​’ _CharLiteral_ ‘​**​'​**​’ ‘​**​)​**​’ |
-|\|	**​char​** ‘​**​(​**​’ _Int32Literal_ ‘​**​)​**​’ |
+|\|	**​char​** ‘​**​\(​**​’ ‘​**​'​**​’ _CharLiteral_ ‘​**​'​**​’ ‘​**​\)​**​’ |
+|\|	**​char​** ‘​**​\(​**​’ _Int32Literal_ ‘​**​\)​**​’ |
 |\|	_ConstantFieldReference_ |
 
 | _String_ ::\= |
 |--- |
 |	_QSTRING_ |
-|\|	**​string​** ‘​**​(​**​’ _SQSTRING_ ‘​**​)​**​’ |
+|\|	**​string​** ‘​**​\(​**​’ _SQSTRING_ ‘​**​\)​**​’ |
 |\|	_ConstantFieldReference_ |
 
 | _TypeReferenceOrReflectionSQ_ ::\= |
@@ -315,44 +315,44 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 
 | _Int8_ ::\= |
 |--- |
-|	**​int8​** ‘​**​(​**​’ _Int8Literal_ ‘​**​)​**​’ |
+|	**​int8​** ‘​**​\(​**​’ _Int8Literal_ ‘​**​\)​**​’ |
 |\|	_ConstantFieldReference_ |
 
 | _Int16_ ::\= |
 |--- |
-|	**​int16​** ‘​**​(​**​’ _Int16Literal_ ‘​**​)​**​’ |
+|	**​int16​** ‘​**​\(​**​’ _Int16Literal_ ‘​**​\)​**​’ |
 |\|	_ConstantFieldReference_ |
 
 | _Int32_ ::\= |
 |--- |
-|	**​int32​** ‘​**​(​**​’ _Int32Literal_ ‘​**​)​**​’ |
+|	**​int32​** ‘​**​\(​**​’ _Int32Literal_ ‘​**​\)​**​’ |
 |\|	_ConstantFieldReference_ |
 
 | _Int64_ ::\= |
 |--- |
-|	**​int64​** ‘​**​(​**​’ _Int64Literal_ ‘​**​)​**​’ |
+|	**​int64​** ‘​**​\(​**​’ _Int64Literal_ ‘​**​\)​**​’ |
 |\|	_ConstantFieldReference_ |
 
 | _UInt8_ ::\= |
 |--- |
-|	**​unsigned int8​** ‘​**​(​**​’ _UInt8Literal_ ‘​**​)​**​’ |
-|\|	**​uint8​** ‘​**​(​**​’ _UInt8Literal_ ‘​**​)​**​’ |
+|	**​unsigned int8​** ‘​**​\(​**​’ _UInt8Literal_ ‘​**​\)​**​’ |
+|\|	**​uint8​** ‘​**​\(​**​’ _UInt8Literal_ ‘​**​\)​**​’ |
 |\|	_ConstantFieldReference_ |
 
 | _UInt16_ ::\= |
 |--- |
-|	**​unsigned int16​** ‘​**​(​**​’ _UInt16Literal_ ‘​**​)​**​’ |
-|\|	**​uint16​** ‘​**​(​**​’ _UInt16Literal_ ‘​**​)​**​’ |
+|	**​unsigned int16​** ‘​**​\(​**​’ _UInt16Literal_ ‘​**​\)​**​’ |
+|\|	**​uint16​** ‘​**​\(​**​’ _UInt16Literal_ ‘​**​\)​**​’ |
 |\|	_ConstantFieldReference_ |
 
 | _UInt32_ ::\= |
 |--- |
-|	**​unsigned int32​** ‘​**​(​**​’ _UInt32Literal_ ‘​**​)​**​’ |
-|\|	**​uint32​** ‘​**​(​**​’ _UInt32Literal_ ‘​**​)​**​’ |
+|	**​unsigned int32​** ‘​**​\(​**​’ _UInt32Literal_ ‘​**​\)​**​’ |
+|\|	**​uint32​** ‘​**​\(​**​’ _UInt32Literal_ ‘​**​\)​**​’ |
 |\|	_ConstantFieldReference_ |
 
 | _UInt64_ ::\= |
 |--- |
-|	**​unsigned int64​** ‘​**​(​**​’ _UInt64Literal_ ‘​**​)​**​’ |
-|\|	**​uint64​** ‘​**​(​**​’ _UInt64Literal_ ‘​**​)​**​’ |
+|	**​unsigned int64​** ‘​**​\(​**​’ _UInt64Literal_ ‘​**​\)​**​’ |
+|\|	**​uint64​** ‘​**​\(​**​’ _UInt64Literal_ ‘​**​\)​**​’ |
 |\|	_ConstantFieldReference_ |
