@@ -15,8 +15,8 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 ```
 
 ## **​How To Use​**
-- Download [.ILSupport](releases/latest/RedSkies.ILSupport.7z). For Mac, download [.ILSupport.Mac](releases/latest/RedSkies.ILSupport.Mac.7z).
-- Import MSBuild project at the end of .csproj file. Ensure file name of MSBuild project is [RedSkies.ILSupport.targets](.ILSupport/RedSkies.ILSupport.targets).
+- Download [.ILSupport](.ILSupport) from releases. For Mac, download [.ILSupport.Mac](.ILSupport.Mac) from releases.
+- Import MSBuild project at the end of .csproj file. Ensure file name of MSBuild project is [RedSkies.ILSupport.targets](.ILSupport/RedSkies.ILSupport.targets). For Mac, [RedSkies.ILSupport.targets](.ILSupport.Mac/RedSkies.ILSupport.targets).
 ```xml
 <Import Project="RedSkies.ILSupport.targets" />
 ```
