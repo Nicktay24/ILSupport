@@ -4,6 +4,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 **​CLI syntax​** is officially documented [here](https://www.ecma-international.org/publications-and-standards/standards/ecma-335/).
 
 ## **​Compatibility​**
+- Windows and Mac
 - MSBuild support using [RedSkies.ILSupport.targets](.ILSupport/RedSkies.ILSupport.targets).
 - C\# \- .NET 5, .NET Core, .NET Framework, Unity, Mono
 - For unity projects, set Unity property to true in .csproj file.
@@ -14,7 +15,7 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 ```
 
 ## **​How To Use​**
-- Download [.ILSupport](.ILSupport) folder.
+- Download [.ILSupport](releases/latest/RedSkies.ILSupport.7z). For Mac, download [.ILSupport.Mac](releases/latest/RedSkies.ILSupport.Mac.7z).
 - Import MSBuild project at the end of .csproj file. Ensure file name of MSBuild project is [RedSkies.ILSupport.targets](.ILSupport/RedSkies.ILSupport.targets).
 ```xml
 <Import Project="RedSkies.ILSupport.targets" />
