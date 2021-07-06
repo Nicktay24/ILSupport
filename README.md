@@ -1,7 +1,7 @@
 # **​IL Support​**
-Parses CLI code and merges with your DLL using dnlib. C\# does not provide coding in CLI but this way you can code CLI alongside C\#. I knew there are other implementations but they don't all provide full CLI coding. Using ildasm and ilasm would be too slow to merge with DLL. Edited [dnlib.dll](.ILSupport/dnlib.dll) so any other versions of the assembly won't work with [RedSkies.ILSupport.exe](.ILSupport/RedSkies.ILSupport.exe).
+Parses CIL code and merges with your DLL using dnlib. C\# does not provide coding in CIL but this way you can code CIL alongside C\#. I knew there are other implementations but they don't all provide full CIL coding. Using ildasm and ilasm would be too slow to merge with DLL. Edited [dnlib.dll](.ILSupport/dnlib.dll) so any other versions of the assembly won't work with [RedSkies.ILSupport.exe](.ILSupport/RedSkies.ILSupport.exe).
 
-**​CLI syntax​** is officially documented [here](https://www.ecma-international.org/publications-and-standards/standards/ecma-335/).
+**​CIL syntax​** is officially documented [here](https://www.ecma-international.org/publications-and-standards/standards/ecma-335/).
 
 ## **​Compatibility​**
 - Windows and Mac
@@ -26,11 +26,11 @@ Parses CLI code and merges with your DLL using dnlib. C\# does not provide codin
 	<IL Include="*.il" />
 </ItemGroup>
 ```
-- Write CLI code in .il file, build project, and done!
+- Write CIL code in .il file, build project, and done!
 
 ## **​IMPORTANT​**
 ### **​MANDATORY Format For Floating-Point Literal​**
-- All **​floating-point literals​** will be parsed as followed. Many decompilers export different CLI formats for floating-point literals. Therefore, you will have to correct the format to match: [_Float32_](#float-literals) and [_Float64_](#float-literals).
+- All **​floating-point literals​** will be parsed as followed. Many decompilers export different CIL formats for floating-point literals. Therefore, you will have to correct the format to match: [_Float32_](#float-literals) and [_Float64_](#float-literals).
 ### **​NOTICE​**
 - Reflection type name does not support function pointers.
 - **​.custom​** applies custom attributes to the last declaration. Make sure to have each custom attribute below its respective owner.
