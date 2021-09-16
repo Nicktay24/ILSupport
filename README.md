@@ -1,12 +1,12 @@
 # **​IL Support​**
-Parses CIL code and merges with your DLL using dnlib. C\# does not provide coding in CIL but this way you can code CIL alongside C\#. I knew there are other implementations but they don't all provide full CIL coding. Using ildasm and ilasm would be too slow to merge with DLL. Edited [dnlib.dll](.ILSupport/dnlib.dll) so any other versions of the assembly won't work with [RedSkies.ILSupport.exe](.ILSupport/RedSkies.ILSupport.exe).
+Parses IL code and merges with your DLL using dnlib. C\# does not provide coding in IL but this way you can code IL alongside C\#. I knew there are other implementations but they don't all provide full IL coding. Using ildasm and ilasm would be too slow to merge with DLL. Edited [dnlib.dll](.ILSupport/dnlib.dll) so any other versions of the assembly won't work with [RedSkies.ILSupport.exe](.ILSupport/RedSkies.ILSupport.exe).
 
-**​CIL syntax​** is officially documented [here](https://www.ecma-international.org/publications-and-standards/standards/ecma-335/).
+**​IL syntax​** is officially documented [here](https://www.ecma-international.org/publications-and-standards/standards/ecma-335/).
 
 ## **​Compatibility​**
 - Windows and Mac
 - MSBuild support using [RedSkies.ILSupport.targets](.ILSupport/RedSkies.ILSupport.targets).
-- C\# \- .NET 5, .NET Core, .NET Framework, Unity, Mono
+- C\# \- .NET 5+, .NET Core, .NET Framework, Unity, Mono
 - For unity projects, set Unity property to true in .csproj file.
 ```xml
 <PropertyGroup>
@@ -26,11 +26,11 @@ Parses CIL code and merges with your DLL using dnlib. C\# does not provide codin
 	<IL Include="*.il" />
 </ItemGroup>
 ```
-- Write CIL code in .il file, build project, and done!
+- Write IL code in .il file, build project, and done!
 
 ## **​IMPORTANT​**
 ### **​MANDATORY Format For Floating-Point Literal​**
-- All **​floating-point literals​** will be parsed as followed. Many decompilers export different CIL formats for floating-point literals. Therefore, you will have to correct the format to match: [_Float32_](#float-literals) and [_Float64_](#float-literals).
+- All **​floating-point literals​** will be parsed as followed. Many decompilers export different IL formats for floating-point literals. Therefore, you will have to correct the format to match: [_Float32_](#float-literals) and [_Float64_](#float-literals).
 ### **​NOTICE​**
 - Reflection type name does not support function pointers.
 - **​.custom​** applies custom attributes to the last declaration. Make sure to have each custom attribute below its respective owner.
@@ -71,7 +71,7 @@ Parses CIL code and merges with your DLL using dnlib. C\# does not provide codin
 
 ## Syntax For Syntactic Formats Below
 - _Italic_ represents a Custom Format whose name matches.
-- **​Bold​** specifies a literal.
+- **​Bold​** contains literal text.
 - ‘​’ contains a literal character.
 - \| is OR operator.
 - \[\] marks its contents as optional.
@@ -93,18 +93,46 @@ Parses CIL code and merges with your DLL using dnlib. C\# does not provide codin
 |	_CppFloatLiteral_ |
 |\|	**​float32​** ‘​**​\(​**​’ _Int32Literal_ ‘​**​\)​**​’ |
 |\|	**​float32​** ‘​**​\(​**​’ _UInt32Literal_ ‘​**​\)​**​’ |
+> Specifies that the following parenthesized integer literal is the binary32 format. Note: some instances require you to specify the type **​float64​** (e.g. **​.custom​** attribute arguments, **​.data​** body); therefore, in order to specify binary32, do as followed:
+```
+.class
+{
+	.custom instance void ExampleAttribute::.ctor(float32) = {
+		// binary32 of float.PositiveInfinity is 0x7F800000
+		float32(float32(0x7F800000))
+	}
+	.data ExampleData = {
+		// binary32 of 1 is 0x3F800000
+		float32(float32(0x3F800000))
+	}
+}
+```
 
 | _Float64_ ::\= |
 |--- |
 |	_CppFloatLiteral_ |
 |\|	**​float64​** ‘​**​\(​**​’ _Int64Literal_ ‘​**​\)​**​’ |
 |\|	**​float64​** ‘​**​\(​**​’ _UInt64Literal_ ‘​**​\)​**​’ |
+> Specifies that the following parenthesized integer literal is the binary64 format. Note: some instances require you to specify the type **​float64​** (e.g. **​.custom​** attribute arguments, **​.data​** body); therefore, in order to specify binary64, do as followed:
+```
+.class
+{
+	.custom instance void ExampleAttribute::.ctor(float64) = {
+		// binary64 of double.PositiveInfinity is 0x7FF0000000000000
+		float64(float64(0x7FF0000000000000))
+	}
+	.data ExampleData = {
+		// binary64 of 1 is 0x3FF0000000000000
+		float64(float64(0x3FF0000000000000))
+	}
+}
+```
 
 ### Constant Field Reference
 | _ConstantFieldReference_ ::\= |
 |--- |
 |	**​const​** ‘​**​\(​**​’ _FieldReference_ ‘​**​\)​**​’ |
-> _FieldReference_ must be reference to a constant field. The constant will be loaded on compile. Valid for operand of opcodes, ldfld and ldsfld; field constant initialization; and custom attribute argument. Also in the CIL instructions, you may have the operand of **​ldsfld​** be a field reference to a constant field to load the value of the constant field. E.g. **​Ldsfld​** and `uint8 uint8::MinValue` will be replaced with **​ldc.i4.0​**​. **​Ldsfld​** and `uint16 uint16::MaxValue` will be replaced with **​ldc.i4​** and `65535`.
+> _FieldReference_ must be reference to a constant field. The constant will be loaded on compile. Valid for operand of opcodes, ldfld and ldsfld; field constant initialization; and custom attribute argument. Also in the IL instructions, you may have the operand of **​ldsfld​** be a field reference to a constant field to load the value of the constant field. E.g. **​Ldsfld​** and `uint8 uint8::MinValue` will be replaced with **​ldc.i4.0​**​. **​Ldsfld​** and `uint16 uint16::MaxValue` will be replaced with **​ldc.i4​** and `65535`.
 
 | _SafeArrayMarshalType_ ::\= |
 |--- |
@@ -125,7 +153,7 @@ Parses CIL code and merges with your DLL using dnlib. C\# does not provide codin
 |	**​.vtfixup​** \[ ‘​**​\[​**​’ _Int32Literal_ ‘​**​\]​**​’ \] _VTFixupAttr_\* ‘​**​\=​**​’ ‘​**​\{​**​’ _MethodReference_\* ‘​**​\}​**​’ |
 |\|	**​.vtfixup​** \[ ‘​**​\[​**​’ _Int32Literal_ ‘​**​\]​**​’ \] _VTFixupAttr_\* _DataInit_ |
 > _Int32Literal_ is the number of metadata tokens.
-> It is **​RECOMMENDED​** to not use **​.data​** since metadata tokens can change per compile. This is mainly to support ildasm exports.
+> It is **​RECOMMENDED​** to not use **​.data​** for **​.vtfixup​** since metadata tokens can change per compile. This is mainly to support ildasm exports.
 
 | _VTFixupAttr_ ::\= |
 |--- |
