@@ -1,58 +1,58 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <CompileDependsOn>
-      HideILFromCompile;
-      $(CompileDependsOn);
-      GetReferences;
-      CoreCompileIL
-    </CompileDependsOn>
-  </PropertyGroup>
-  <Target Name="HideILFromCompile" BeforeTargets="BeforeCompile">
-    <ItemGroup>
-      <IL Include="@(Compile)" Condition="$([System.String]::Equals('%(Extension)', '.il', System.StringComparison.OrdinalIgnoreCase))" />
-      <Compile Remove="@(Compile)" Condition="$([System.String]::Equals('%(Extension)', '.il', System.StringComparison.OrdinalIgnoreCase))" />
-    </ItemGroup>
-  </Target>
-  <Target Name="GetReferences" DependsOnTargets="ResolveReferences" AfterTargets="AfterCompile" Condition="Exists(@(IntermediateAssembly))" Outputs="@(IntermediateAssembly)">
-    <ItemGroup>
-    	<AssemblyReference Include="@(ReferencePath)" />
-    </ItemGroup>
-  </Target>
-  <Target Name="CoreCompileIL" AfterTargets="AfterCompile" Condition="Exists(@(IntermediateAssembly))" Outputs="@(IntermediateAssembly)">
-    <CombinePath BasePath="$(MSBuildThisFileDirectory)" Paths="RedSkies.ILSupport.Mac.exe" >
-      <Output TaskParameter="CombinedPaths" PropertyName="ILSupport"/>
-    </CombinePath>
-    <PropertyGroup>
-      <ILSupport>"$(ILSupport)" @(IntermediateAssembly->'"%(FullPath)"', ' ')</ILSupport>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(PdbFile)' != ''">
-      <ILSupport>$(ILSupport) /pdb="$(PdbFile)"</ILSupport>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(DebugType)' != ''">
-      <ILSupport>$(ILSupport) /debugtype=$(DebugType)</ILSupport>
-    </PropertyGroup>
-    <PropertyGroup Condition="$(Platform.Length) == 3 and $([System.String]::Equals($(Platform), 'x64', System.StringComparison.OrdinalIgnoreCase))">
-      <ILSupport>$(ILSupport) /x64</ILSupport>
-    </PropertyGroup>
-    <PropertyGroup Condition="$(Platform.Length) == 3 and $([System.String]::Equals($(Platform), 'x32', System.StringComparison.OrdinalIgnoreCase))">
-      <ILSupport>$(ILSupport) /x32</ILSupport>
-    </PropertyGroup>
-    <PropertyGroup Condition="$(OutputType.Length) == 7 and $([System.String]::Equals($(OutputType), 'library', System.StringComparison.OrdinalIgnoreCase))">
-      <ILSupport>$(ILSupport) /dll</ILSupport>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(FileAlignment)' != ''">
-      <ILSupport>$(ILSupport) /alignment=$(FileAlignment)</ILSupport>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(BaseAddress)' != ''">
-      <ILSupport>$(ILSupport) /base=$(BaseAddress)</ILSupport>
-    </PropertyGroup>
-    <PropertyGroup Condition="$(Prefer32Bit.Length) == 4 and $([System.String]::Equals($(Prefer32Bit), 'true', System.StringComparison.OrdinalIgnoreCase))">
-      <ILSupport>$(ILSupport) /prefer32bit</ILSupport>
-    </PropertyGroup>
-    <PropertyGroup Condition="$(Unity.Length) == 4 and $([System.String]::Equals($(Unity), 'true', System.StringComparison.OrdinalIgnoreCase))">
-      <ILSupport>$(ILSupport) /unity</ILSupport>
-    </PropertyGroup>
-    <Exec Command="$(ILSupport) /nogac @(AssemblyReference->'/asmref=&quot;%(FullPath)&quot;', ' ') @(IL->'&quot;%(FullPath)&quot;', ' ')" />
-  </Target>
+	<PropertyGroup>
+		<CompileDependsOn>
+			RedSkiesILSupport_HideILFromCompile;
+			$(CompileDependsOn);
+			RedSkiesILSupport_GetAssemblyReferences;
+			RedSkiesILSupport_CoreCompileIL
+		</CompileDependsOn>
+	</PropertyGroup>
+	<Target Name="RedSkiesILSupport_HideILFromCompile" BeforeTargets="BeforeCompile">
+		<ItemGroup>
+			<IL Include="@(Compile)" Condition="$([System.String]::Equals('%(Extension)', '.il', System.StringComparison.OrdinalIgnoreCase))" />
+			<Compile Remove="@(Compile)" Condition="$([System.String]::Equals('%(Extension)', '.il', System.StringComparison.OrdinalIgnoreCase))" />
+		</ItemGroup>
+	</Target>
+	<Target Name="RedSkiesILSupport_GetAssemblyReferences" DependsOnTargets="ResolveReferences" AfterTargets="AfterCompile" Condition="Exists(@(IntermediateAssembly))" Outputs="@(IntermediateAssembly)">
+		<ItemGroup>
+			<RedSkiesILSupport_AssemblyReferences Include="@(ReferencePath)" />
+		</ItemGroup>
+	</Target>
+	<Target Name="RedSkiesILSupport_CoreCompileIL" AfterTargets="AfterCompile" Condition="Exists(@(IntermediateAssembly))" Outputs="@(IntermediateAssembly)">
+		<CombinePath BasePath="$(MSBuildThisFileDirectory)" Paths="RedSkies.ILSupport.Mac.exe" >
+			<Output TaskParameter="CombinedPaths" PropertyName="RedSkiesILSupportExe"/>
+		</CombinePath>
+		<PropertyGroup>
+			<RedSkiesILSupportArgs>@(IntermediateAssembly->'"%(FullPath)"', ' ') $(RedSkiesILSupportArgs)</RedSkiesILSupportArgs>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(PdbFile)'!=''">
+			<RedSkiesILSupportArgs>$(RedSkiesILSupportArgs) /pdb="$(PdbFile)"</RedSkiesILSupportArgs>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(DebugType)'!=''">
+			<RedSkiesILSupportArgs>$(RedSkiesILSupportArgs) /debugtype=$(DebugType)</RedSkiesILSupportArgs>
+		</PropertyGroup>
+		<PropertyGroup Condition="$(Platform.Length)==3 and $([System.String]::Equals($(Platform), 'x64', System.StringComparison.OrdinalIgnoreCase))">
+			<RedSkiesILSupportArgs>$(RedSkiesILSupportArgs) /x64</RedSkiesILSupportArgs>
+		</PropertyGroup>
+		<PropertyGroup Condition="$(Platform.Length)==3 and $([System.String]::Equals($(Platform), 'x32', System.StringComparison.OrdinalIgnoreCase))">
+			<RedSkiesILSupportArgs>$(RedSkiesILSupportArgs) /x32</RedSkiesILSupportArgs>
+		</PropertyGroup>
+		<PropertyGroup Condition="$(OutputType.Length)==7 and $([System.String]::Equals($(OutputType), 'library', System.StringComparison.OrdinalIgnoreCase))">
+			<RedSkiesILSupportArgs>$(RedSkiesILSupportArgs) /dll</RedSkiesILSupportArgs>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(FileAlignment)'!=''">
+			<RedSkiesILSupportArgs>$(RedSkiesILSupportArgs) /alignment=$(FileAlignment)</RedSkiesILSupportArgs>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(BaseAddress)'!=''">
+			<RedSkiesILSupportArgs>$(RedSkiesILSupportArgs) /base=$(BaseAddress)</RedSkiesILSupportArgs>
+		</PropertyGroup>
+		<PropertyGroup Condition="$(Prefer32Bit.Length)==4 and $([System.String]::Equals($(Prefer32Bit), 'true', System.StringComparison.OrdinalIgnoreCase))">
+			<RedSkiesILSupportArgs>$(RedSkiesILSupportArgs) /prefer32bit</RedSkiesILSupportArgs>
+		</PropertyGroup>
+		<PropertyGroup Condition="$(Unity.Length)==4 and $([System.String]::Equals($(Unity), 'true', System.StringComparison.OrdinalIgnoreCase))">
+			<RedSkiesILSupportArgs>$(RedSkiesILSupportArgs) /unity</RedSkiesILSupportArgs>
+		</PropertyGroup>
+		<Exec Command="&quot;$(RedSkiesILSupportExe)&quot; $(RedSkiesILSupportArgs) /nogac @(RedSkiesILSupport_AssemblyReferences->'/asmref=&quot;%(FullPath)&quot;', ' ') @(IL->'&quot;%(FullPath)&quot;', ' ')" />
+	</Target>
 </Project>
