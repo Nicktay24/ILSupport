@@ -3,8 +3,8 @@ Parses IL code and merges with your DLL using dnlib. C\# does not provide coding
 
 **​IL syntax​** is officially documented [here](https://www.ecma-international.org/publications-and-standards/standards/ecma-335/).
 
-Math syntax are not supported but you can use spigot to export any constant literals in the numeric format of your choice. Added .bat files to help support easy literals for specific numeric formats in [spigot - command-line exact real calculator](spigot - command-line exact real calculator).
-Look at [spigot manual](spigot - command-line exact real calculator/manual.mhtml) for more details. I do not own rights to the source nor credit to it.
+Math syntax are not supported but you can use spigot to export any constant literals in the numeric format of your choice. Added .bat files to help support easy literals for specific numeric formats in [spigot - command-line exact real calculator](spigot%20-%20command-line%20exact%20real%20calculator).
+Look at [spigot's manual](spigot%20-%20command-line%20exact%20real%20calculator/manual.mhtml) for more details. I do not own rights to the source nor credit to it.
 
 ## **​Compatibility​**
 - Windows and Mac
