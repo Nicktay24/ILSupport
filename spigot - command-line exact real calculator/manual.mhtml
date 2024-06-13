@@ -1,0 +1,2842 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.html
+Subject: spigot: an exact real calculator
+Date: Thu, 9 Sep 2021 18:53:42 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--hP6cHlInpDyKldh2LdNYB3V2EWgn92USNW0QPmX1nr----"
+
+
+------MultipartBoundary--hP6cHlInpDyKldh2LdNYB3V2EWgn92USNW0QPmX1nr----
+Content-Type: text/html
+Content-ID: <frame-F6069EA3934E91C3E9BEC5CEB1C4CD9D@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.html
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/htm=
+l4/strict.dtd"><html><head><meta http-equiv=3D"Content-Type" content=3D"tex=
+t/html; charset=3Dwindows-1252">
+
+<title>spigot: an exact real calculator</title>
+</head>
+<body>
+<h1><code>spigot</code>: an exact real calculator</h1>
+<ul>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#introduction">Chapter 1: What is <code>spigot</code>?</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#examples">Chapter 2: Examples of using <code>spigot</code></a>
+<ul>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#rounding">2.1 Digit limits and rounding</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#bases">2.2 Generating output in different bases</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#cfrac">2.3 Generating continued fractions of numbers</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#input">2.4 Reading input numbers from a file or another program</a></li=
+>
+</ul></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#expr">Chapter 3: <code>spigot</code>'s expression language</a>
+<ul>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#operators">3.1 Operators</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#functions">3.2 Functions</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#literals">3.3 Numeric literals</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#constants">3.4 Built-in constants</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#filefd">3.5 Numbers read from files and file descriptors</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#let">3.6 User-defined variables and functions</a></li>
+</ul></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#options">Chapter 4: Full list of <code>spigot</code>'s command line opt=
+ions</a>
+<ul>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#outputopts">4.1 Output format options</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#rmodeopts">4.2 Rounding mode options</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#miscopts">4.3 Miscellaneous options</a></li>
+</ul></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#hazards">Chapter 5: Hazards to computation</a>
+<ul>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#hazards-output">5.1 Exactness hazards on output</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#hazards-intermediate">5.2 Exactness hazards in subexpressions</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#hazards-internal">5.3 Internal exactness hazards</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#hazards-design">5.4 Design limitations</a></li>
+</ul></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#output">Chapter 6: Output and return values of <code>spigot</code></a><=
+/li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#refs">Appendix A: References</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#licence">Appendix B: Copyright statement and licence</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#man">Appendix C: Unix man page for <code>spigot</code></a>
+<ul>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#man-name">C.1 NAME</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#man-synopsis">C.2 SYNOPSIS</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#man-description">C.3 DESCRIPTION</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#man-options">C.4 OPTIONS</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#man-expressions">C.5 EXPRESSIONS</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#man-return">C.6 RETURN VALUE</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#man-bugs">C.7 LIMITATIONS</a></li>
+<li><a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#man-licence">C.8 LICENCE</a></li>
+</ul></li>
+</ul>
+
+<p>
+This manual documents <code>spigot</code>, a command-line exact real calcul=
+ator.
+</p>
+<h2><a name=3D"introduction"></a>Chapter 1: What is <code>spigot</code>?</h=
+2>
+<p>
+<code>spigot</code> is a calculating program. It supports the usual arithme=
+tic operations, square and cube roots, trigonometric and exponential functi=
+ons, and a few other special functions such as <code>erf</code>.
+</p>
+<p>
+<code>spigot</code> differs from the average calculating program in that it=
+ is an <em>exact real</em> calculator. This means that it does not suffer f=
+rom rounding errors; in principle, it can keep generating more and more dig=
+its of the number you asked for until it runs out of memory.
+</p>
+<p>
+In particular, if you ask for a complex expression such as <code>sin(sqrt(p=
+i))</code>, then most calculating systems would compute first <code>pi</cod=
+e>, then <code>sqrt(pi)</code> and finally <code>sin(sqrt(pi))</code>, accu=
+mulating a rounding error at each step, so that the final result had a buil=
+d-up of error and you would have to do some additional error analysis to de=
+cide how much of the output you could trust.
+</p>
+<p>
+<code>spigot</code>, on the other hand, does not output any digit until it =
+is sure that digit is correct, so if you ask for (say) 100 digits of <code>=
+sin(sqrt(pi))</code> then you can be sure they are the <em>right</em> 100 d=
+igits.
+</p>
+<p>
+(The downside of doing this is that <code>spigot</code> is <em>slow</em>, c=
+ompared to the more usual methods of computer arithmetic. You wouldn't want=
+ to use even its individual arithmetic operations and functions for any kin=
+d of bulk computation. And because it evaluates a complicated expression as=
+ a whole, it's especially unsuited to any iterative algorithm which involve=
+s looking at the first result you get and then deciding what further arithm=
+etic to do on it: normal arithmetic systems can do the next step of the alg=
+orithm with only the cost of the extra operations, but <code>spigot</code> =
+would have to re-evaluate the entire thing from the start every time. So <c=
+ode>spigot</code> can be useful if you really do need a lot of digits, or i=
+f you're doing a computation prone to numerical error, or as a cross-check =
+on other calculating systems, but it wouldn't be usable outside that kind o=
+f specialist niche.)
+</p>
+<p>
+<code>spigot</code> can evaluate expressions starting from numbers it can c=
+onstruct internally (integers, rationals, <em>&#960;</em>, etc), and it can=
+ also read a number from a file or a pipe. In the latter mode, it operates =
+=91on-line=92, i.e. it writes output as it goes along, and once it has read=
+ enough digits of an input number to know some of the output, it will print=
+ it.
+</p>
+<h2><a name=3D"examples"></a>Chapter 2: Examples of using <code>spigot</cod=
+e></h2>
+<p>
+The simplest thing <code>spigot</code> can do is to compute well-known math=
+ematical constants such as <em>&#960;</em>. For example, try running this c=
+ommand:
+</p>
+<pre><code>$ <b>spigot pi</b>
+3.1415926535897932384626433832795028841971693993751058209749445923078164
+062862089986280348253421170679821480865132823066470938446095505822317253
+594081284811174502841027019385211055596446229489549303819644288109756659
+<em>(and so on)</em>
+</code></pre>
+<p>
+In this default mode, <code>spigot</code> generates unbounded output: it wi=
+ll continue writing digits of <em>&#960;</em> to the terminal until you int=
+errupt it (e.g. by pressing Ctrl-C).
+</p>
+<p>
+As <code>spigot</code> generates more digits, it will slow gradually down a=
+nd consume more and more memory to keep track of where it's got to, and one=
+ of time and memory will ultimately be the limit to how much data it can ge=
+nerate. But in principle, given unlimited time and memory, it could just ke=
+ep on going.
+</p>
+<p>
+<code>spigot</code> can also evaluate more complicated mathematical express=
+ions. (Some will be much slower than others.) You could try some of these, =
+for example:
+</p>
+<pre><code>$ <b>spigot pi*e</b>
+$ <b>spigot pi/e</b>
+$ <b>spigot pi^e</b>
+$ <b>spigot -- '-pi^2'</b>
+$ <b>spigot 'sin(sqrt(pi))'</b>
+$ <b>spigot 'exp(pi*sqrt(163))'</b>
+</code></pre>
+<p>
+(The above command lines assume that you are invoking <code>spigot</code> f=
+rom a POSIX shell, so that expressions containing parentheses need to be si=
+ngle-quoted in order for <code>spigot</code> to receive them unmodified wit=
+hout the shell interfering. On other shells or operating systems, quoting c=
+onventions may vary.)
+</p>
+<p>
+Since <code>spigot</code> supports a variety of command-line options beginn=
+ing with <code>-</code>, if your expression also begins with a <code>-</cod=
+e> (as one of the examples above does), then you need to precede it with th=
+e special argument word <code>--</code>, which instructs <code>spigot</code=
+> to treat further command-line arguments as an expression rather than an o=
+ption.
+</p>
+<p>
+See <a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.h=
+tml#expr">chapter 3</a> for a full description of the range of expressions =
+you can give to <code>spigot</code>.
+</p>
+<h3><a name=3D"rounding"></a>2.1 Digit limits and rounding</h3>
+<p>
+In its default mode, <code>spigot</code> keeps generating digits until you =
+interrupt it, or until it determines that it has output the exactly correct=
+ answer and needs no more digits at all.
+</p>
+<p>
+You can limit <code>spigot</code> to a finite number of digits by using the=
+ <code>-d</code> option. For example:
+</p>
+<pre><code>$ <b>spigot -d40 pi</b>
+3.1415926535897932384626433832795028841971
+</code></pre>
+<p>
+(The argument to <code>-d</code> counts decimal places, rather than signifi=
+cant figures. So here, there are 40 digits after the decimal point.)
+</p>
+<p>
+By default, <code>spigot</code> does no rounding, i.e. it simply truncates =
+the full decimal expansion of the number you asked for. (This is equivalent=
+ to rounding towards zero in all cases.)
+</p>
+<p>
+If you want to change that, there's a variety of rounding-mode options, det=
+ailed in <a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spi=
+got.html#rmodeopts">section 4.2</a>. For example, you can ask <code>spigot<=
+/code> to round the final digit towards whichever value is nearer to the tr=
+ue result using <code>--rn</code>:
+</p>
+<pre><code>$ <b>spigot --rn -d40 pi</b>
+3.1415926535897932384626433832795028841972
+</code></pre>
+<p>
+(This example rounds up, because the next digit following the 1 is a 6.)
+</p>
+<h3><a name=3D"bases"></a>2.2 Generating output in different bases</h3>
+<p>
+By default, <code>spigot</code>'s output is in base 10. You can use the <co=
+de>-b</code> option to output in another base instead:
+</p>
+<pre><code>$ <b>spigot -b2 -d40 pi</b>
+11.0010010000111111011010101000100010000101
+$ <b>spigot -b3 -d40 pi</b>
+10.0102110122220102110021111102212222201112
+$ <b>spigot -b16 -d40 pi</b>
+3.243f6a8885a308d313198a2e03707344a4093822
+$ <b>spigot -b36 -d40 pi</b>
+3.53i5ab8p5fsa5jhk72i8asc47wwzlacljj9zn98l
+</code></pre>
+<p>
+For bases larger than 10, letters of the alphabet are used as additional di=
+gits. If you use the <code>-B</code> option in place of <code>-b</code>, th=
+ose letters will be displayed in upper case:
+</p>
+<pre><code>$ <b>spigot -B16 -d40 pi</b>
+3.243F6A8885A308D313198A2E03707344A4093822
+</code></pre>
+<h3><a name=3D"cfrac"></a>2.3 Generating continued fractions of numbers</h3=
+>
+<p>
+As well as generating numbers in ordinary base notation, <code>spigot</code=
+> can also generate them in the form of continued fractions. You can genera=
+te the continued fraction terms of a number, one per line, using the <code>=
+-c</code> option:
+</p>
+<pre><code>$ <b>spigot -c pi</b>
+3
+7
+15
+1
+292
+1
+<em>(and so on)</em>
+</code></pre>
+<p>
+(For those unfamiliar with continued fractions, this is equivalent to sayin=
+g that <em>&#960;</em> is equal to <code>3 + 1 / (7 + 1 / (15 + 1 / ...))</=
+code>.)
+</p>
+<p>
+This one-per-line format is useful for applications which are consuming the=
+ numbers automatically, but for readability, you might prefer to add <code>=
+-l</code> to replace the newlines with commas, so that you can see many mor=
+e terms at once:
+</p>
+<pre><code>$ <b>spigot -c -l pi</b>
+3;7,15,1,292,1,1,1,2,1,3,1,14,2,1,1,2,2,2,2,1,84,2,1,1,15,3,13,1,4,2,6,6
+,99,1,2,2,6,3,5,1,1,6,8,1,7,1,2,3,7,1,2,1,1,12,1,1,1,3,1,1,8,1,1,2,1,6,1
+,1,5,2,2,3,1,2,4,4,16,1,161,45,1,22,1,2,2,1,4,1,2,24,1,2,1,3,1,2,1,1,10,
+<em>(and so on)</em>
+</code></pre>
+<p>
+(The semicolon emphasises that the first number is the integer part.)
+</p>
+<p>
+Finally, you can use <code>-C</code> to output the continued fraction <em>c=
+onvergents</em> (that is, the rational numbers obtained by evaluating succe=
+ssive truncations of the continued fraction, which are the best approximati=
+ons to the target number by a particular metric):
+</p>
+<pre><code>$ <b>spigot -C pi</b>
+3/1
+22/7
+333/106
+355/113
+103993/33102
+104348/33215
+<em>(and so on)</em>
+</code></pre>
+<p>
+In any of these modes, the <code>-d</code> option allows you to limit the n=
+umber of continued fraction terms or convergents that <code>spigot</code> o=
+utputs. Again, the integer part is not counted, so that for example <code>-=
+d3</code> gives you three terms or convergents <em>as well</em> as the inte=
+ger one:
+</p>
+<pre><code>$ <b>spigot -c -d3 pi</b>
+3
+7
+15
+1
+</code></pre>
+<pre><code>$ <b>spigot -C -d3 pi</b>
+3/1
+22/7
+333/106
+355/113
+</code></pre>
+<h3><a name=3D"input"></a>2.4 Reading input numbers from a file or another =
+program</h3>
+<p>
+As well as applying its collection of mathematical operators and functions =
+to real numbers that it has derived itself from first principles, <code>spi=
+got</code> can also apply the same operations to numbers received as input =
+from elsewhere, which makes it at least theoretically able to operate on <e=
+m>any</em> real number.
+</p>
+<p>
+To begin with, you can write a number into a file in ordinary decimal notat=
+ion, and use a special syntax in the <code>spigot</code> expression languag=
+e to read from that file:
+</p>
+<pre><code>$ <b>echo 1.1235813213455891442333776109871597258441816765109461=
+7711 &gt; z</b>
+$ <b>spigot -d30 'sin( base10file:z )'</b>
+0.901654985409730168388244848164
+</code></pre>
+<p>
+You might wonder why <code>spigot</code> needs a feature like this: since t=
+he file contains only a finite amount of data, you surely could just have p=
+asted the same number on to <code>spigot</code>'s command line directly. Th=
+e difference is that if you write a decimal number on <code>spigot</code>'s=
+ command line, <code>spigot</code> will assume it is <em>exact</em>, i.e. t=
+hat the precise number you meant is the rational number with that terminati=
+ng decimal expansion. But if you read from a file like this, <code>spigot</=
+code> will treat it as a prefix of some longer decimal expansion, and if it=
+ reaches the end of the file then it will report a special error saying tha=
+t it can't compute any more output digits because it ran out of input. So t=
+his permits you to compute with imperfectly known inputs, without the risk =
+of generating any incorrect digits of output due to the input imprecision.
+</p>
+<p>
+You can also tell <code>spigot</code> to read from a file in number bases o=
+ther than 10, or in continued fraction format. See <a href=3D"https://www.c=
+hiark.greenend.org.uk/~sgtatham/spigot/spigot.html#filefd">section 3.5</a> =
+for full details of all the available options.
+</p>
+<p>
+But <code>spigot</code> can also read numeric data from its own standard in=
+put (or, if it's compiled on Unix, a numbered file descriptor of your choic=
+e), which can point at an unbounded data source such as a pipe. So if you i=
+nvoke <code>spigot</code> with its standard input pointing at such a pipe, =
+with a program at the other end of the pipe prepared to generate as many di=
+gits of the number as requested, then you need only use another special pie=
+ce of expression syntax to tell <code>spigot</code> to read a real number f=
+rom it, as far as is necessary.
+</p>
+<p>
+For example, let's generate <a href=3D"http://en.wikipedia.org/wiki/Champer=
+nowne_constant">the Champernowne constant</a>, which you get by concatenati=
+ng all the positive integers in order immediately after the decimal point, =
+with no leading zeroes. Here's a piece of Perl which generates that:
+</p>
+<pre><code>$ <b>perl -e 'print"0.";print while++$_'</b>
+0.1234567891011121314151617181920212223242526272829303132333435363738394
+041424344454647484950515253545556575859606162636465666768697071727374757
+677787980818283848586878889909192939495969798991001011021031041051061071
+<em>(and so on)</em>
+</code></pre>
+<p>
+Now we can use <code>spigot</code> to compute with this number (or any othe=
+r input real), by piping that script's output into <code>spigot</code>, and=
+ telling <code>spigot</code> to expect to read a base-10 number from its st=
+andard input. As a really simple example, let's ask for <code>spigot</code>=
+ to output the same number, but in continued fraction form:
+</p>
+<pre><code>$ <b>perl -e 'print"0.";print while++$_' | spigot -c -l base10st=
+din</b>
+0;8,9,1,149083,1,1,1,4,1,1,1,3,4,1,1,1,15,457540111391031076483646628242
+956118599603939710457555000662004393090262659256314937953207747128656313
+8641209375503552094607183089984575801469863148833592141783010987,6,1,1,2
+1,1,9,1,1,2,3,1,7,2,1,83,1,156,4,58,8,54,4457353800911178833959067671634
+293788437292958096324947188556700067877659324583930837874799958333344441
+<em>(and so on)</em>
+</code></pre>
+<p>
+(Apart from it being very easy to generate, another reason I chose this exa=
+mple constant is because it has interestingly large numbers in its continue=
+d fraction =96 the huge number spanning the first three lines occurs becaus=
+e there's an extremely good rational approximation to the constant at the p=
+oint where numbers change from 2 to 3 digits. The number starting on the fo=
+urth line is the corresponding term at the 3/4 digit boundary, and goes on =
+for far longer!)
+</p>
+<p>
+You can also use the expression <code>base10stdin</code> as part of a large=
+r expression, so that you could compute mathematical functions of an input =
+number, or add it to things (perhaps another input pipe, if you execute <co=
+de>spigot</code> in such a way as to assign multiple input fds).
+</p>
+<h2><a name=3D"expr"></a>Chapter 3: <code>spigot</code>'s expression langua=
+ge</h2>
+<p>
+This section gives a full specification of the language <code>spigot</code>=
+ uses for mathematical expressions.
+</p>
+<p>
+<code>spigot</code>'s expression language is semantically simpler than most=
+ such languages. In deference to the limitations of efficient computing, mo=
+st expression languages have to carefully distinguish a collection of numer=
+ic types representing different subsets of the real numbers with different =
+tradeoffs between range, precision and performance. But <code>spigot</code>=
+, because its whole purpose is to deal in exact real numbers regardless of =
+performance, does not have to do this. Every expression and subexpression i=
+n <code>spigot</code> has the same type: <strong>real</strong>.
+</p>
+<p>
+So you don't have to remember to avoid writing <code>1/2</code> for a half =
+(which in, say, <code>gnuplot</code>, would be interpreted as <em>integer</=
+em> division and yield a rounded-down quotient of zero), or include any exp=
+licit syntax to change between formats as appropriate. Just write what look=
+s like the obvious thing, and it will probably mean what you wanted.
+</p>
+<h3><a name=3D"operators"></a>3.1 Operators</h3>
+<p>
+<code>spigot</code>'s expression language provides the following mathematic=
+al operators:
+</p>
+<ul><li>
+Addition, written as <em>a</em>&nbsp;<code>+</code>&nbsp;<em>b</em> (for tw=
+o subexpressions <em>a</em> and <em>b</em>).
+</li>
+<li>
+Subtraction, written as <em>a</em>&nbsp;<code>-</code>&nbsp;<em>b</em>.
+</li>
+<li>
+Multiplication, written as <em>a</em>&nbsp;<code>*</code>&nbsp;<em>b</em>. =
+You can also write this by juxtaposition, i.e. just write <em>a</em>&nbsp;<=
+em>b</em>. For example, <code>(pi+2)(pi+3)</code> is a valid <code>spigot</=
+code> expression, synonymous with <code>(pi+2)*(pi+3)</code>.
+</li>
+<li>
+Division, written as <em>a</em>&nbsp;<code>/</code>&nbsp;<em>b</em>. As men=
+tioned in the previous section, this is the real-number division operation,=
+ with no implicit rounding to integers in any circumstances. It is an error=
+ to use this operator with <em>b</em>&nbsp;<code>=3D</code>&nbsp;<code>0</c=
+ode>.
+</li>
+<li>
+Modulus, written as <em>a</em>&nbsp;<code>%</code>&nbsp;<em>b</em> or <em>a=
+</em>&nbsp;<code>mod</code>&nbsp;<em>b</em> (the two syntaxes are synonymou=
+s). This returns a value of the form <em>a</em>&nbsp;<code>-</code>&nbsp;<e=
+m>nb</em>, with <em>n</em> chosen to be whichever integer puts the result i=
+n the range <code>[0,</code><em>b</em><code>)</code> (if <em>b</em> is posi=
+tive) or <code>(</code><em>b</em><code>,0]</code> (if <em>b</em> is negativ=
+e).
+</li>
+<li>
+Remainder, written as <em>a</em>&nbsp;<code>rem</code>&nbsp;<em>b</em>. Thi=
+s also returns a value of the form <em>a</em>&nbsp;<code>-</code>&nbsp;<em>=
+nb</em>, but with slightly different semantics: this operation chooses <em>=
+n</em> to be whichever integer puts the result in the range <code>[-</code>=
+<em>b</em><code>/2,+</code><em>b</em><code>/2]</code>. In case of a tie (if=
+ the result is precisely half way between two integer multiples of <em>b</e=
+m>, so that two different values of <em>n</em> meet that constraint), the a=
+nswer is chosen to also make <em>n</em> an even number. (This is the same s=
+emantics as the IEEE 754 remainder operation.)
+</li>
+<li>
+Power, written as <em>a</em>&nbsp;<code>^</code>&nbsp;<em>b</em> or <em>a</=
+em>&nbsp;<code>**</code>&nbsp;<em>b</em> (the two syntaxes are synonymous).
+</li>
+<li>
+Negation, written as <code>-</code>&nbsp;<em>a</em>.
+</li>
+<li>
+Factorial, written as <em>a</em>&nbsp;<code>!</code>. This is implemented u=
+sing the gamma function, so it can apply to non-integer values. It is an er=
+ror to use this operator with <em>a</em> being a negative integer.
+</li>
+<li>
+The construction <code>+</code>&nbsp;<em>a</em> is supported for symmetry w=
+ith <code>-</code>&nbsp;<em>a</em>, but does nothing (just returns <em>a</e=
+m> unchanged).
+</li>
+</ul>
+<p>
+The priorities and associativity of these operators, from lowest to highest=
+, are as follows.
+</p>
+<ul><li>
+The addition and subtraction operators <code>+</code> and <code>-</code> ha=
+ve lowest priority, and associate left to right. (E.g. an expression such a=
+s <em>a</em><code>-</code><em>b</em><code>+</code><em>c</em><code>-</code><=
+em>d</em> is treated as if it were <code>(((</code><em>a</em><code>-</code>=
+<em>b</em><code>)+</code><em>c</em><code>)-</code><em>d</em><code>)</code>.=
+)
+</li>
+<li>
+The multiplication and division operators <code>*</code>, <code>/</code>, <=
+code>%</code> and its synonym <code>mod</code>, and <code>rem</code> have t=
+he next higher priority, and also associate left to right. Multiplication b=
+y juxtaposition is included in this: when two numbers or parenthesised expr=
+essions appear adjacent in an expression, the parser imagines a <code>*</co=
+de> between them, and treats that <code>*</code> with the same priority as =
+if it had been explicit.
+</li>
+<li>
+The negation and no-op operators <code>-</code> and <code>+</code> have the=
+ next higher priority. Since these are unary operators, there is no questio=
+n of which way they associate: <code>--</code><em>a</em> has only one possi=
+ble parse in any case, namely <code>-(-</code><em>a</em><code>)</code>.
+</li>
+<li>
+<code>^</code> and its synonym <code>**</code> have the next higher priorit=
+y. These operators associate right to left, i.e. <em>a</em><code>^</code><e=
+m>b</em><code>^</code><em>c</em> parses as if it had been <em>a</em><code>^=
+(</code><em>b</em><code>^</code><em>c</em><code>)</code>. Note that since t=
+hese operators have higher priority than the unary operators, <code>-</code=
+><em>a</em><code>^</code><em>b</em> parses as <code>-(</code><em>a</em><cod=
+e>^</code><em>b</em><code>)</code>, rather than the usually less helpful <c=
+ode>(-</code><em>a</em><code>)^</code><em>b</em>.
+</li>
+<li>
+The suffix factorial operator <code>!</code> has the highest priority.
+</li>
+</ul>
+<h3><a name=3D"functions"></a>3.2 Functions</h3>
+<p>
+As well as infix and prefix operators, <code>spigot</code> also supports a =
+range of mathematical functions, all written in the style <code>function(</=
+code><em>argument</em><code>)</code> or <code>function(</code><em>argument1=
+</em><code>,</code><em>argument2</em><code>)</code>. The following function=
+s are provided:
+</p>
+<ul><li>
+<code>sqrt(</code><em>x</em><code>)</code> returns the square root of <em>x=
+</em>. It is an error to use this function with <em>x</em>&nbsp;<code>&lt;<=
+/code>&nbsp;<code>0</code>.
+</li>
+<li>
+<code>cbrt(</code><em>x</em><code>)</code> returns the cube root of <em>x</=
+em>.
+</li>
+<li>
+<code>hypot(</code><em>x</em><code>,</code><em>y</em><code>)</code> returns=
+ the hypotenuse of a right triangle with legs <em>x</em> and <em>y</em>, or=
+ equivalently, the square root of <em>x</em><code>^2</code>&nbsp;<code>+</c=
+ode>&nbsp;<em>y</em><code>^2</code>.
+</li>
+<li>
+<code>hypot(</code><em>x0</em><code>,</code>=85<code>,</code><em>xn</em><co=
+de>)</code> generalises the two-argument <code>hypot</code> function to ret=
+urn the square root of the sum of the squares of all its arguments.
+</li>
+<li>
+<code>sin(</code><em>x</em><code>)</code> returns the sine of <em>x</em>, i=
+nterpreted in radians.
+</li>
+<li>
+<code>cos(</code><em>x</em><code>)</code> returns the cosine of <em>x</em>,=
+ interpreted in radians.
+</li>
+<li>
+<code>tan(</code><em>x</em><code>)</code> returns the tangent of <em>x</em>=
+, interpreted in radians. In theory, it would be an error to use this funct=
+ion with <em>x</em> being an odd integer multiple of <em>&#960;</em><code>/=
+2</code>; in practice, <code>spigot</code> will never actually notice. (See=
+ <a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.html=
+#hazards">chapter 5</a> for some discussion of this.)
+</li>
+<li>
+<code>asin(</code><em>x</em><code>)</code> returns an angle <em>&#952;</em>=
+ in radians, in the range <code>[-</code><em>&#960;</em><code>/2,+</code><e=
+m>&#960;</em><code>/2]</code>, such that <code>sin(</code><em>&#952;</em><c=
+ode>)</code>&nbsp;<code>=3D</code>&nbsp;<em>x</em>. It is an error to use t=
+his function if <em>x</em> is not in the range <code>[-1,+1]</code>.
+</li>
+<li>
+<code>acos(</code><em>x</em><code>)</code> returns an angle <em>&#952;</em>=
+ in radians, in the range <code>[0,+</code><em>&#960;</em><code>]</code>, s=
+uch that <code>cos(</code><em>&#952;</em><code>)</code>&nbsp;<code>=3D</cod=
+e>&nbsp;<em>x</em>. It is an error to use this function if <em>x</em> is no=
+t in the range <code>[-1,+1]</code>.
+</li>
+<li>
+<code>atan(</code><em>x</em><code>)</code> returns an angle <em>&#952;</em>=
+ in radians, in the range <code>[-</code><em>&#960;</em><code>/2,+</code><e=
+m>&#960;</em><code>/2]</code>, such that <code>tan(</code><em>&#952;</em><c=
+ode>)</code>&nbsp;<code>=3D</code>&nbsp;<em>x</em>.
+</li>
+<li>
+<code>atan2(</code><em>y</em><code>,</code><em>x</em><code>)</code> returns=
+ an angle <em>&#952;</em> in radians, in the range <code>(-</code><em>&#960=
+;</em><code>,+</code><em>&#960;</em><code>]</code>, such that the vector <c=
+ode>(sin(</code><em>&#952;</em><code>),cos(</code><em>&#952;</em><code>))</=
+code> is a positive real multiple of the input vector <code>(</code><em>y</=
+em><code>,</code><em>x</em><code>)</code>. It is an error to use this funct=
+ion with <em>y</em>&nbsp;<code>=3D</code>&nbsp;<em>x</em>&nbsp;<code>=3D</c=
+ode>&nbsp;<code>0</code>.
+</li>
+<li>
+<code>sind(</code><em>x</em><code>)</code> returns the sine of <em>x</em>, =
+interpreted in degrees.
+</li>
+<li>
+<code>cosd(</code><em>x</em><code>)</code> returns the cosine of <em>x</em>=
+, interpreted in degrees.
+</li>
+<li>
+<code>tand(</code><em>x</em><code>)</code> returns the tangent of <em>x</em=
+>, interpreted in degrees. It is an error to use this function with <em>x</=
+em> being an odd integer multiple of 90.
+</li>
+<li>
+<code>asind(</code><em>x</em><code>)</code> returns an angle <em>&#952;</em=
+> in degrees, in the range <code>[-90,+90]</code>, such that <code>sind(</c=
+ode><em>&#952;</em><code>)</code>&nbsp;<code>=3D</code>&nbsp;<em>x</em>. It=
+ is an error to use this function if <em>x</em> is not in the range <code>[=
+-1,+1]</code>.
+</li>
+<li>
+<code>acosd(</code><em>x</em><code>)</code> returns an angle <em>&#952;</em=
+> in degrees, in the range <code>[0,+180]</code>, such that <code>cosd(</co=
+de><em>&#952;</em><code>)</code>&nbsp;<code>=3D</code>&nbsp;<em>x</em>. It =
+is an error to use this function if <em>x</em> is not in the range <code>[-=
+1,+1]</code>.
+</li>
+<li>
+<code>atand(</code><em>x</em><code>)</code> returns an angle <em>&#952;</em=
+> in degrees, in the range <code>[-90,+90]</code>, such that <code>tand(</c=
+ode><em>&#952;</em><code>)</code>&nbsp;<code>=3D</code>&nbsp;<em>x</em>.
+</li>
+<li>
+<code>atan2d(</code><em>y</em><code>,</code><em>x</em><code>)</code> return=
+s an angle <em>&#952;</em> in degrees, in the range <code>(-180,+180]</code=
+>, such that the vector <code>(sind(</code><em>&#952;</em><code>),cosd(</co=
+de><em>&#952;</em><code>))</code> is a positive real multiple of the input =
+vector <code>(</code><em>y</em><code>,</code><em>x</em><code>)</code>. It i=
+s an error to use this function with <em>y</em>&nbsp;<code>=3D</code>&nbsp;=
+<em>x</em>&nbsp;<code>=3D</code>&nbsp;<code>0</code>.
+</li>
+<li>
+<code>sinc(</code><em>x</em><code>)</code> returns <code>sin(</code><em>x</=
+em><code>)/</code><em>x</em> (sometimes known as the =91cardinal sine=92 fu=
+nction). <code>sinc(0)</code> returns 1 (which makes the function continuou=
+s).
+</li>
+<li>
+<code>sincn(</code><em>x</em><code>)</code> is the =91normalised=92 sinc fu=
+nction, equivalent to <code>sinc(</code><em>&#960;</em>&nbsp;<em>x</em><cod=
+e>)</code>.
+</li>
+<li>
+<code>exp(</code><em>x</em><code>)</code> returns <em>e</em> to the power o=
+f <em>x</em>.
+</li>
+<li>
+<code>exp2(</code><em>x</em><code>)</code> returns 2 to the power of <em>x<=
+/em>.
+</li>
+<li>
+<code>exp10(</code><em>x</em><code>)</code> returns 10 to the power of <em>=
+x</em>.
+</li>
+<li>
+<code>log(</code><em>x</em><code>)</code> returns the natural logarithm of =
+<em>x</em>. It is an error to use this function if <em>x</em>&nbsp;<code>&l=
+t;=3D</code>&nbsp;<code>0</code>.
+</li>
+<li>
+<code>log(</code><em>x</em><code>,</code><em>b</em><code>)</code> returns t=
+he logarithm of <em>x</em> to the base <em>b</em>. It is an error to use th=
+is form of the <code>log</code> function if <em>x</em>&nbsp;<code>&lt;=3D</=
+code>&nbsp;<code>0</code>, or if <em>b</em>&nbsp;<code>&lt;=3D</code>&nbsp;=
+<code>0</code>, or if <em>b</em>&nbsp;<code>=3D</code>&nbsp;<code>1</code>.
+</li>
+<li>
+<code>log2(</code><em>x</em><code>)</code> returns the logarithm of <em>x</=
+em> to the base 2. It is an error to use this function if <em>x</em>&nbsp;<=
+code>&lt;=3D</code>&nbsp;<code>0</code>.
+</li>
+<li>
+<code>log10(</code><em>x</em><code>)</code> returns the logarithm of <em>x<=
+/em> to the base 10. It is an error to use this function if <em>x</em>&nbsp=
+;<code>&lt;=3D</code>&nbsp;<code>0</code>.
+</li>
+<li>
+<code>expm1(</code><em>x</em><code>)</code> returns the same as <code>exp(<=
+/code><em>x</em><code>)</code>&nbsp;<code>-</code>&nbsp;<code>1</code>.
+</li>
+<li>
+<code>log1p(</code><em>x</em><code>)</code> returns the same as <code>log(1=
+</code>&nbsp;<code>+</code>&nbsp;<em>x</em><code>)</code>. It is an error t=
+o use this function if <em>x</em>&nbsp;<code>&lt;=3D</code>&nbsp;<code>-1</=
+code>.
+</li>
+<li>
+<code>pow(</code><em>x</em><code>,</code><em>y</em><code>)</code> returns <=
+em>x</em> raised to the power <em>y</em>. This is synonymous with the <code=
+>^</code> and <code>**</code> operators described in <a href=3D"https://www=
+.chiark.greenend.org.uk/~sgtatham/spigot/spigot.html#operators">section 3.1=
+</a>, and included for convenience if pasting expressions out of languages =
+such as C.
+</li>
+<li>
+<code>sinh(</code><em>x</em><code>)</code> returns the hyperbolic sine of <=
+em>x</em>.
+</li>
+<li>
+<code>cosh(</code><em>x</em><code>)</code> returns the hyperbolic cosine of=
+ <em>x</em>.
+</li>
+<li>
+<code>tanh(</code><em>x</em><code>)</code> returns the hyperbolic tangent o=
+f <em>x</em>.
+</li>
+<li>
+<code>asinh(</code><em>x</em><code>)</code> returns the value <em>y</em> su=
+ch that <code>sinh(</code><em>y</em><code>)</code>&nbsp;<code>=3D</code>&nb=
+sp;<em>x</em>.
+</li>
+<li>
+<code>acosh(</code><em>x</em><code>)</code> returns the non-negative value =
+<em>y</em> such that <code>cosh(</code><em>y</em><code>)</code>&nbsp;<code>=
+=3D</code>&nbsp;<em>x</em>. It is an error to use this function if <em>x</e=
+m>&nbsp;<code>&lt;</code>&nbsp;<code>1</code>.
+</li>
+<li>
+<code>atanh(</code><em>x</em><code>)</code> returns the value <em>y</em> su=
+ch that <code>tanh(</code><em>y</em><code>)</code>&nbsp;<code>=3D</code>&nb=
+sp;<em>x</em>. It is an error to use this function if <em>x</em> is not in =
+the range <code>[-1,+1]</code>.
+</li>
+<li>
+<code>gamma(</code><em>x</em><code>)</code> and <code>tgamma(</code><em>x</=
+em><code>)</code> return the gamma function of <em>x</em>. (The two functio=
+n names are synonymous =96 <code>tgamma</code> is provided for convenience =
+if pasting expressions out of C.) It is an error to use this function if <e=
+m>x</em> is a negative integer or zero.
+</li>
+<li>
+<code>lgamma(</code><em>x</em><code>)</code> returns the logarithm of <code=
+>gamma(</code><em>x</em><code>)</code>, or the logarithm of <code>-gamma(</=
+code><em>x</em><code>)</code> if <code>gamma(</code><em>x</em><code>)</code=
+>&nbsp;<code>&lt;</code>&nbsp;<code>0</code>. It is an error to use this fu=
+nction if <em>x</em> is a negative integer or zero.
+</li>
+<li>
+<code>factorial(</code><em>x</em><code>)</code> returns the factorial of <e=
+m>x</em>, i.e. the same thing as <code>gamma(</code><em>x</em><code>+1)</co=
+de>. It is an error to use this function if <em>x</em> is a negative intege=
+r.
+</li>
+<li>
+<code>erf(</code><em>x</em><code>)</code> returns the error function of <em=
+>x</em>.
+</li>
+<li>
+<code>erfc(</code><em>x</em><code>)</code> returns the same as <code>1</cod=
+e>&nbsp;<code>-</code>&nbsp;<code>erf(</code><em>x</em><code>)</code>.
+</li>
+<li>
+<code>Phi(</code><em>x</em><code>)</code> and <code>norm(</code><em>x</em><=
+code>)</code> return the cumulative normal distribution function of <em>x</=
+em>. (The two names are synonymous.)
+</li>
+<li>
+<code>erfinv(</code><em>x</em><code>)</code> and <code>inverf(</code><em>x<=
+/em><code>)</code> both return the value <em>y</em> such that <code>erf(</c=
+ode><em>y</em><code>)</code>&nbsp;<code>=3D</code>&nbsp;<em>x</em>. It is a=
+n error to use this function if <em>x</em> is not in the range <code>(-1,+1=
+)</code>.
+</li>
+<li>
+<code>erfcinv(</code><em>x</em><code>)</code> and <code>inverfc(</code><em>=
+x</em><code>)</code> both return the value <em>y</em> such that <code>erfc(=
+</code><em>y</em><code>)</code>&nbsp;<code>=3D</code>&nbsp;<em>x</em>. It i=
+s an error to use this function if <em>x</em> is not in the range <code>(0,=
+2)</code>.
+</li>
+<li>
+<code>Phiinv(</code><em>x</em><code>)</code>, <code>norminv(</code><em>x</e=
+m><code>)</code>, <code>invPhi(</code><em>x</em><code>)</code>, <code>invno=
+rm(</code><em>x</em><code>)</code> and <code>probit(</code><em>x</em><code>=
+)</code> all return the value <em>y</em> such that <code>Phi(</code><em>y</=
+em><code>)</code>&nbsp;<code>=3D</code>&nbsp;<em>x</em>. It is an error to =
+use this function if <em>x</em> is not in the range <code>(0,1)</code>.
+</li>
+<li>
+<code>W(</code><em>x</em><code>)</code> and <code>Wn(</code><em>x</em><code=
+>)</code> are the two branches of the Lambert W function. Each of them retu=
+rns a value <em>y</em> such that <em>y</em>&nbsp;<code>exp(</code><em>y</em=
+><code>)</code>&nbsp;<code>=3D</code>&nbsp;<em>x</em>. <code>W(</code><em>x=
+</em><code>)</code> returns <em>y</em>&nbsp;<code>&gt;=3D</code>&nbsp;<code=
+>-1</code>, and it is an error to use it if <em>x</em>&nbsp;<code>&lt;</cod=
+e>&nbsp;<code>-1/e</code>; <code>Wn(</code><em>x</em><code>)</code> returns=
+ <em>y</em>&nbsp;<code>&lt;=3D</code>&nbsp;<code>-1</code>, and it is an er=
+ror to use it if <em>x</em> is not in the range <code>[-1/e,0)</code>.
+</li>
+<li>
+<code>Ei(</code><em>x</em><code>)</code> is the indefinite integral of <cod=
+e>exp(</code><em>x</em><code>)/</code><em>x</em>, defined in the negative d=
+omain so that its limit at negative infinity is zero, and defined in the po=
+sitive domain (to deal with the pole at <em>x</em>&nbsp;<code>=3D</code>&nb=
+sp;<code>0</code>) so that the limit of <code>Ei(-</code><em>&#949;</em><co=
+de>)-Ei(+</code><em>&#949;</em><code>)</code> is zero as <em>&#949;</em>&nb=
+sp;&#8594;&nbsp;<code>0</code>. It is an error to use this function with <e=
+m>x</em>&nbsp;<code>=3D</code>&nbsp;<code>0</code>.
+</li>
+<li>
+<code>En(</code><em>n</em><code>,</code><em>x</em><code>)</code> is defined=
+ for non-negative integer <em>n</em>, and is the <em>n</em>-times-iterated =
+indefinite integral of <code>exp(-</code><em>x</em><code>)/</code><em>x</em=
+>. That is, <code>En(0,</code><em>x</em><code>)</code> is just equal to <co=
+de>exp(-</code><em>x</em><code>)/</code><em>x</em>; and for all larger <em>=
+n</em>, <code>En(</code><em>n</em><code>,</code><em>x</em><code>)</code> is=
+ the indefinite integral of <code>-En(</code><em>n</em><code>-1,</code><em>=
+x</em><code>)</code>, defined so that its limit at infinity is zero. (The s=
+ign is flipped each time so that the function is positive for all <em>n</em=
+>.) It is an error to use this function with <em>x</em>&nbsp;<code>&lt;</co=
+de>&nbsp;<code>0</code>, or with <em>x</em>&nbsp;<code>=3D</code>&nbsp;<cod=
+e>0</code> and <em>n</em> equal to either <code>0</code> or <code>1</code>.
+</li>
+<li>
+<code>E1(</code><em>x</em><code>)</code> is a shorthand for <code>En(1,</co=
+de><em>x)</em>, and is also equal to <code>-Ei(-</code><em>x</em><code>)</c=
+ode>. It is an error to use this function with <em>x</em>&nbsp;<code>&lt;=
+=3D</code>&nbsp;<code>0</code>.
+</li>
+<li>
+<code>Ein(</code><em>x</em><code>)</code> is the indefinite integral of <co=
+de>(1-exp(-</code><em>x</em><code>))/</code><em>x</em>, defined so that <co=
+de>Ein(0)</code>&nbsp;<code>=3D</code>&nbsp;<code>0</code>. (This is the on=
+ly one of the exponential integral family which is actually defined everywh=
+ere.)
+</li>
+<li>
+<code>li(</code><em>x</em><code>)</code> is the indefinite integral of <cod=
+e>1/log(</code><em>x</em><code>)</code>, defined so that <code>li(0)</code>=
+&nbsp;<code>=3D</code>&nbsp;<code>0</code>, and dealing with the pole at <e=
+m>x</em>&nbsp;<code>=3D</code>&nbsp;<code>1</code> by defining the limit of=
+ <code>li(1-</code><em>&#949;</em><code>)-li(1+</code><em>&#949;</em><code>=
+)</code> to be zero as <em>&#949;</em>&nbsp;&#8594;&nbsp;<code>0</code> (th=
+e same trick as <code>Ei</code> above). It is an error to use this function=
+ with <em>x</em>&nbsp;<code>&lt;</code>&nbsp;<code>0</code>, or with <em>x<=
+/em>&nbsp;<code>=3D</code>&nbsp;<code>1</code>.
+</li>
+<li>
+<code>Li(</code><em>x</em><code>)</code> is also the indefinite integral of=
+ <code>1/log(</code><em>x</em><code>)</code>, but this time, defined so tha=
+t <code>Li(2)</code>&nbsp;<code>=3D</code>&nbsp;<code>0</code>. (That is, <=
+code>Li</code> and <code>li</code> only differ by a constant.) Again, it is=
+ an error to use this function with <em>x</em>&nbsp;<code>&lt;</code>&nbsp;=
+<code>0</code> or with <em>x</em>&nbsp;<code>=3D</code>&nbsp;<code>1</code>=
+.
+</li>
+<li>
+<code>Li2(</code><em>x</em><code>)</code> is the indefinite integral of <co=
+de>log(1-</code><em>x</em><code>)/x</code>, defined so that <code>Li2(0)</c=
+ode>&nbsp;<code>=3D</code>&nbsp;<code>0</code>. It is an error to use this =
+function with <em>x</em>&nbsp;<code>&gt;</code>&nbsp;<code>1</code>.
+</li>
+<li>
+<code>Si(</code><em>x</em><code>)</code> is the indefinite integral of <cod=
+e>sin(</code><em>x</em><code>)/</code><em>x</em>, defined so that <code>Si(=
+0)</code>&nbsp;<code>=3D</code>&nbsp;<code>0</code>.
+</li>
+<li>
+<code>si(</code><em>x</em><code>)</code> is also the indefinite integral of=
+ <code>sin(</code><em>x</em><code>)/</code><em>x</em>, defined so that its =
+limit at positive infinity is zero.
+</li>
+<li>
+<code>Ci(</code><em>x</em><code>)</code> is the indefinite integral of <cod=
+e>cos(</code><em>x</em><code>)/</code><em>x</em>, defined so that its limit=
+ at positive infinity is zero.
+</li>
+<li>
+<code>Cin(</code><em>x</em><code>)</code> is the indefinite integral of <co=
+de>(1-cos(</code><em>x</em><code>))/</code><em>x</em>, defined so that <cod=
+e>Cin(0)</code>&nbsp;<code>=3D</code>&nbsp;<code>0</code>.
+</li>
+<li>
+<code>FresnelS(</code><em>x</em><code>)</code> and <code>FresnelC(</code><e=
+m>x</em><code>)</code> are the normalised Fresnel integrals: the indefinite=
+ integral of <code>sin(</code><em>&#960;</em>&nbsp;<em>x</em><code>^2/2)</c=
+ode> and <code>cos(</code><em>&#960;</em>&nbsp;<em>x</em><code>^2/2)</code>=
+ respectively, both defined to be zero at zero.
+</li>
+<li>
+<code>UFresnelS(</code><em>x</em><code>)</code> and <code>UFresnelC(</code>=
+<em>x</em><code>)</code> are the =91unnormalised=92 Fresnel integrals, i.e.=
+ the integrals of <code>sin(</code><em>x</em><code>^2)</code> and <code>cos=
+(</code><em>x</em><code>^2)</code>, also defined to be zero at zero.
+</li>
+<li>
+<code>BesselJ(</code><em>a</em><code>,</code><em>x</em><code>)</code> is th=
+e Bessel function of the first kind of order <em>a</em>, which can be defin=
+ed as the definite integral from <code>t=3D0</code> to <code>t=3D</code><em=
+>&#960;</em> of <code>cos(</code><em>a</em><code>t</code>&nbsp;<code>-</cod=
+e>&nbsp;<em>x</em>&nbsp;<code>sin(t))</code>&nbsp;<code>/</code>&nbsp;<em>&=
+#960;</em>. It is an error to call this function with <em>a</em> not obviou=
+sly an integer.
+</li>
+<li>
+<code>BesselI(</code><em>a</em><code>,</code><em>x</em><code>)</code> is th=
+e <em>modified</em> Bessel function of the first kind of order <em>a</em>, =
+which is obtained from the corresponding <code>J</code> function by extendi=
+ng it to the complex plane, giving it an imaginary input value, and rotatin=
+g the output value back to the positive real axis. It is an error to call t=
+his function with <em>a</em> not obviously an integer.
+</li>
+<li>
+<code>zeta(</code><em>s</em><code>)</code> is the Riemann zeta function for=
+ real arguments. That is, for <em>s</em>&nbsp;<code>&gt;</code>&nbsp;<code>=
+1</code>, <code>zeta(</code><em>s</em><code>)</code> is the infinite sum of=
+ <em>n</em><code>^-</code><em>s</em> over all natural numbers <em>n</em>. T=
+he definition can be extended to <em>s</em>&nbsp;<code>&gt;</code>&nbsp;<co=
+de>0</code> by rearranging it into the <em>alternating</em> sum of <em>n</e=
+m><code>^-</code><em>s</em> divided by <code>1-2^(1-</code><em>s</em><code>=
+)</code>, and to negative <em>s</em> by Riemann's functional equation relat=
+ing <code>zeta(1-</code><em>s</em><code>)</code> to <code>zeta(</code><em>s=
+</em><code>)</code> (namely that their ratio is <code>2*gamma(</code><em>s<=
+/em><code>)*cos(pi*</code><em>s</em><code>/2)/((2*pi)^</code><em>s</em><cod=
+e>)</code>). It is an error to use this function with <em>s</em>&nbsp;<code=
+>=3D</code>&nbsp;<code>1</code>.
+</li>
+<li>
+<code>agm(</code><em>a</em><code>,</code><em>b</em><code>)</code> is the ar=
+ithmetic-geometric mean. This is the limiting value obtained by replacing t=
+he pair of numbers <em>a</em> and <em>b</em> with their arithmetic mean and=
+ their geometric mean, then repeating that operation so that both numbers c=
+onverge inwards to a common limit. It is an error to use this function with=
+ <em>a</em>&nbsp;<code>&lt;=3D</code>&nbsp;<code>0</code>.
+</li>
+<li>
+<code>Hg(</code><em>numerator-factors</em><code>;</code><em>denominator-fac=
+tors</em><code>;</code><em>x</em><code>)</code> is the generalised hypergeo=
+metric function, defined by a power series in <em>x</em> in which the ratio=
+ between successive coefficients is given by a rational function with a ter=
+m on top for each numerator factor, one on the bottom for each denominator =
+factor, and an extra denominator factor consisting of factorials. Only rati=
+onal factors are supported, but <em>x</em> can be irrational. It is an erro=
+r to use this function with the number of numerator factors exceeding the n=
+umber of denominator factors by more than 1, with any denominator factor be=
+ing zero or a negative integer, or with the primary input value <em>x</em> =
+being outside the function's domain of convergence (which varies with the p=
+arameters).
+</li>
+<li>
+<code>abs(</code><em>x</em><code>)</code> returns the absolute value of <em=
+>x</em>, i.e. either <em>x</em> or <code>-</code><em>x</em>, whichever is n=
+on-negative.
+</li>
+<li>
+<code>sign(</code><em>x</em><code>)</code> returns <code>+1</code> if <em>x=
+</em> is positive, <code>-1</code> if <em>x</em> is negative, or zero if <e=
+m>x</em> is zero. (However, be wary of exactness hazards; many instances of=
+ the zero case may not manage to return any value at all See <a href=3D"htt=
+ps://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.html#hazards">chapt=
+er 5</a>.)
+</li>
+<li>
+<code>ceil(</code><em>x</em><code>)</code> returns the smallest integer <em=
+>n</em> such that <em>n</em>&nbsp;<code>&gt;=3D</code>&nbsp;<em>x</em>.
+</li>
+<li>
+<code>floor(</code><em>x</em><code>)</code> returns the largest integer <em=
+>n</em> such that <em>n</em>&nbsp;<code>&lt;=3D</code>&nbsp;<em>x</em>.
+</li>
+<li>
+<code>frac(</code><em>x</em><code>)</code> returns the fractional part of <=
+em>x</em>. This is always positive, even if <em>x</em> is negative; i.e. th=
+is is the same as <em>x</em>&nbsp;<code>-</code>&nbsp;<code>floor(</code><e=
+m>x</em><code>)</code>.
+</li>
+<li>
+<code>fmod(</code><em>x</em><code>,</code><em>y</em><code>)</code> returns =
+the remainder of <em>x</em> by <em>y</em>, as the standard C function <code=
+>fmod</code> would compute it. Unlike the <code>mod</code> and <code>rem</c=
+ode> operators, the answer (if non-zero) is chosen to have the same sign as=
+ <em>x</em>.
+</li>
+<li>
+<code>round_</code><em>mode</em><code>(</code><em>x</em><code>)</code> retu=
+rns <em>x</em> rounded to an integer, by the rounding mode specified by the=
+ <em>mode</em> suffix on the function name. <em>mode</em> can be any of the=
+ same rounding-mode names that are available as command-line options, descr=
+ibed in <a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spig=
+ot.html#rmodeopts">section 4.2</a>. For example, <code>round_rne</code> rou=
+nds to the nearest integer, breaking a tie in favour of to whichever of the=
+ two equally near integers is even; <code>round_ru</code> rounds upwards (e=
+quivalent to <code>ceil</code>), and so on.
+</li>
+<li>
+<code>fracpart_</code><em>mode</em><code>(</code><em>x</em><code>)</code> r=
+eturns <em>x</em>&nbsp;<code>-</code>&nbsp;<code>round_</code><em>mode</em>=
+<code>(</code><em>x</em><code>)</code>, i.e. the =91fractional part=92 of <=
+em>x</em> after the integer part (determined by any rounding mode you choos=
+e) has been subtracted.
+</li>
+<li>
+<code>remainder_</code><em>mode</em><code>(</code><em>x</em><code>,</code><=
+em>y</em><code>)</code> returns the value <em>x</em>&nbsp;<code>-</code>&nb=
+sp;<em>qy</em>, where <em>q</em> is an integer obtained by rounding the quo=
+tient <em>x</em>&nbsp;<code>/</code>&nbsp;<em>y</em> using the specified ro=
+unding mode. In particular, <code>remainder_rne</code> is equivalent to the=
+ <code>rem</code> operator; <code>remainder_rd</code> is equivalent to the =
+<code>mod</code> operator; <code>remainder_rz</code> is equivalent to the <=
+code>fmod</code> function.
+</li>
+<li>
+<code>algebraic(</code><em>lo</em><code>,</code><em>hi</em><code>,</code><e=
+m>a0</em><code>,</code><em>a1</em><code>,</code>=85<code>,</code><em>an</em=
+><code>)</code> returns a root of the polynomial <em>a0</em>&nbsp;<code>+</=
+code>&nbsp;<em>a1</em>&nbsp;<code>x</code>&nbsp;<code>+</code>&nbsp;=85&nbs=
+p;<code>+</code>&nbsp;<em>an</em>&nbsp;<code>x^n</code> which lies within t=
+he interval <code>(</code><em>lo</em><code>,</code><em>hi</em><code>)</code=
+>. It is an error (which <code>spigot</code> will not <em>reliably</em> det=
+ect) to use this function if the specified polynomial does not have a uniqu=
+e real root within that interval, and also an error if either of <em>lo</em=
+> or <em>hi</em> or any polynomial coefficient is not obviously rational.
+</li>
+</ul>
+<p>
+Some of these functions are considerably slower than others. The inverses o=
+f <code>erf</code> and <code>Phi</code> and the <code>W</code> functions, i=
+n particular, are implemented by laborious interval-bisection and are very =
+slow indeed.
+</p>
+<h3><a name=3D"literals"></a>3.3 Numeric literals</h3>
+<p>
+You can write actual numbers in <code>spigot</code> expressions, of course.=
+ By default a string of digits, or a string of digits with a decimal point =
+somewhere in it, will be interpreted in decimal.
+</p>
+<p>
+<code>spigot</code> supports C-style scientific notation, in which a decima=
+l number (with or without a decimal point) is suffixed with <code>e</code> =
+followed by an optional <code>+</code> or <code>-</code> and then another d=
+ecimal integer; this denotes the first number times 10 to the power of the =
+second. For example, <code>1.2</code> means 1.2, but <code>1.2e10</code> (o=
+r <code>1.2e+10</code>) means 12000000000, and <code>1.2e-10</code> means 0=
+.00000000012.
+</p>
+<p>
+<code>spigot</code> also supports hex numbers, by prefixing <code>0x</code>=
+ or <code>0X</code> to a number, e.g. <code>0xabc</code> means 2748. Hex nu=
+mbers can be suffixed with an exponent part similar to the decimal one desc=
+ribed above, only using <code>p</code> in place of <code>e</code> as the se=
+parator character; this means the hex number should be multiplied by the sp=
+ecified power of <em>two</em>. For example, <code>0x1.2</code> means 1.125 =
+(one and an eighth); then <code>0x1.2p1</code> (or <code>0x1.2p+1</code>) m=
+eans twice that, i.e. 2.25, and <code>0x1.2p-1</code> means half of it, i.e=
+. 0.5625.
+</p>
+<p>
+If you want to input numbers in bases other than 10 and 16, you can prefix =
+a numeric literal with <code>base2:</code>, <code>base3:</code>, =85, <code=
+>base36:</code>. For example, you could write <code>base2:11.011</code>, or=
+ <code>base36:ZYX.WVU</code>. No exponent suffix is recognised in this mode=
+, because there's no solid convention for what it should look like or even =
+what should be raised to the specified power (since the usual exponent-base=
+s for bases 10 and 16 are 10 and 2 respectively). If you want to specify a =
+number in scientific notation and an arbitrary base, write the exponent as =
+an explicit power of something, e.g. <code>base7:1.234</code>&nbsp;<code>*<=
+/code>&nbsp;<code>7^13</code>.
+</p>
+<p>
+A final way you can specify literal numbers to <code>spigot</code> is by sp=
+ecifying them as a hex number interpreted according to IEEE 754. You do thi=
+s by writing <code>ieee:</code> followed by a number of hex digits, which m=
+ust be exactly 4, 8, 16 or 32. These lengths correspond to the following fo=
+rmats:
+</p>
+<ul><li>
+8 hex digits means IEEE 754 single precision: a 32-bit format consisting of=
+ 1 sign bit, 8 exponent bits, and 23 mantissa bits.
+</li>
+<li>
+16 hex digits means IEEE 754 double precision: a 64-bit format consisting o=
+f 1 sign bit, 11 exponent bits, and 52 mantissa bits.
+</li>
+<li>
+32 hex digits means the =91quad precision=92 or =91binary128=92 format defi=
+ned in the 2008 revision of IEEE 754: a 128-bit format consisting of 1 sign=
+ bit, 15 exponent bits, and 112 mantissa bits.
+</li>
+<li>
+4 hex digits means the =91half precision=92 or =91binary16=92 format define=
+d in the 2008 revision of IEEE 754: a terribly cute 16-bit format consistin=
+g of 1 sign bit, 5 exponent bits, and 10 mantissa bits.
+</li>
+</ul>
+<p>
+An IEEE hex bit pattern can be followed by a <code>.</code> and further hex=
+ digits, in which case those digits are treated as an extension to the mant=
+issa field. For example, <code>ieee:3f800000</code> represents 1 (in IEEE s=
+ingle precision); <code>ieee:3f800001</code> is the next representable numb=
+er, namely <code>1+2^-23</code>; and <code>spigot</code> will interpret <co=
+de>ieee:3f800000.8</code> as the number half way between those two, i.e. <c=
+ode>1+2^-24</code>.
+</p>
+<p>
+Infinities and NaNs are not permitted as IEEE format input.
+</p>
+<h3><a name=3D"constants"></a>3.4 Built-in constants</h3>
+<p>
+<code>spigot</code> also supports a few mathematical constants under built-=
+in names.
+</p>
+<ul><li>
+<code>pi</code> means <em>&#960;</em>, the ratio between a circle's radius =
+and half its circumference.
+</li>
+<li>
+<code>tau</code> is a shorthand for <code>2*pi</code>: the ratio between a =
+circle's radius and its circumference. (See the <a href=3D"https://www.taud=
+ay.com/tau-manifesto">Tau Manifesto</a>.)
+</li>
+<li>
+<code>e</code> means <em>e</em>, the base of natural logarithms.
+</li>
+<li>
+<code>phi</code> means the golden ratio, i.e. <code>(1+sqrt(5))/2</code>.
+</li>
+<li>
+<code>eulergamma</code> means the Euler-Mascheroni constant, i.e. the limit=
+ of the difference between <code>log(</code><em>n</em><code>)</code> and th=
+e sum of the reciprocals of the first <em>n</em> integers, as <em>n</em> te=
+nds to infinity.
+</li>
+<li>
+<code>apery</code> means Ap=E9ry's constant, i.e. the sum of the reciprocal=
+s of the cubes of the natural numbers.
+</li>
+<li>
+<code>catalan</code> means Catalan's constant, i.e. the alternating sum of =
+the reciprocals of the squares of the odd natural numbers.
+</li>
+<li>
+<code>gauss</code> means Gauss's constant, i.e. <code>1/agm(1,sqrt(2))</cod=
+e>.
+</li>
+</ul>
+<p>
+(Many of these numbers can be generated by other methods, such as <code>4*a=
+tan(1)</code> or <code>exp(1)</code>, but it's more convenient to have them=
+ available as predefined constants.)
+</p>
+<h3><a name=3D"filefd"></a>3.5 Numbers read from files and file descriptors=
+</h3>
+<p>
+<code>spigot</code> can read a number from a file in various formats, and u=
+se it as input to its range of mathematical operations and functions (or ju=
+st output it directly in a different format).
+</p>
+<p>
+To read a number from a file in ordinary decimal, write <code>base10file:</=
+code> followed by the file name. Any sequence of non-space characters follo=
+wing the <code>:</code> will be assumed to be the file name =96 even if the=
+y're punctuation or delimiters, e.g. if you write <code>sin(base10file:myfi=
+le)</code> then <code>spigot</code> will interpret the <code>)</code> as pa=
+rt of the file name, and (even if a file with that strange name does exist)=
+ will complain that the expression is incomplete.
+</p>
+<p>
+If you need to read a file that does have a space in its name, there's a qu=
+oting syntax to permit it. If the first character after the <code>:</code> =
+is either <code>'</code> or <code>"</code>, then <code>spigot</code> will l=
+ook for the next occurrence of the same character, and treat all characters=
+ in between as the file name. A doubled quote character will be treated as =
+a literal quote. For example:
+</p>
+<ul><li>
+<code>base10file:'my file'</code> will load the file =91<code>my file</code=
+>=92.
+</li>
+<li>
+<code>base10file:"my file"</code> will do the same.
+</li>
+<li>
+<code>base10file:'this isn''t sensible'</code> will load the file =91<code>=
+this isn't sensible</code>=92 (the doubled <code>'</code> turns into a sing=
+le one and does not terminate the quoted name).
+</li>
+<li>
+<code>base10file:"this isn't sensible"</code> is a neater way to specify th=
+e same name (since the <code>'</code> is not special in a filename quoted w=
+ith <code>"</code>).
+</li>
+</ul>
+<p>
+If your file contains the number in a base other than 10, you can prefix it=
+s name with <code>base2file:</code>, <code>base3file:</code>, =85, <code>ba=
+se36file:</code>. Bases larger than 36 are not supported, because after tha=
+t the letters of the alphabet run out.
+</p>
+<p>
+When <code>spigot</code> reads a file in base notation, it ignores newlines=
+ and white space interspersed between the digits.
+</p>
+<p>
+You can also prefix a file name with <code>cfracfile:</code>, in which case=
+ <code>spigot</code> will expect it to contain a sequence of continued frac=
+tion coefficients (written in decimal). The coefficients can be separated b=
+y any non-digit characters you like (including newlines, like <code>spigot<=
+/code>'s <code>-c</code> output mode, or <code>;</code> and <code>,</code> =
+like <code>spigot</code>'s <code>-c</code>&nbsp;<code>-l</code> output mode=
+); a minus sign is permitted before the very first coefficient to indicate =
+a negative number, but ignored thereafter.
+</p>
+<p>
+As mentioned in <a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spi=
+got/spigot.html#input">section 2.4</a>, <code>spigot</code> will treat numb=
+ers read from files using any of the above keywords as if they are not an e=
+xact representation of a rational number, but a prefix of an infinitely lon=
+g expansion of an irrational. So <code>spigot</code> will compute the outpu=
+t value as far as the input precision permits, and if it reaches the point =
+where it can't generate any further output without more input precision, it=
+ will stop, print an error message indicating which input file ran out firs=
+t, and return a special exit status 2.
+</p>
+<p>
+If you really did want the contents of a file to be interpreted as the <em>=
+exact</em> terminating expansion of a rational number, you can use the keyw=
+ords <code>base10xfile:</code> (or likewise with bases other than 10) and <=
+code>cfracxfile</code>, where the <code>x</code> stands for =91exact=92. Th=
+e advantage of doing this rather than just specifying your expansion on <co=
+de>spigot</code>'s command line directly is performance: if your input file=
+ is extremely large, then <code>spigot</code> will only have to read enough=
+ of it to generate the amount of output you asked for, whereas if you put t=
+he same number directly on the command line then <code>spigot</code> would =
+have to parse all of it before starting.
+</p>
+<p>
+<code>spigot</code> can also read from its standard input in the same way t=
+hat it would read from a file, if you write an expression containing the ke=
+yword <code>base10stdin</code> (or another base, as above) or <code>cfracst=
+din</code>. For example, if you write <code>base10stdin</code>, then <code>=
+spigot</code> will expect to read a number in base 10 from its own standard=
+ input (so you might pipe the output of another program into it).
+</p>
+<p>
+If <code>spigot</code> has been compiled with the feature enabled (which it=
+ typically will have been on Unix systems; use <code>spigot --version</code=
+> to check), you can also read from a numbered file descriptor of your choi=
+ce in place of standard input, by writing <code>base10fd:</code><em>n</em> =
+(or another base, as above) or <code>cfracfd:</code><em>n</em>. If you do t=
+his, <code>spigot</code> will expect its own file descriptor numbered <em>n=
+</em> to already be open and readable, and will expect to read a number fro=
+m there in the appropriate format. For example, <code>base10fd:0</code> is =
+another way of writing <code>base10stdin</code>; but, more interestingly, y=
+ou could invoke <code>spigot</code> with a shell redirection operator such =
+as <code>3&lt;filename</code> (where <code>filename</code>, in turn, could =
+point at something interesting such as a named pipe, not necessarily a regu=
+lar file), and then write (say) <code>base10fd:3</code> to refer to that nu=
+mber.
+</p>
+<p>
+Numbers read from stdin or numbered file descriptors are always treated as =
+exact if the file descriptor signals EOF. (The expectation is that the whol=
+e point of using a file descriptor is so that you can connect it to a progr=
+am that just keeps generating data.)
+</p>
+<p>
+(If <code>spigot</code> is told to read from one or more file descriptors w=
+hich refer to Unix terminal devices, you can use the <code>-T</code> option=
+ to set those terminals into raw mode. See <a href=3D"https://www.chiark.gr=
+eenend.org.uk/~sgtatham/spigot/spigot.html#miscopts">section 4.3</a> for mo=
+re detail.)
+</p>
+<p>
+If you want <code>spigot</code> to run in a mode where it will refuse to re=
+ad from files or file descriptors at all (for example, as a mild safety mea=
+sure if input expressions are coming from an untrusted source), you can use=
+ the <code>--safe</code> option.
+</p>
+<h3><a name=3D"let"></a>3.6 User-defined variables and functions</h3>
+<p>
+Sometimes, it's convenient to define your own variables or functions in a <=
+code>spigot</code> expression. For example, suppose you want to evaluate a =
+polynomial at some particular value. You could write something like this:
+</p>
+<pre><code>$ <b>spigot 'sin(1.1)^3 - 2*sin(1.1)^2 + 5*sin(1.1) - 7'</b>
+</code></pre>
+<p>
+but you probably got annoyed at the repetitiveness just <em>reading</em> th=
+at. So instead you could define a variable to have the repeated value:
+</p>
+<pre><code>$ <b>spigot 'let x=3Dsin(1.1) in x^3 - 2*x^2 + 5*x - 7'</b>
+</code></pre>
+<p>
+or alternatively define a function to represent the polynomial:
+</p>
+<pre><code>$ <b>spigot 'let f(x) =3D x^3 - 2*x^2 + 5*x - 7 in f(sin(1.1))'<=
+/b>
+</code></pre>
+<p>
+In this example, it's more or less a matter of taste which of those you pre=
+fer, but the function syntax becomes more useful if you want to evaluate th=
+e function multiple times, e.g.
+</p>
+<pre><code>$ <b>spigot 'let f(x) =3D x^3 - 2*x^2 + 5*x - 7 in f(f(sin(1.1))=
+)'</b>
+</code></pre>
+<p>
+The full syntax of the <code>let</code> statement is as follows:
+</p>
+<dl><dd>
+<code>let</code>&nbsp;<em>definitions</em>&nbsp;<code>in</code>&nbsp;<em>ex=
+pression</em>
+</dd>
+</dl>
+<p>
+where <em>definitions</em> is a comma-separated list of definitions, each i=
+n one of the following forms:
+</p>
+<dl><dd>
+<em>variable</em>&nbsp;<code>=3D</code>&nbsp;<em>expression</em>
+</dd>
+<dd>
+<em>function</em><code>(</code><em>parameters</em><code>)</code>&nbsp;<code=
+>=3D</code>&nbsp;<em>expression</em>
+</dd>
+</dl>
+<p>
+In the latter case, <em>parameters</em> is in turn a comma-separated list o=
+f identifiers, and <em>expression</em> is allowed to refer to those identif=
+iers as if they were variables.
+</p>
+<p>
+Each definition comes into scope as soon as it is complete, but not before.=
+ So a sequence of definitions can refer back to each other:
+</p>
+<pre><code>$ <b>spigot 'let x=3Dpi/2, y=3Dx^3, z=3Dexp(y) in sin(z)'</b>
+$ <b>spigot 'let f(x)=3Dx+1, g(x)=3Dsin(f(x)) in g(3)'</b>
+</code></pre>
+<p>
+but a definition cannot refer to <em>itself</em> =96 in particular, functio=
+ns cannot be defined recursively. (This is a fundamental limitation of <cod=
+e>spigot</code>'s evaluation system.)
+</p>
+<h2><a name=3D"options"></a>Chapter 4: Full list of <code>spigot</code>'s c=
+ommand line options</h2>
+<h3><a name=3D"outputopts"></a>4.1 Output format options</h3>
+<p>
+<code>spigot</code> supports the following options to control the format in=
+ which numbers are output:
+</p>
+<ul><li>
+<code>-b</code> and <code>-B</code>, followed by a number between 2 and 36 =
+inclusive, tell <code>spigot</code> to output in that number base. (Bases a=
+bove 36 are not supported because the alphabet runs out.) In bases above 10=
+, the Latin alphabet is used for extra digits, in lower case if <code>-b</c=
+ode> was used or upper case if <code>-B</code> was used. The default is <co=
+de>-b 10</code>.
+</li>
+<li>
+In the above modes, <code>-w</code>, followed by a positive number, tells <=
+code>spigot</code> to output at least that many digits of the number's inte=
+ger part, by writing leading zeroes if necessary.
+</li>
+<li>
+Also in this mode, <code>-s</code>, followed by a positive integer <em>e</e=
+m>, tells <code>spigot</code> to output a form of =91scientific notation=92=
+, in which the number is expressed as a power of <em>e</em> times a number =
+in the range <code>[1,</code><em>e</em><code>)</code>. The power of <em>e</=
+em> in this output mode is written first, unlike the more typical form of s=
+cientific notation which writes it at the end (because in <code>spigot</cod=
+e>'s case there might not <em>be</em> a far end of the number to write it a=
+t). You can use the special string =91<code>b</code>=92 in place of a posit=
+ive integer, which means to use the same base for the exponent as the base =
+the rest of the number is written in; for example, <code>-sb</code> on its =
+own will produce output such as =91<code>10^8 * 4.85165</code>=92, with a p=
+ower of 10 followed by a base-10 number.
+</li>
+<li>
+<code>-c</code> tells <code>spigot</code> to output the number as a list of=
+ continued fraction convergents, separated by newlines.
+</li>
+<li>
+<code>-l</code> is only effective in <code>-c</code> mode, and tells <code>=
+spigot</code> to output the continued fraction convergents all on one long =
+line, separated by <code>,</code>, except that the initial integer part is =
+separated from the rest by <code>;</code>.
+</li>
+<li>
+<code>-C</code> tells <code>spigot</code> to output the continued fraction =
+convergents of the number. The convergents are separated by newlines, and e=
+ach one is in the form of two decimal integers with a <code>/</code> betwee=
+n them.
+</li>
+<li>
+<code>-S</code>, <code>-D</code>, <code>-Q</code> and <code>-H</code> tell =
+<code>spigot</code> to output the number in the form of its IEEE 754 bit pa=
+ttern, translated into hex. The four options specify single, double, quad a=
+nd half precision respectively; see <a href=3D"https://www.chiark.greenend.=
+org.uk/~sgtatham/spigot/spigot.html#literals">section 3.3</a> for more info=
+rmation on those formats. If the number is not exactly representable in the=
+ specified format, then the normal-length IEEE bit pattern will be followed=
+ by a <code>.</code> and further hex digits extending the mantissa field. I=
+f the number is too small, it will underflow to denormals or to zero; if it=
+ is too big, <code>spigot</code> will output the IEEE bit pattern of the ap=
+propriate sign of infinity.
+</li>
+<li>
+In any of the above modes, <code>-d</code> followed by a number tells <code=
+>spigot</code> to limit the number of digits or continued fraction terms it=
+ outputs. In the ordinary base output modes, the number counts digits after=
+ the integer part (i.e. decimal places); in continued fraction mode, it cou=
+nts coefficients or convergents not including the initial one (which is con=
+ceptually the integer part, again); in IEEE mode, it counts extra <em>bits<=
+/em> of mantissa generated after the =91<code>.</code>=92. <code>-d</code> =
+is only an upper limit: if the number is exactly representable with fewer d=
+igits than specified, then <code>spigot</code> will not output extra traili=
+ng zeroes. The argument to <code>-d</code> can be negative, in which case (=
+in base or IEEE mode) rounding will occur at the specified distance <em>bef=
+ore</em> the point.
+</li>
+<li>
+<code>-R</code> tells <code>spigot</code> to output the number's value as a=
+ rational. If the number is not rational, <code>spigot</code> will compute =
+for ever without working that out, because some numbers it handles do turn =
+out to be rational after some computation.
+</li>
+<li>
+<code>--printf</code>, followed by a C-style <code>printf</code> format str=
+ing, tells <code>spigot</code> to format the number in the way the C <code>=
+printf</code> function would. The format string must consist of a single fl=
+oating-point formatting directive (i.e. it must begin with <code>%</code> a=
+nd end with the subsequent <code>e</code>, <code>f</code>, <code>g</code> o=
+r <code>a</code> conversion specifier). Most <code>printf</code> formatting=
+ modes also limit the number of digits, except for <code>%a</code> with no =
+precision specification, which will continue to output digits until the num=
+ber has been exactly represented =96 and if that is never (i.e. if the numb=
+er does not have a terminating representation in binary) then <code>spigot<=
+/code> will continue to print mantissa digits for ever and never print the =
+trailing exponent.
+</li>
+<li>
+In <code>--printf</code> mode with the <code>a</code> or <code>A</code> con=
+version specifier, <code>--nibble</code> adjusts the choice of exponent. <c=
+ode>spigot</code>'s default behaviour in hex <code>printf</code> mode is to=
+ choose the largest possible exponent, so that the leading hex digit of the=
+ output is always 1 (unless the number is exactly zero). <code>--nibble</co=
+de> changes the behaviour so that the exponent is always a multiple of 4, s=
+o that any leading digit is possible, and so that the hex digits always ali=
+gn to the digits that would be output in ordinary <code>-b16</code> mode.
+</li>
+</ul>
+<h3><a name=3D"rmodeopts"></a>4.2 Rounding mode options</h3>
+<p>
+When <code>spigot</code> is given a digit limit via <code>-d</code>, and is=
+ not in continued fraction output mode, it defaults to printing only digits=
+ from the real expansion of the number, i.e. it always truncates toward zer=
+o and never rounds up.
+</p>
+<p>
+You can make <code>spigot</code> round the output at the last digit positio=
+n in various modes, using one of the following options:
+</p>
+<ul><li>
+<code>--rz</code> tells <code>spigot</code> to always round towards zero. T=
+his is the default.
+</li>
+<li>
+<code>--ri</code> tells <code>spigot</code> to always round away from zero,=
+ i.e. the final digit is always incremented (unless the number was exact).
+</li>
+<li>
+<code>--ru</code> tells <code>spigot</code> to always round <em>up</em>, i.=
+e. towards positive infinity. This behaves like <code>--rz</code> for negat=
+ive numbers, and like <code>--ri</code> for positive numbers.
+</li>
+<li>
+<code>--rd</code> tells <code>spigot</code> to always round down, i.e. towa=
+rds negative infinity. This behaves like <code>--ri</code> for negative num=
+bers, and like <code>--rz</code> for positive numbers.
+</li>
+<li>
+<code>--rn</code> tells <code>spigot</code> to round to nearest, i.e. the f=
+inal digit will be incremented or not depending on which of the output numb=
+ers is closer in value to the true mathematical result. If there is an exac=
+t tie (the output is exactly half way between two representable numbers, e.=
+g. asking for 0.25 to one decimal place) then <code>spigot</code> will brea=
+k the tie by choosing whichever of the two outputs is an even multiple of t=
+he place-value of the final digit. Another name for this option is <code>--=
+rne</code> (for =91round to <strong>n</strong>earest, tie-breaking to <stro=
+ng>e</strong>ven=92).
+<p>
+(In an even base, this rounding rule is the same as the IEEE 754 round-to-n=
+earest rule, which specifies breaking ties by choosing the output in which =
+the <em>final digit itself</em> is even. In an odd base, the IEEE rule as w=
+ritten doesn't quite make sense, because in the case where rounding up caus=
+es a carry, <em>both</em> of the candidate values have an even final digit.=
+ But if you reinterpret the IEEE wording as meaning an even <em>multiple of=
+ the final digit's place value</em>, which is equivalent in an even base, t=
+hen that version of the rule does generalise to odd bases and give an unamb=
+iguous answer in all cases.)
+</p>
+
+</li>
+<li>
+<code>--rno</code> tells <code>spigot</code> to round to nearest, but this =
+time, tie-break to an odd multiple of the place value of the final digit.
+</li>
+<li>
+<code>--rnz</code>, <code>--rni</code>, <code>--rnu</code> and <code>--rnd<=
+/code> tell <code>spigot</code> to round to nearest, and break ties by roun=
+ding them according to the corresponding directed-rounding option: <code>--=
+rz</code>, <code>--ri</code>, <code>--ru</code>, or <code>--rd</code> respe=
+ctively.
+</li>
+</ul>
+<p>
+If <code>spigot</code> is told to print a limited number of digits via <cod=
+e>--printf</code> rather than <code>-d</code>, then it defaults to rounding=
+ to nearest and tiebreaking to even (i.e. equivalent to <code>--rn</code>),=
+ because that's the default behaviour of the C <code>printf</code> function=
+ which <code>spigot</code> is imitating. This is done by making the <code>-=
+-printf</code> option behave as if <code>--rn</code> had been specified alo=
+ngside it. So if you want to use a different rounding mode in <code>printf<=
+/code>-format output, you will need to specify the rounding-mode option <em=
+>second</em>, or else the implicit one in the <code>--printf</code> will ov=
+erride it. For example, <code>--printf</code>&nbsp;<code>--ru</code> will w=
+ork, but <code>--ru</code>&nbsp;<code>--printf</code> will revert to the <c=
+ode>--rn</code> implied by the <code>--printf</code> option.
+</p>
+<h3><a name=3D"miscopts"></a>4.3 Miscellaneous options</h3>
+<p>
+Here are some options which didn't fit nicely into the above categories.
+</p>
+<ul><li>
+<code>--safe</code> tells <code>spigot</code> to disallow all the keywords =
+in the expression syntax that ask to read from files, file descriptors or s=
+tandard input, as described in <a href=3D"https://www.chiark.greenend.org.u=
+k/~sgtatham/spigot/spigot.html#input">section 2.4</a> and <a href=3D"https:=
+//www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.html#filefd">section 3=
+.5</a>.
+</li>
+<li>
+<code>-T</code> tells <code>spigot</code> to set Unix terminal devices into=
+ raw mode, if it is told to read from any by the <code>base</code><em>N</em=
+><code>stdin</code>, <code>cfracstdin</code>, <code>base</code><em>N</em><c=
+ode>fd:</code> or <code>cfracfd:</code> literal syntaxes (see <a href=3D"ht=
+tps://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.html#filefd">secti=
+on 3.5</a>). Specifically, =91raw mode=92 means clearing the <code>ICANON</=
+code> and <code>ECHO</code> bits. For example, you could run =91<code>spigo=
+t -T -b2 base10fd:0</code>=92, and then type a decimal number at the keyboa=
+rd, and <code>spigot</code> will output the same number in binary, printing=
+ each bit as soon as it has enough information to know it; the use of <code=
+>-T</code> means that your keystrokes are received instantly (without waiti=
+ng for Return), and are not echoed to the screen to confuse the output.
+</li>
+<li>
+<code>-n</code> tells <code>spigot</code> not to print a trailing newline, =
+in base output mode (<code>-b</code> or <code>-B</code>), <code>--printf</c=
+ode> mode, or one-line continued fraction mode (<code>-c</code>&nbsp;<code>=
+-l</code>). Normally, if the output terminates, <code>spigot</code> will pr=
+int a newline character before exiting.
+</li>
+<li>
+<code>-o</code>, followed by a file name, tells <code>spigot</code> to send=
+ its output to that file instead of to its ordinary standard output channel=
+.
+</li>
+<li>
+<code>--tentative=3Doff</code>, <code>--tentative=3Don</code> and <code>--t=
+entative=3Dauto</code> control the printing of =91tentative output=92. Tent=
+ative output consists of digits that <code>spigot</code> is not completely =
+certain of yet, but is displaying temporarily in case it never manages to c=
+ompute something better. The default is =91<code>auto</code>=92, meaning th=
+at tentative output is printed only when <code>spigot</code>'s standard out=
+put points to a terminal device. For more detail, see <a href=3D"https://ww=
+w.chiark.greenend.org.uk/~sgtatham/spigot/spigot.html#hazards">chapter 5</a=
+>.
+</li>
+<li>
+<code>--version</code> tells <code>spigot</code> to report its version numb=
+er, and also any other build options, such as whether file descriptor input=
+ is supported, and which library is being used to provide the big-integer c=
+omputation that <code>spigot</code> depends on.
+</li>
+<li>
+<code>--help</code> displays an abbreviated list of <code>spigot</code>'s c=
+ommand line options.
+</li>
+<li>
+<code>--licence</code> displays <code>spigot</code>'s copyright notice and =
+licence text.
+</li>
+</ul>
+<h2><a name=3D"hazards"></a>Chapter 5: Hazards to computation</h2>
+<p>
+So far, this manual has more or less portrayed <code>spigot</code> as a mag=
+ic device that can compute anything it likes. Perhaps some expressions are =
+evaluated more slowly than others, but it'll get there in the end.
+</p>
+<p>
+Well =85 not quite, sorry.
+</p>
+<p>
+<code>spigot</code>'s core algorithm works by finding an interval of ration=
+als bracketing the target number, and gradually narrowing that interval fur=
+ther and further as more information is received or computed. Its various o=
+utput modes work by waiting until the interval has narrowed to the point th=
+at the next digit is uniquely determined, and then writing that digit out.
+</p>
+<p>
+The problem is: suppose that in order to work out the right output value, <=
+code>spigot</code> has to decide whether a number falls on one side or the =
+other of some boundary value. (This can happen in several different kinds o=
+f situation, which I categorise below.) It will do this by narrowing its in=
+terval until the boundary value doesn't fall inside it any more, and then i=
+t knows which side the number is on.
+</p>
+<p>
+So the closer to the boundary the number is, the longer <code>spigot</code>=
+ will take before its interval narrows enough to work out which side it's o=
+n. And here's the problem: if the number it's trying to compute is <em>exac=
+tly</em> on the boundary value, then <code>spigot</code> may very well <em>=
+not ever notice</em> =96 it will just keep narrowing its interval further a=
+nd further, and the boundary value will still be inside the interval no mat=
+ter how much it does that, so it will never manage to make a decision.
+</p>
+<p>
+It's not standard terminology in exact real computation, but I've tended to=
+ call this sort of problem an =91exactness hazard=92. The general rule of t=
+humb is that <code>spigot</code> is good at generating <em>difficult</em> o=
+utput =96 complicated and fiddly irrational numbers =96 but can get confuse=
+d if the answer to any computation is too <em>easy</em>, in particular if i=
+t's zero, or an integer, or has a finite number of digits in the output rep=
+resentation. So if you're computing any kind of long and fiddly expression,=
+ you need to watch out for too-simple exact numbers cropping up anywhere in=
+ it, because if you're unlucky, they can cause problems that prevent the ex=
+pression as a whole from being computed.
+</p>
+<p>
+In the following subsections, I list some possible effects of this kind of =
+problem, and go into more detail about what numbers can trigger it.
+</p>
+<h3><a name=3D"hazards-output"></a>5.1 Exactness hazards on output</h3>
+<p>
+One obvious situation in which <code>spigot</code> has to determine which s=
+ide of a boundary a number falls is during final output, if the entire resu=
+lt of the computation has a terminating representation in the output base o=
+r number system. For example, suppose you run this command:
+</p>
+<pre><code>$ <b>spigot 'sin(asin(0.12345))'</b>
+</code></pre>
+<p>
+Obviously, <em>we</em> can see that the true answer is <code>0.12345</code>=
+ exactly. But <code>spigot</code>, with no symbolic algebra system, can't s=
+ee that. So what can it do? It will manage to print =91<code>0.1234</code>=
+=92 easily enough, but then its interval of possible output values will nar=
+row for ever without allowing it to be certain of the next digit =96 no mat=
+ter how much the interval narrows, it will still have one end looking like =
+=91<code>0.123449999</code>=85=92 and the other like =91<code>0.123450000</=
+code>=85=92, and any further work will just add more 9s to the former and m=
+ore 0s to the latter, so there will never be a point at which it can be sur=
+e of that fifth digit.
+</p>
+<p>
+<code>spigot</code> mitigates this situation by means of its <em>tentative =
+output</em> feature. (See <a href=3D"https://www.chiark.greenend.org.uk/~sg=
+tatham/spigot/spigot.html#miscopts">section 4.3</a> for options to control =
+this.) What will actually happen if you run the above command, at least on =
+a default Unix terminal, is that <code>spigot</code> will print =91<code>0.=
+1234</code>=92 in the normal way, then follow that by printing the next dig=
+it =91<code>5</code>=92 <em>in red</em>. The red text indicates that the ou=
+tput is tentative, i.e. it might be retracted if more information comes alo=
+ng. So you might see a display along these lines:
+</p>
+<pre><code>$ <b>spigot 'sin(asin(0.12345))'</b>
+0.1234<span style=3D"color: red">5 (10^-205)</span>
+</code></pre>
+<p>
+This should be read as <code>spigot</code> saying: =91The number definitely=
+ starts with <code>0.1234</code>, and it <em>looks</em> as if it's exactly =
+<code>0.12345</code>, but I've only looked as far as 205 digits beyond that=
+ point, so there might still be surprises as I go further.=92 As <code>spig=
+ot</code> computes more and more digits without finding a divergence from <=
+code>0.12345</code>, the power of 10 in the suffix will keep growing. And t=
+he red tentative text can be retracted if further information is discovered=
+: if you had instead asked <code>spigot</code> to compute a number that was=
+ not exactly equal to <code>0.12345</code> but merely very very close to it=
+, then <em>eventually</em> <code>spigot</code> would find that out, delete =
+the red text, and print normal text in its place once it knew what it shoul=
+d be.
+</p>
+<p>
+So if you see this kind of tentative output from <code>spigot</code>, that'=
+s your cue to have a closer look at the expression you asked it to compute,=
+ and see if you can see some mathematical reason why the answer is <em>exac=
+tly</em> what <code>spigot</code> is suggesting it might be. In this exampl=
+e case above, of course, that reason is pretty obvious =96 that's what <cod=
+e>asin</code> <em>means</em>.
+</p>
+<p>
+One exceptional case in which this kind of thing <em>will</em> work is that=
+ <code>spigot</code> makes a special case for numbers it knows from first p=
+rinciples to be rational. So while the above expression with answer <code>0=
+.12345</code> ran into trouble, the following much simpler thing does work =
+sensibly, and just prints the right answer immediately:
+</p>
+<pre><code>$ <b>spigot 12345/100000</b>
+0.12345
+</code></pre>
+<p>
+because this time, <code>spigot</code> can remember that the number being o=
+utput is the same as the known-rational number it got as input, so it <em>c=
+an</em> spot that it's an exact digit boundary and output it correctly.
+</p>
+<p>
+(The special case for rationals is the only reason why <a href=3D"https://w=
+ww.chiark.greenend.org.uk/~sgtatham/spigot/spigot.html#rmodeopts">section 4=
+.2</a> needs to have all those different options for methods of tie-breakin=
+g in round-to-nearest mode =96 if no terminating representation could ever =
+be successfully generated, then no tie-breaking options would be required, =
+because <code>spigot</code> could never recognise a tie anyway.)
+</p>
+<h3><a name=3D"hazards-intermediate"></a>5.2 Exactness hazards in subexpres=
+sions</h3>
+<p>
+A more difficult case arises when <code>spigot</code> has the same problem =
+of locating a number on one side or another of a boundary value, but in an =
+<em>intermediate</em> result in a complex expression. For example, suppose =
+you run one of these commands:
+</p>
+<pre><code>$ <b>spigot 'tan(pi/2)'</b>
+$ <b>spigot 'floor(sin(pi))'</b>
+</code></pre>
+<p>
+In each of these situations, <code>spigot</code> will hang completely, and =
+never manage to print any output at all. This is because, in each case, the=
+ value of a subexpression (respectively <code>pi/2</code> and <code>sin(pi)=
+</code>) is exactly on a point of discontinuity of the function it's being =
+fed to next. In order to even <em>start</em> outputting the value of <code>=
+tan(x)</code>, <code>spigot</code> first needs to know whether it's positiv=
+e or negative =96 and it can't find that out until it knows whether <code>x=
+</code> is on one side or the other of <em>&#960;</em><code>/2</code>, whic=
+h in this case it will never manage to decide. Similarly with <code>floor(s=
+in(pi))</code>: to compute <code>floor(x)</code>, <code>spigot</code> needs=
+ to know whether <code>x</code>&nbsp;<code>&lt;</code>&nbsp;<code>0</code> =
+or <code>x</code>&nbsp;<code>&gt;=3D</code>&nbsp;<code>0</code>, and again,=
+ it can't work that out in the case where <code>x</code> is <em>exactly</em=
+> 0.
+</p>
+<p>
+In this kind of situation, there really is nothing <code>spigot</code> can =
+do but hang; even tentative output can't mitigate the situation.
+</p>
+<p>
+As in the previous section, if the number is <em>obviously</em> a rational,=
+ then <code>spigot</code> can do better. If you actually ask it for <code>f=
+loor(0)</code>, then it will handle that fine. But in the example above, th=
+e input to =91<code>floor</code>=92 is <em>non-obviously</em> zero, in the =
+sense that in order to know it <code>spigot</code> would have to actually <=
+em>think about maths</em> rather than just computing.
+</p>
+<p>
+Therefore, if this happens to you, you can sometimes debug it by pulling ou=
+t subexpressions and trying to evaluate them on their own; when you find on=
+e with a simple rational answer (probably signalled in turn by some red ten=
+tative output), see if you can prove that to be exactly the number you want=
+ed, and substitute it in. For example:
+</p>
+<pre><code>$ <b>spigot 'floor(sin(pi))'</b>
+<em>(spigot hangs)</em>
+$ <b>spigot 'sin(pi)'</b>
+<span style=3D"color: red">0 (10^-951)</span>
+$ <b>spigot 'floor(0)'</b>
+0
+</code></pre>
+<p>
+Here, the user observes <code>spigot</code> hanging, and suspects an exactn=
+ess hazard somewhere in their expression. The only interesting subexpressio=
+n is <code>sin(pi)</code>, so the user evaluates that on its own, and gets =
+back tentative output suggesting that the answer is exactly zero. The user =
+thinks about it, realises that of course the answer <em>is</em> exactly zer=
+o, and simplifies the original expression by substituting a literal zero in=
+ place of the needlessly complicated <code>sin(pi)</code>.
+</p>
+<p>
+(Of course, in this simple example case, once the user had spotted the exac=
+t zero it hardly needed to ask <code>spigot</code> for floor of it! But if =
+something more complicated were being done after the difficult point, it mi=
+ght well be easiest to substitute in the simple answer and try again with <=
+code>spigot</code>.)
+</p>
+<p>
+However, this debugging technique can only work in cases where the troubles=
+ome intermediate result is <em>rational</em>, because it's only rationals f=
+or which <code>spigot</code> has a special-case handler. There would be no =
+equivalent way to debug the <code>tan(pi/2)</code> example above =96 <code>=
+spigot</code> actually <em>cannot</em> recognise an input value to =91<code=
+>tan</code>=92 as being an odd multiple of <code>pi/2</code>.
+</p>
+<p>
+(This is the reason, mentioned in <a href=3D"https://www.chiark.greenend.or=
+g.uk/~sgtatham/spigot/spigot.html#functions">section 3.2</a>, why the <code=
+>tan</code> function can never return an error, even if you try to pass it =
+an invalid input value. Because <em>all</em> the values where <code>tan</co=
+de> has no finite answer are irrational, so <code>spigot</code> will always=
+ run into this exactness hazard which prevents it attempting to compute an =
+infinity.)
+</p>
+<h3><a name=3D"hazards-internal"></a>5.3 Internal exactness hazards</h3>
+<p>
+A third place where this same problem can occur, potentially, is internal t=
+o <code>spigot</code> itself. <code>spigot</code>'s internal implementation=
+ of its various functions will often need to locate the input value on one =
+or other side of some boundary value, and if <code>spigot</code> does that =
+without sufficient caution, then it might hang forever when passed exactly =
+the boundary value.
+</p>
+<p>
+This <em>should</em> never happen. Exactness hazards internal to <code>spig=
+ot</code> itself are <em>bugs</em>. I've found and fixed all the ones I kno=
+w of, but in case any more turn up, this section demonstrates how to recogn=
+ise one, so that you can report it as a bug.
+</p>
+<p>
+Here's an example of an exactness hazard that <em>used</em> to exist. <code=
+>spigot</code> computes the power function <code>a^b</code> by computing <c=
+ode>exp(b*log(a))</code>, in most cases. But if <code>a</code>&nbsp;<code>&=
+lt;</code>&nbsp;<code>0</code>, then the right answer will have <em>magnitu=
+de</em> <code>exp(b*log(abs(a)))</code>, but could be positive, negative or=
+ undefined depending on what kind of number <code>b</code> is. So the imple=
+mentation of <code>pow</code>, having first ruled out a variety of special =
+cases that don't require taking logs at all, would test the sign of <code>a=
+</code>, and run straight into a hazard if <code>a</code> was non-obviously=
+ zero. For example, this could happen:
+</p>
+<pre><code>$ <b>spigot '0^pi'</b>
+0
+$ <b>spigot 'sin(pi)'</b>
+<span style=3D"color: red">0 (10^-951)</span>
+$ <b>spigot 'sin(pi)^pi'</b>
+<em>(spigot used to just hang)</em>
+</code></pre>
+<p>
+If spigot <em>knew</em> that <code>a</code> was zero, then it could easily =
+decide that zero to any power is zero. And it's at least capable of realisi=
+ng that <code>sin(pi)</code> is <em>arbitrarily close</em> to zero =96 but =
+it wasn't able to produce even tentative output for <code>sin(pi)^pi</code>=
+, because that internal sign test of <code>a</code> hung forever trying to =
+decide which side of zero <code>sin(pi)</code> fell on.
+</p>
+<p>
+Now the bug is fixed, and the last of those commands produces perfectly goo=
+d tentative output:
+</p>
+<pre><code>$ <b>spigot 'sin(pi)^pi'</b>
+<span style=3D"color: red">0 (10^-807)</span>
+</code></pre>
+<p>
+So if you suspect you're in a situation like this, where some spigot comput=
+ation hangs (without even tentative output) for no reason you can see, try =
+this diagnostic procedure:
+</p>
+<ul><li>
+Narrow down to the smallest subexpression that exhibits the hang.
+</li>
+<li>
+Whatever function <code>f()</code> is the outermost one in that subexpressi=
+on, check that <code>spigot</code> can evaluate each argument to <code>f</c=
+ode> at least as far as producing tentative output. (<code>f</code> might b=
+e a literal <em>function</em>, written with brackets, such as <code>sin(x)<=
+/code> or <code>atan2(y,x)</code>, or it might be a mathematical operator s=
+uch as addition or negation; the same procedure applies no matter how <code=
+>f</code> is written.)
+</li>
+<li>
+Think about whether the mathematical function represented by <code>f</code>=
+ is continuous at the point in question. If not, then this is an unavoidabl=
+e hang as described in <a href=3D"https://www.chiark.greenend.org.uk/~sgtat=
+ham/spigot/spigot.html#hazards-intermediate">section 5.2</a>, not an intern=
+al exactness hazard.
+</li>
+<li>
+If you think that <code>f</code> is continuous at the specified point, and =
+that <code>spigot</code> is producing at least tentative output for all the=
+ inputs to <code>f</code>, then please report it as a bug, including the ex=
+act <code>spigot</code> commands you ran to demonstrate the failing subexpr=
+ession and the successful evaluation of the outermost function's arguments.
+</li>
+</ul>
+<p>
+For example, you might have reported the above example as follows:
+</p>
+<blockquote>
+<p>
+The following <code>spigot</code> command hangs without even tentative outp=
+ut:
+</p>
+<pre><code>$ <b>spigot 'sin(pi)^pi'</b>
+</code></pre>
+<p>
+I think this is an internal exactness hazard, because <code>spigot</code> c=
+an evaluate the two operands to the power function safely (the former produ=
+ces tentative output and the latter produces definite output):
+</p>
+<pre><code>$ <b>spigot 'sin(pi)'</b>
+$ <b>spigot 'pi'</b>
+</code></pre>
+<p>
+And the power function is mathematically continuous at the point <code>(0,<=
+/code><em>&#960;</em><code>)</code>, so I think <code>spigot</code> should =
+not hang in this case.
+</p>
+</blockquote>
+<p>
+That example report contains everything needed to check the facts, reproduc=
+e the failure, and decide whether it is indeed a bug.
+</p>
+<h3><a name=3D"hazards-design"></a>5.4 Design limitations</h3>
+<p>
+One last class of hang in <code>spigot</code> is due not to a bug in the im=
+plementation, but a lack of generality in the fundamental design, which cou=
+ldn't really be fixed without writing a totally different program from scra=
+tch.
+</p>
+<p>
+As mentioned above, <code>spigot</code> works by narrowing an interval of r=
+ationals bracketing the number. But sometimes you know that the number is s=
+omewhere within one of <em>two</em> intervals of rationals, and can keep na=
+rrowing both of those intervals without ever working out which one contains=
+ the number. And sometimes, depending on what you want to do with the numbe=
+r next, that ought in principle to be good enough.
+</p>
+<p>
+For example, it's possible to imagine a system that could cope with this:
+</p>
+<pre><code>$ <b>spigot 'abs(atan2(sin(pi),-1))'</b>
+</code></pre>
+<p>
+because the more you compute the input values to <code>atan2</code>, the cl=
+oser you know the output is to <em>one of</em> <code>+</code><em>&#960;</em=
+> and <code>-</code><em>&#960;</em>, even though you still don't know which=
+ =96 and since both of those values come out the same once they've been thr=
+ough the subsequent <code>abs</code> function, you could imagine the system=
+ being clever enough to cope with the expression as a whole. But <code>spig=
+ot</code>'s design fundamentally is not.
+</p>
+<h2><a name=3D"output"></a>Chapter 6: Output and return values of <code>spi=
+got</code></h2>
+<p>
+Whatever output format you have chosen (see <a href=3D"https://www.chiark.g=
+reenend.org.uk/~sgtatham/spigot/spigot.html#outputopts">section 4.1</a>), <=
+code>spigot</code> will write data in the specified format to its standard =
+output channel, i.e. Unix file descriptor 1.
+</p>
+<p>
+If <code>spigot</code> successfully generates all the precision you asked f=
+or, it will print a terminating newline (if the output is any of the one-li=
+ne types and you did not specify <code>-n</code>; see <a href=3D"https://ww=
+w.chiark.greenend.org.uk/~sgtatham/spigot/spigot.html#miscopts">section 4.3=
+</a>), and then it will terminate with exit status 0 (the usual signal for =
+success).
+</p>
+<p>
+If <code>spigot</code> cannot generate enough output precision because it w=
+as reading a number from an input file and that input file ran out, it will=
+ still print its terminating newline (subject to the same conditions as abo=
+ve) on standard output; it will also write an error message to its standard=
+ error channel (Unix file descriptor 2) indicating which input file ran out=
+ first (in case there was more than one), and terminate with exit status 2.
+</p>
+<p>
+If <code>spigot</code> encounters any other failure to evaluate the express=
+ion, it will print an error message to its standard error, and terminate wi=
+th exit status 1.
+</p>
+<h2><a name=3D"refs"></a>Appendix A: References</h2>
+<p>
+<code>spigot</code>'s central algorithm is derived from the paper =91An unb=
+ounded spigot algorithm for the digits of <em>&#960;</em>=92, by Jeremy Gib=
+bons. (American Mathematical Monthly, 113(4):318-328, 2006.) At the time of=
+ writing this, Jeremy Gibbons's web site has a <a href=3D"http://www.cs.ox.=
+ac.uk/people/jeremy.gibbons/publications/spigot.pdf">PDF copy of the paper<=
+/a> available.
+</p>
+<p>
+Gibbons's algorithm is readily adapted to produce a continued fraction repr=
+esentation as output in place of base notation, and to accept numbers other=
+ than <em>&#960;</em> as input. It forms the core of everything <code>spigo=
+t</code> does, and hence it seemed appropriate to name the entire program a=
+fter it.
+</p>
+<p>
+(Perhaps ironically, one part of Gibbons's algorithm that <code>spigot</cod=
+e> does <em>not</em> use any more is his representation of <em>&#960;</em>!=
+ It turned out that once <code>spigot</code> had grown the ability to compu=
+te square roots and do arithmetic, a representation based on Chudnovsky's f=
+ormula was much faster.)
+</p>
+<p>
+My algorithm for basic arithmetic is a sort of hybrid of Gibbons's spigot a=
+lgorithm and William Gosper's algorithm for doing basic arithmetic on conti=
+nued fractions (which I formerly used unmodified, but had to change it beca=
+use using a continued fraction representation introduces exactness hazards)=
+. Gosper's algorithm comes originally from =91HAKMEM=92: Memo 239, Artifici=
+al Intelligence Laboratory, Massachusetts Institute of Technology, Cambridg=
+e, Mass., 1972. HAKMEM can also be <a href=3D"http://hdl.handle.net/1721.1/=
+6086">downloaded</a> at the time of writing this. Also, I haven't checked w=
+ith great care, but the algorithm I constructed by combining both ideas may=
+ very well be the same as the one used by Imperial College's exact real ari=
+thmetic system (see the link below), in which case, they definitely had the=
+ same idea before I did.
+</p>
+<p>
+Other algorithms used in this program came from my own head (though I'm not=
+ aware that any of them came from my head <em>first</em>).
+</p>
+<p>
+<code>spigot</code> is not the only exact real calculator around, and was n=
+ot really written with the aim of filling any particular gap in the availab=
+le software. (I mostly wrote it for the fun of playing with Gibbons's elega=
+nt algorithm, and only realised some time later that it had become useful e=
+nough to be worth publishing.) Hence, if <code>spigot</code> is of interest=
+ to you, other implementations might also be of interest. Here are some tha=
+t I managed to find:
+</p>
+<ul><li>
+Keith Briggs's <a href=3D"http://keithbriggs.info/xr.1.html">xr</a>: a libr=
+ary callable from C programs.
+</li>
+<li>
+The <a href=3D"http://www.doc.ic.ac.uk/exact-computation/">Imperial College=
+ Exact Real Arithmetic Library</a>, also callable from C.
+</li>
+<li>
+David Plume's <a href=3D"http://www.cs.bham.ac.uk/~mhe/research.html">exact=
+ real calculator</a>, written in Haskell.
+</li>
+<li>
+Hans Boehm's <a href=3D"http://www.hboehm.info/new_crcalc/CRCalc.html">Cons=
+tructive Reals Calculator</a>, presented as a Java applet.
+</li>
+</ul>
+<h2><a name=3D"licence"></a>Appendix B: Copyright statement and licence</h2=
+>
+<p>
+spigot is copyright 2007-2019 Simon Tatham. All rights reserved.
+</p>
+<p>
+Permission is hereby granted, free of charge, to any person obtaining a cop=
+y of this software and associated documentation files (the "Software"), to =
+deal in the Software without restriction, including without limitation the =
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/or=
+ sell copies of the Software, and to permit persons to whom the Software is=
+ furnished to do so, subject to the following conditions:
+</p>
+<p>
+The above copyright notice and this permission notice shall be included in =
+all copies or substantial portions of the Software.
+</p>
+<p>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR =
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FI=
+TNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE A=
+UTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABI=
+LITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OU=
+T OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE=
+ SOFTWARE.
+</p>
+<h2><a name=3D"man"></a>Appendix C: Unix man page for <code>spigot</code></=
+h2>
+<h3><a name=3D"man-name"></a>C.1 NAME</h3>
+<p>
+<code>spigot</code> =96 command-line exact real calculator
+</p>
+<h3><a name=3D"man-synopsis"></a>C.2 SYNOPSIS</h3>
+<pre><code><b>spigot</b> [ <em>options</em> ] <em>expression</em>
+</code></pre>
+<h3><a name=3D"man-description"></a>C.3 DESCRIPTION</h3>
+<p>
+<code>spigot</code> is an exact real calculator: that is, you give it a mat=
+hematical expression to evaluate, and it computes it to any desired precisi=
+on, by default simply printing digits to standard output until it is interr=
+upted.
+</p>
+<p>
+<code>spigot</code> provides command-line options to control the format of =
+the output, restrict it to a specified number of digits, and apply rounding=
+ at the end of those digits. It can produce output in any base between 2 an=
+d 36 (after that it runs out of digit characters), or as a continued fracti=
+on, and it can read input numbers from files in any of those formats as wel=
+l.
+</p>
+<p>
+This man page gives only a brief summary of <code>spigot</code>'s functiona=
+lity. For full detail, you should read the main manual <code>spigot.html</c=
+ode>; if that is not installed on your system, you can find it on the web a=
+t
+</p>
+<p>
+<a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.html"=
+><code>https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.html</cod=
+e></a>
+</p>
+<h3><a name=3D"man-options"></a>C.4 OPTIONS</h3>
+<p>
+The following options control <code>spigot</code>'s basic output format:
+</p>
+<dl><dt>
+<code>-b</code> <em>base</em>, <code>-B</code> <em>base</em>
+</dt>
+<dd>
+Output the number in base <em>base</em>, which must be an integer between 2=
+ and 36 inclusive. Digits above 9 are represented by lower case or upper ca=
+se letters, for the options <code>-b</code> and <code>-B</code> respectivel=
+y. The default is <code>-b</code>&nbsp;<code>10</code>.
+</dd>
+<dt>
+<code>-c</code>
+</dt>
+<dd>
+Output the number as a list of continued fraction coefficients, as decimal =
+integers, by default one per line.
+</dd>
+<dt>
+<code>-C</code>
+</dt>
+<dd>
+Output the number's continued fraction convergents, one per line, in the fo=
+rm of two decimal integers with a <code>/</code> between them.
+</dd>
+<dt>
+<code>-R</code>
+</dt>
+<dd>
+Output the number's value as a rational, in the form of two decimal integer=
+s with a <code>/</code> between them, or just one decimal integer if the nu=
+mber is a rational. If <code>spigot</code> does not know the number to be r=
+ational immediately, it will start evaluating it to see if it turns out rat=
+ional later, so if it is not rational then <code>spigot</code> will compute=
+ for ever.
+</dd>
+<dt>
+<code>-S</code>, <code>-D</code>, <code>-Q</code>, <code>-H</code>
+</dt>
+<dd>
+Output the number as a hex representation of an IEEE 754 bit pattern, in 32=
+-bit single precision, 64-bit double, 128-bit quad or 16-bit half precision=
+ respectively. If that representation is not exact, a decimal point will be=
+ printed followed by further mantissa digits.
+</dd>
+<dt>
+<code>--printf</code> <em>format</em>, <code>--printf=3D</code><em>format</=
+em>
+</dt>
+<dd>
+Format the number in the same way that <code>printf</code>(<em>3</em>) woul=
+d, given the formatting directive <em>format</em>. <em>format</em> must beg=
+in with a <code>%</code> and end with the associated conversion specifier, =
+which must be a floating-point one (one of <code>efgaEFGA</code>).
+</dd>
+</dl>
+<p>
+The following options modify the details of those output formats:
+</p>
+<dl><dt>
+<code>-d</code> <em>limit</em>
+</dt>
+<dd>
+Limit the amount of data output. In <code>-b</code> mode, no more than <em>=
+limit</em> digits after the decimal point are printed. In <code>-c</code> o=
+r <code>-C</code> mode, no more than <em>limit</em> continued fraction coef=
+ficients or convergents are printed, not counting the initial one represent=
+ing the number's integer part. In the IEEE 754 output modes, no more than <=
+em>limit</em> additional bits of precision are generated after the end of t=
+he official mantissa. <em>limit</em> may be negative.
+</dd>
+<dt>
+<code>-l</code>
+</dt>
+<dd>
+In <code>-c</code> mode, output continued fraction terms all on one line, s=
+eparated by a <code>;</code> after the first term and <code>,</code> after =
+each subsequent term.
+</dd>
+<dt>
+<code>-w</code> <em>min-int-digits</em>
+</dt>
+<dd>
+In <code>-b</code> mode, output at least <em>min-int-digits</em> of the num=
+ber's integer part, by printing leading zeroes if necessary.
+</dd>
+<dt>
+<code>-s</code> <em>exponent-base</em> (or <code>-s b</code> or <code>-sb</=
+code>)
+</dt>
+<dd>
+In <code>-b</code> mode, output a prefix which is the largest power of <em>=
+exponent-base</em> less than or equal to the absolute value of the number, =
+and then print the number after dividing by that power. The special string =
+=91<code>b</code>=92 for <em>exponent-base</em> means to use the same base =
+for the exponent as the digit base used for the main output.
+</dd>
+<dt>
+<code>--nibble</code>
+</dt>
+<dd>
+In <code>--printf</code> mode with the =91<code>a</code>=92 or =91<code>A</=
+code>=92 conversion specifier, choose the output exponent to always be a mu=
+ltiple of 4, instead of the default behaviour of choosing it as large as po=
+ssible.
+</dd>
+<dt>
+<code>-n</code>
+</dt>
+<dd>
+In any mode where <code>spigot</code> prints output on a single line, suppr=
+ess the usual trailing newline if <code>spigot</code>'s output terminates.
+</dd>
+</dl>
+<p>
+The following options control rounding, when <code>spigot</code>'s output i=
+s limited by the <code>-d</code> option. (Rounding does not occur in contin=
+ued fraction modes.)
+</p>
+<dl><dt>
+<code>--rz</code>
+</dt>
+<dd>
+Round towards zero. This is the default.
+</dd>
+<dt>
+<code>--ri</code>
+</dt>
+<dd>
+Round away from zero.
+</dd>
+<dt>
+<code>--ru</code>
+</dt>
+<dd>
+Round up (towards positive infinity).
+</dd>
+<dt>
+<code>--rd</code>
+</dt>
+<dd>
+Round down (towards negative infinity).
+</dd>
+<dt>
+<code>--rn</code>, <code>--rne</code>
+</dt>
+<dd>
+Round to nearest, breaking ties toward an even last digit.
+</dd>
+<dt>
+<code>--rno</code>
+</dt>
+<dd>
+Round to nearest, breaking ties toward an odd last digit.
+</dd>
+<dt>
+<code>--rnz</code>, <code>--rni</code>, <code>--rnu</code>, <code>--rnd</co=
+de>
+</dt>
+<dd>
+Round to nearest, breaking ties as if rounding via <code>--rz</code>, <code=
+>--ri</code>, <code>--ru</code> or <code>--rd</code> respectively.
+</dd>
+</dl>
+<p>
+Miscellaneous options:
+</p>
+<dl><dt>
+<code>-o</code> <em>output-file</em>
+</dt>
+<dd>
+Controls where <code>spigot</code> sends its output. The default is standar=
+d output; this option can be used to send it to a file instead.
+</dd>
+<dt>
+<code>--tentative=3D</code><em>state</em>
+</dt>
+<dd>
+Control the printing of =91tentative output=92. Tentative output is printed=
+ when <code>spigot</code> does not know for sure what the next digit of the=
+ number is because it's starting to look as if it's exactly on a digit boun=
+dary. Tentative output is in red, and followed by an indication of about ho=
+w many digits <code>spigot</code> has examined beyond that point (i.e. how =
+close to exact that digit is known to be); <code>spigot</code> will retract=
+ it later if it finds out something definite.
+<p>
+<em>state</em> can be =91<code>on</code>=92, =91<code>off</code>=92 or =91<=
+code>auto</code>=92. =91<code>auto</code>=92 is the default, and means that=
+ <code>spigot</code> should only print tentative output if its output is di=
+rected to a terminal device.
+</p>
+
+</dd>
+<dt>
+<code>--safe</code>
+</dt>
+<dd>
+Disallow the various features of the expression syntax that tell <code>spig=
+ot</code> to read from arbitrary files or from its own file descriptors. Mi=
+ght be useful if an expression is coming from an untrusted source (although=
+, in that situation, you should still beware of other risks such as the exp=
+ression author forcing <code>spigot</code> into an endless loop).
+</dd>
+<dt>
+<code>-T</code>
+</dt>
+<dd>
+If instructed to read from a file descriptor which points to a terminal, pu=
+t the terminal into raw mode (turning off <code>ICANON</code> and <code>ECH=
+O</code> modes) while doing so.
+</dd>
+</dl>
+<h3><a name=3D"man-expressions"></a>C.5 EXPRESSIONS</h3>
+<p>
+<code>spigot</code>'s expression language supports the following options, i=
+n order of priority from lowest to highest:
+</p>
+<dl><dt>
+<code>+</code> and <code>-</code>
+</dt>
+<dd>
+Addition and subtraction. (Left-associative.)
+</dd>
+<dt>
+<code>*</code>, <code>/</code>, <code>%</code>, <code>mod</code>, <code>rem=
+</code>
+</dt>
+<dd>
+Multiplication, division and remainder. (Left-associative.) <code>%</code> =
+and <code>mod</code> are synonyms, which both return a remainder between 0 =
+and the denominator; <code>rem</code> returns a remainder of either sign, w=
+ith absolute value at most half that of the denominator, and ties broken by=
+ rounding to even in IEEE 754 style.
+</dd>
+<dt>
+Unary <code>-</code> and <code>+</code>
+</dt>
+<dd>
+Negation and no-op.
+</dd>
+<dt>
+<code>^</code>, <code>**</code>
+</dt>
+<dd>
+Power. (Right-associative.)
+</dd>
+<dt>
+<code>!</code>
+</dt>
+<dd>
+Factorial. (Unary suffix operator.)
+</dd>
+</dl>
+<p>
+You can define variables and functions of your own in subexpressions using =
+the <code>let</code> expression, as follows:
+</p>
+<dl><dt>
+<code>let</code>&nbsp;<em>var</em><code>=3D</code><em>value</em>&nbsp;<code=
+>in</code>&nbsp;<em>expression</em>
+</dt>
+<dd>
+Defines the name <em>var</em> to refer to the value of the expression <em>v=
+alue</em>. The definition is in scope within <em>expression</em>, but not i=
+n any other parts of the <code>spigot</code> input.
+</dd>
+<dt>
+<code>let</code>&nbsp;<em>fn</em><code>(</code><em>params</em><code>)=3D</c=
+ode><em>defn</em>&nbsp;<code>in</code>&nbsp;<em>expression</em>
+</dt>
+<dd>
+Defines the syntax <em>fn</em><code>(</code><em>args</em><code>)</code> to =
+refer to the expression <em>defn</em> with the arguments substituted in for=
+ the parameters. <em>params</em> must be a comma-separated list of identifi=
+ers; <em>args</em> is a comma-separated list of expressions.
+</dd>
+</dl>
+<p>
+A <code>let</code> expression can contain multiple definitions, separated b=
+y commas, e.g. =91<code>let x=3D1,y=3D2 in x+y</code>=92. Each definition i=
+s in scope for subsequent definitions, so you can write =91<code>let x=3D1,=
+y=3Dx+1 in</code>=92&nbsp;<em>expr</em>. But definitions are not in scope f=
+or <em>themselves</em>; in particular, functions may not be recursive.
+</p>
+<p>
+<code>spigot</code> also provides the following built-in functions:
+</p>
+<dl><dt>
+<code>sqrt</code>, <code>cbrt</code>
+</dt>
+<dd>
+Square and cube roots.
+</dd>
+<dt>
+<code>hypot</code>, <code>atan2</code> (two arguments, or more for <code>hy=
+pot</code>)
+</dt>
+<dd>
+Rectangular to polar coordinate conversions: the hypotenuse function (squar=
+e root of the sum of the squared arguments), and two-variable inverse tange=
+nt. <code>hypot</code> can also take a number of arguments other than two.
+</dd>
+<dt>
+<code>sin</code>, <code>cos</code>, <code>tan</code>, <code>asin</code>, <c=
+ode>acos</code>, <code>atan</code>
+</dt>
+<dd>
+Trigonometric functions and their inverses.
+</dd>
+<dt>
+<code>sind</code>, <code>cosd</code>, <code>tand</code>, <code>asind</code>=
+, <code>acosd</code>, <code>atand</code>, <code>atan2d</code>
+</dt>
+<dd>
+Trigonometric functions and their inverses, equivalent to the versions with=
+out =91<code>d</code>=92 on the end except that angles are measured in degr=
+ees.
+</dd>
+<dt>
+<code>sinc</code>, <code>sincn</code>
+</dt>
+<dd>
+The =91sinc=92 (or =91cardinal sine=92) function. <code>sinc</code> is the =
+=91unnormalised=92 form, i.e. just <code>sin(x)/x</code>; <code>sincn</code=
+> is the =91normalised=92 form equal to <code>sinc(pi*x)</code>.
+</dd>
+<dt>
+<code>sinh</code>, <code>cosh</code>, <code>tanh</code>, <code>asinh</code>=
+, <code>acosh</code>, <code>atanh</code>
+</dt>
+<dd>
+Hyperbolic functions and their inverses.
+</dd>
+<dt>
+<code>exp</code>, <code>exp2</code>, <code>exp10</code>, <code>log</code>, =
+<code>log2</code>, <code>log10</code>
+</dt>
+<dd>
+Exponential and logarithmic functions: raise <em>e</em>, 2 and 10 to a powe=
+r, or take a log with the same three bases. You can also provide a base of =
+your choice as a second argument to <code>log</code>.
+</dd>
+<dt>
+<code>expm1</code>, <code>log1p</code>
+</dt>
+<dd>
+Shorthands for <code>exp(x)-1</code> and <code>log(1+x)</code>.
+</dd>
+<dt>
+<code>pow</code> (two arguments)
+</dt>
+<dd>
+Synonym for the <code>^</code> operator.
+</dd>
+<dt>
+<code>gamma</code>, <code>tgamma</code>, <code>lgamma</code>
+</dt>
+<dd>
+Gamma function (<code>gamma</code> and <code>tgamma</code> are synonyms for=
+ this), and the log of the absolute value of the gamma function.
+</dd>
+<dt>
+<code>factorial</code>
+</dt>
+<dd>
+Synonym for the <code>!</code> operator.
+</dd>
+<dt>
+<code>erf</code>, <code>erfc</code>, <code>Phi</code>, <code>norm</code>
+</dt>
+<dd>
+Error-function relatives: the error function itself, 1 minus the error func=
+tion, and <code>Phi</code> and <code>norm</code> are synonyms for the cumul=
+ative normal distribution function.
+</dd>
+<dt>
+<code>erfinv</code>, <code>erfcinv</code>, <code>Phiinv</code>, <code>normi=
+nv</code>
+</dt>
+<dd>
+Inverses of the above error-function relatives.
+</dd>
+<dt>
+<code>W</code>, <code>Wn</code>
+</dt>
+<dd>
+The Lambert W function, i.e. the inverse of <code>x</code>&nbsp;<code>exp(x=
+)</code>. <code>W</code> is the branch with value at least <code>-1</code>,=
+ and <code>Wn</code> is the branch with value at most <code>-1</code>.
+</dd>
+<dt>
+<code>Ei</code>, <code>En</code> (two arguments), <code>E1</code>, <code>Ei=
+n</code>
+</dt>
+<dd>
+Exponential integrals, i.e. integrals of things like <code>exp(x)/x</code>.=
+ <code>Ei(x)</code> is the indefinite integral of <code>exp(x)/x</code> its=
+elf; <code>En(n,x)</code> (for non-negative integer <code>n</code>) is the =
+result of integrating <code>exp(-x)/x</code> <code>n</code> times, flipping=
+ the sign each time; <code>E1(x)</code> is shorthand for <code>En(1,x)</cod=
+e>; and <code>Ein(x)</code> is the integral of <code>(1-exp(-x))/x</code>.
+</dd>
+<dt>
+<code>Li</code>, <code>li</code>
+</dt>
+<dd>
+Logarithmic integrals, i.e. integrals of <code>1/log(x)</code>. <code>Li(x)=
+</code> and <code>li(x)</code> are both the indefinite integral of <code>1/=
+log(x)</code>; only their constants differ, in that <code>Li(2)</code> and =
+<code>li(0)</code> are each defined to be zero.
+</dd>
+<dt>
+<code>Li2</code>
+</dt>
+<dd>
+The dilogarithm, i.e. the integral of <code>-log(1-x)/x</code>.
+</dd>
+<dt>
+<code>Si</code>, <code>si</code>, <code>Ci</code>, <code>Cin</code>
+</dt>
+<dd>
+Sine and cosine integrals, i.e. integrals of <code>sin(x)/x</code> and <cod=
+e>cos(x)/x</code>. <code>Si(x)</code> and <code>si(x)</code> are both the i=
+ndefinite integral of <code>sin(x)/x</code>, differing only in the constant=
+: <code>Si(0)=3D0</code>, but <code>si(x)</code> has limit 0 as <code>x</co=
+de> tends to positive infinity. <code>Ci(x)</code> is the indefinite integr=
+al of <code>cos(x)/x</code>, also with limit 0 at positive infinity; <code>=
+Cin(x)</code> is the indefinite integral of <code>(1-cos(x))/x</code>, with=
+ <code>Cin(0)=3D0</code>.
+</dd>
+<dt>
+<code>UFresnelS</code>, <code>UFresnelC</code>, <code>FresnelS</code>, <cod=
+e>FresnelC</code>
+</dt>
+<dd>
+Fresnel integrals. <code>UFresnelS</code> and <code>UFresnelC</code> are th=
+e indefinite integrals of <code>sin(x^2)</code> and <code>cos(x^2)</code>; =
+<code>FresnelS</code> and <code>FresnelC</code> are the =91normalised=92 ve=
+rsions, i.e. integrals of <code>sin(</code><em>&#960;</em>&nbsp;<code>x^2/2=
+)</code> and <code>cos(</code><em>&#960;</em>&nbsp;<code>x^2/2)</code>. All=
+ are zero at the origin.
+</dd>
+<dt>
+<code>BesselJ</code>, <code>BesselI</code> (two arguments, the first one an=
+ integer order)
+</dt>
+<dd>
+Bessel functions of the first kind, and the modified form obtained by passi=
+ng an imaginary argument.
+</dd>
+<dt>
+<code>zeta</code>
+</dt>
+<dd>
+The Riemann zeta function (restricted to the real numbers).
+</dd>
+<dt>
+<code>agm</code> (two arguments)
+</dt>
+<dd>
+The arithmetic-geometric mean function.
+</dd>
+<dt>
+<code>Hg</code> (two lists of parameters and one primary input value, with =
+semicolons separating the three kinds of argument)
+</dt>
+<dd>
+The generalised hypergeometric function.
+</dd>
+<dt>
+<code>abs</code>
+</dt>
+<dd>
+Absolute value.
+</dd>
+<dt>
+<code>sign</code>
+</dt>
+<dd>
+Sign: <code>-1</code> for a negative input, <code>+1</code> for a positive =
+input, or <code>0</code> for a zero input (provided <code>spigot</code> can=
+ determine that it is zero without an exactness hazard).
+</dd>
+<dt>
+<code>ceil</code>, <code>floor</code>
+</dt>
+<dd>
+Ceiling and floor: smallest integer at least <em>x</em>, and largest intege=
+r at most <em>x</em>.
+</dd>
+<dt>
+<code>frac</code>
+</dt>
+<dd>
+Fractional part, i.e. <code>x</code>&nbsp;<code>-</code>&nbsp;<code>floor(x=
+)</code>.
+</dd>
+<dt>
+<code>fmod</code>
+</dt>
+<dd>
+Remainder, as computed by the C function <code>fmod</code>(<em>3</em>), cho=
+sen to have the same sign as the numerator.
+</dd>
+<dt>
+<code>round_rz</code>, <code>round_rd</code>, <code>round_rne</code>, ...
+</dt>
+<dd>
+Round to an integer using the rounding mode specified by the suffix, which =
+can be any of the rounding modes available as command-line options.
+</dd>
+<dt>
+<code>fracpart_rz</code>, <code>fracpart_rd</code>, <code>fracpart_rne</cod=
+e>, ...
+</dt>
+<dd>
+Generalised fractional part, obtained by subtracting whatever integer was c=
+omputed by the corresponding <code>round_</code><em>xx</em> function.
+</dd>
+<dt>
+<code>remainder_rz</code>, <code>remainder_rd</code>, <code>remainder_rne</=
+code>, ...
+</dt>
+<dd>
+Generalised remainder, obtained by subtracting an integer multiple of the d=
+enominator from the numerator, with the integer computed by rounding the qu=
+otient according to the corresponding <code>round_</code><em>xx</em> functi=
+on.
+</dd>
+<dt>
+<code>algebraic</code> (variable number of arguments)
+</dt>
+<dd>
+Return a root of an arbitrary polynomial with rational coefficients. The fi=
+rst two arguments are the rational bounds of an interval to search, and the=
+ rest give the polynomial's coefficients, with constant term first.
+</dd>
+</dl>
+<p>
+<code>spigot</code> supports the following names for built-in constants:
+</p>
+<dl><dt>
+<code>pi</code>, <code>tau</code>
+</dt>
+<dd>
+The circle constant <em>&#960;</em>, and the often more useful 2 <em>&#960;=
+</em>.
+</dd>
+<dt>
+<code>e</code>
+</dt>
+<dd>
+The base of natural logarithms.
+</dd>
+<dt>
+<code>phi</code>
+</dt>
+<dd>
+The golden ratio, <code>(1+sqrt(5))/2</code>.
+</dd>
+<dt>
+<code>eulergamma</code>
+</dt>
+<dd>
+The Euler-Mascheroni constant: the limiting difference between the sum and =
+the integral of <code>1/n</code>.
+</dd>
+<dt>
+<code>apery</code>
+</dt>
+<dd>
+Ap=E9ry's constant: the sum of the reciprocals of the cubes.
+</dd>
+<dt>
+<code>catalan</code>
+</dt>
+<dd>
+Catalan's constant: the alternating sum of the reciprocals of the odd squar=
+es.
+</dd>
+<dt>
+<code>gauss</code>
+</dt>
+<dd>
+Gauss's constant, <code>1/agm(1,sqrt(2))</code>.
+</dd>
+</dl>
+<p>
+Numbers can be input in the following formats:
+</p>
+<ul><li>
+Decimal, with an optional C-style <code>e+</code><em>exponent</em> or <code=
+>e-</code><em>exponent</em> for scientific notation
+</li>
+<li>
+Hex, with the prefix <code>0x</code>, and an optional C99-style <code>p+</c=
+ode><em>exponent</em> or <code>p-</code><em>exponent</em> representing a po=
+wer of 2 multiplier
+</li>
+<li>
+In any base between 2 and 36, with a prefix of the form <code>base</code><e=
+m>N</em><code>:</code>, e.g. <code>base7:0.123456</code>
+</li>
+<li>
+As an IEEE 754 hex bit pattern, consisting of exactly 4, 8, 16 or 32 hex di=
+gits with the prefix <code>ieee:</code>, followed by optional decimal point=
+ and extra mantissa digits
+</li>
+<li>
+From a file in base notation, by writing <code>base</code><em>N</em><code>f=
+ile:</code> followed by a filename, e.g. <code>base10file:pi.txt</code>. Th=
+e filename is taken to be the maximal sequence of non-space characters foll=
+owing the prefix, unless it starts with <code>'</code> or <code>"</code>, i=
+n which case it is taken to be everything up to a matching closing quote, w=
+ith doubled quote marks in between representing a literal quote character.
+</li>
+<li>
+From a file in continued fraction notation, by writing <code>cfracfile:</co=
+de> followed by a filename.
+</li>
+<li>
+Either of the above, but with <code>file:</code> replaced by <code>xfile:</=
+code> to indicate that end of file should be taken as the number being exac=
+tly represented rather than running out of precision.
+</li>
+<li>
+From a file descriptor in any of those notations, by writing <code>base</co=
+de><em>N</em><code>fd:</code> or <code>cfracfd:</code> followed by an fd nu=
+mber, e.g. <code>base10fd:0</code> to read from standard input. Also, <code=
+>base</code><em>N</em><code>stdin</code> and <code>cfracstdin</code> are av=
+ailable as synonyms for <code>base</code><em>N</em><code>fd:0</code> and <c=
+ode>cfracfd:0</code>.
+</li>
+</ul>
+<h3><a name=3D"man-return"></a>C.6 RETURN VALUE</h3>
+<p>
+<code>spigot</code> returns 0 if its output terminates (because the result =
+is exact, or because it reached the specified <code>-d</code> limit) with n=
+o problems.
+</p>
+<p>
+In case of a parse error, or an invalid operand to a function, or any other=
+ kind of fatal error, <code>spigot</code> returns 1.
+</p>
+<p>
+If <code>spigot</code> is unable to generate output to the desired precisio=
+n because more precision was needed from a number read from an input file u=
+sing <code>base</code><em>N</em><code>file:</code> or <code>cfracfile:</cod=
+e>, then <code>spigot</code> returns 2, and prints an error message indicat=
+ing which input file (in case there was more than one) ran out first.
+</p>
+<h3><a name=3D"man-bugs"></a>C.7 LIMITATIONS</h3>
+<p>
+Due to inherent limitations of its exact real arithmetic strategy, <code>sp=
+igot</code> is generally unable to recognise when a number it is computing =
+is exactly equal to a specific boundary value.
+</p>
+<p>
+One effect of this is that <code>spigot</code> will not behave as you'd lik=
+e if the output number has a terminating representation in the selected bas=
+e. For example, asking for <code>sin(asin(0.12345))</code> will not be able=
+ to print <code>0.12345</code> and exit. Instead, <code>spigot</code> will =
+get as far as printing =91<code>0.1234</code>=92, and then print tentative =
+output (mentioned above) to indicate that it thinks the next digit <em>migh=
+t</em> be exactly 5, but it will never reach a point where it's <em>sure</e=
+m> of that.
+</p>
+<p>
+Another effect is that if you ask <code>spigot</code> to evaluate an expres=
+sion in which an intermediate result is precisely on a point of discontinui=
+ty of the function it is passed to, then it may never manage to even <em>st=
+art</em> producing output. For example, <code>spigot</code> will hang compl=
+etely if you ask it for <code>floor(sin(pi))</code>, since <code>sin(pi)</c=
+ode>&nbsp;<code>=3D</code>&nbsp;<code>0</code> is a point of discontinuity =
+of the <code>floor</code> function, and <code>spigot</code> will never be a=
+ble to work out that the value of the input to <code>floor</code> is <em>ex=
+actly</em> zero, only that it seems to be closer and closer to zero the mor=
+e it computes.
+</p>
+<p>
+(An exception is numbers that <code>spigot</code> knows from first principl=
+es to be rational. For example, if you ask <code>spigot</code> to evaluate =
+the simpler expressions =91<code>0.12345</code>=92 or =91<code>floor(0)</co=
+de>=92, it will print the complete output and terminate successfully, in bo=
+th cases.)
+</p>
+<h3><a name=3D"man-licence"></a>C.8 LICENCE</h3>
+<p>
+<code>spigot</code> is free software, distributed under the MIT licence. Ty=
+pe =91<code>spigot --licence</code>=92 to see the full licence text.
+</p>
+
+<hr><address>
+[spigot version 20210527.7dd3cfd]</address>
+
+</body></html>
+------MultipartBoundary--hP6cHlInpDyKldh2LdNYB3V2EWgn92USNW0QPmX1nr------

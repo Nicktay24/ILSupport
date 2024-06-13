@@ -1,0 +1,169 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://www.chiark.greenend.org.uk/~sgtatham/spigot/
+Subject: spigot: a command-line exact real calculator
+Date: Thu, 9 Sep 2021 18:52:35 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--bHygZWNtBLWCgZc92z5dHLKp7Vw7hSjIKEpWa5jUG8----"
+
+
+------MultipartBoundary--bHygZWNtBLWCgZc92z5dHLKp7Vw7hSjIKEpWa5jUG8----
+Content-Type: text/html
+Content-ID: <frame-E7F4C2824BE5FE47B87DE8AC6A580786@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://www.chiark.greenend.org.uk/~sgtatham/spigot/
+
+<html><!-- -*- html -*- --><head><meta http-equiv=3D"Content-Type" content=
+=3D"text/html; charset=3Dwindows-1252">
+<title>spigot: a command-line exact real calculator</title>
+<link rel=3D"stylesheet" type=3D"text/css" href=3D"https://www.chiark.green=
+end.org.uk/~sgtatham/sitestyle.css" name=3D"Simon Tatham's Home Page Style"=
+></head>
+
+<body>
+<h1 align=3D"center"><code>spigot</code></h1>
+
+<p align=3D"center"><i>a command-line exact real calculator</i>
+
+</p><h2>Introduction</h2>
+
+<p>
+<code>spigot</code> is a command-line streaming exact real calculator.
+
+</p><p>
+A normal calculating program, given a mathematical expression to
+evaluate, will want to know in advance how many digits of output are
+needed (if it even has that option), and if the expression includes
+more than one successive operation, then rounding errors will build up
+so that the last few digits are potentially wrong, or perhaps more in
+some cases (e.g. if significance loss occurs).
+
+</p><p>
+<code>spigot</code>, by contrast, does not output any digit of the
+answer until it's sure that the digit is right, and it will keep
+generating digits until you tell it to stop.
+
+</p><p>
+Also, <code>spigot</code> is =91streaming=92 in the sense that
+if you tell it to do computations on a number you've previously stored
+in a file (perhaps to very high precision) or a number it's reading
+from a pipe, then it will begin producing output as soon as it's read
+enough of the input to know how the output starts.
+
+</p><p>
+The downside is that <code>spigot</code> is very slow compared to the
+usual kind of computer arithmetic. But it can be useful if you really
+need a lot of digits for some reason (e.g. a large number of digits of
+mathematical constants are sometimes incorporated into cryptographic
+algorithms), or as a cross-check on other calculating systems.
+
+</p><p>
+For more information, read the
+<a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.html"=
+>manual</a> online, which includes some
+<a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.html#=
+examples">examples</a> of
+the sort of thing <code>spigot</code> can do.
+
+</p><p>
+<code>spigot</code> is named after its core algorithm, which is Jeremy
+Gibbons's
+<a href=3D"http://www.cs.ox.ac.uk/people/jeremy.gibbons/publications/spigot=
+.pdf">unbounded spigot algorithm for the digits of <i>&#960;</i></a>,
+enhanced to support more output modes and a lot more input numbers.
+
+</p><h2>Licence</h2>
+
+<p>
+<code>spigot</code> is distributed under the MIT licence, so it is
+free to copy, redistribute, use and reuse.
+
+</p><p>
+For more details, see the file called <code>LICENCE</code> in the
+distribution archive, or the
+<a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.html#=
+licence">licence appendix</a> in the
+documentation.
+
+</p><h2>Download</h2>
+
+<p>
+A Unix source archive of <code>spigot</code> is available here:
+
+</p><blockquote>
+<p>
+<a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot-20210=
+527.7dd3cfd.tar.gz"><code>spigot-20210527.7dd3cfd.tar.gz</code></a>
+</p></blockquote>
+
+<p>
+<code>spigot</code> can run on Windows too. A pre-compiled Windows
+executable is here:
+
+</p><blockquote>
+<p>
+<a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/spigot/spigot.exe">=
+<code>spigot.exe</code></a>
+</p></blockquote>
+
+<p>
+If you want to see the latest state of development, you can check
+the development sources out from my <code>git</code> repository:
+</p><pre><code>git clone https://git.tartarus.org/simon/spigot.git</code></=
+pre>
+
+<p>
+Alternatively, you can browse the repository on the web,
+<a href=3D"https://git.tartarus.org/?p=3Dsimon/spigot.git">here</a>.
+</p>
+
+<h2>Feedback</h2>
+
+<p>
+Please report bugs to
+<a href=3D"mailto:anakin@pobox.com">anakin@pobox.com</a>.
+
+</p><p>
+You might find it helpful to read
+<a href=3D"https://www.chiark.greenend.org.uk/~sgtatham/bugs.html">this art=
+icle</a>
+before reporting a bug.
+
+</p><p>
+Patches are welcome.
+
+</p><hr>
+(comments to <a href=3D"mailto:anakin@pobox.com">anakin@pobox.com</a>)
+<br>
+(thanks to
+<a href=3D"https://www.chiark.greenend.org.uk/">chiark</a>
+for hosting this page)
+<br>
+(last modified on <!--LASTMOD-->Thu May 27 02:43:07 2021<!--END-->)
+
+
+</body></html>
+------MultipartBoundary--bHygZWNtBLWCgZc92z5dHLKp7Vw7hSjIKEpWa5jUG8----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://www.chiark.greenend.org.uk/~sgtatham/sitestyle.css
+
+@charset "windows-1252";
+
+body { background: white; color: black; }
+
+h1, h2, h3 { font-weight: bold; }
+
+h1 { font-size: 134%; }
+
+h2 { font-size: 117%; }
+
+h3 { font-size: 100%; }
+
+table, tr, th, td { border: 1px solid black; border-collapse: collapse; }
+
+th { text-align: left; }
+
+th, td { padding: 0.2em; }
+------MultipartBoundary--bHygZWNtBLWCgZc92z5dHLKp7Vw7hSjIKEpWa5jUG8------
